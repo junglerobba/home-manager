@@ -75,7 +75,6 @@
     userName = "Tobias Langendorf";
     userEmail = "junglerobba@jngl.one";
     signing = { key = "063BB04D11363703"; };
-    delta.enable = true;
     extraConfig = {
       commit.verbose = true;
       pull.rebase = true;
