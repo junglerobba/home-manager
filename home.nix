@@ -1,4 +1,5 @@
 { pkgs, ... }: {
+
   home.username = "junglerobba";
   home.homeDirectory = "/var/home/junglerobba";
   home.stateVersion = "23.05";
@@ -16,6 +17,8 @@
     speedtest-cli
     yt-dlp
   ];
+
+  imports = [ ./neovim ];
 
   programs.fish = {
     enable = true;
@@ -70,6 +73,20 @@
     };
   };
 
+  programs.tmux = {
+    enable = true;
+    shell = "${pkgs.fish}/bin/fish";
+    baseIndex = 1;
+    keyMode = "vi";
+    mouse = true;
+    extraConfig = ''
+      set -g status-style bg=black,fg=white
+      set -g window-status-style bg=black
+      set -g window-status-current-style bg=white,fg=black
+      set -s escape-time 0
+    '';
+  };
+
   programs.git = {
     enable = true;
     userName = "Tobias Langendorf";
@@ -95,35 +112,4 @@
     pinentryFlavor = "tty";
   };
 
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-    vimAlias = true;
-
-    plugins = with pkgs.vimPlugins; [
-      {
-        plugin = nvim-surround;
-        config = "lua require 'nvim-surround'.setup()";
-      }
-      {
-        plugin = nvim-autopairs;
-        config = "lua require 'nvim-autopairs'.setup()";
-      }
-    ];
-
-    extraConfig = ''
-      set number
-      set wrap
-      set autoindent
-      set smartindent
-      syntax
-      filetype plugin on
-
-      set mouse=a
-
-      set incsearch
-      set showmatch
-      set hlsearch
-    '';
-  };
 }
