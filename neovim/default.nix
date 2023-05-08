@@ -106,6 +106,7 @@
     extraConfig = ''
       lua << EOF
       ${builtins.readFile ./config.lua}
+      ${builtins.readFile ./keymap.lua}
       EOF
     '';
   };
