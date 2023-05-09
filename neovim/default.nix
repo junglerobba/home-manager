@@ -74,6 +74,11 @@
         config = builtins.readFile (./plugins/treesitter.lua);
       }
       {
+        plugin = nvim-treesitter-context;
+        type = "lua";
+        config = builtins.readFile (./plugins/treesitter-context.lua);
+      }
+      {
         plugin = nerdtree;
         type = "lua";
         config = builtins.readFile (./plugins/nerdtree.lua);
