@@ -4,7 +4,13 @@
     defaultEditor = true;
     vimAlias = true;
 
-    extraPackages = [ pkgs.ripgrep ];
+    extraPackages = [
+      pkgs.ripgrep 
+      pkgs.shellcheck
+      pkgs.nodePackages.typescript-language-server
+      pkgs.nodePackages.vscode-langservers-extracted
+      pkgs.nodePackages.bash-language-server
+    ];
 
     plugins = with pkgs.vimPlugins; [
       {
@@ -23,38 +29,7 @@
       {
         plugin = nvim-lspconfig;
         type = "lua";
-        config = builtins.readFile (./plugins/lsp.lua) + ''
-
-          local capabilities = require('cmp_nvim_lsp').default_capabilities()
-          require'lspconfig'.tsserver.setup {
-            cmd = {
-              '${pkgs.nodePackages.typescript-language-server}/bin/typescript-language-server',
-              '--stdio'
-            },
-            capabilities = capabilities
-          }
-          require'lspconfig'.html.setup {
-            cmd = {
-              '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-html-language-server',
-              '--stdio'
-            },
-            capabilities = capabilities
-          }
-          require'lspconfig'.cssls.setup {
-            cmd = {
-              '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-css-language-server',
-              '--stdio'
-            },
-            capabilities = capabilities
-          }
-          require'lspconfig'.eslint.setup {
-            cmd = {
-              '${pkgs.nodePackages.vscode-langservers-extracted}/bin/vscode-eslint-language-server',
-              '--stdio'
-            },
-            capabilities = capabilities
-          }
-        '';
+        config = builtins.readFile (./plugins/lsp.lua);
       }
       {
         plugin = lsp_signature-nvim;
@@ -66,10 +41,8 @@
         type = "lua";
         config = builtins.readFile (./plugins/cmp.lua);
       }
-      vim-gitgutter
       {
-        plugin =
-          nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars);
+        plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
         config = builtins.readFile (./plugins/treesitter.lua);
       }
@@ -83,14 +56,11 @@
         type = "lua";
         config = builtins.readFile (./plugins/nerdtree.lua);
       }
-      vim-vsnip
-      cmp-nvim-lsp
       {
         plugin = neoterm;
         type = "lua";
         config = builtins.readFile (./plugins/neoterm.lua);
       }
-      auto-save-nvim
       {
         plugin = undotree;
         type = "lua";
@@ -106,6 +76,10 @@
         type = "lua";
         config = builtins.readFile (./theme.lua);
       }
+      vim-gitgutter
+      vim-vsnip
+      cmp-nvim-lsp
+      auto-save-nvim
     ];
 
     extraConfig = ''

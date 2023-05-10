@@ -14,6 +14,21 @@ lspconfig.angularls.setup{
 lspconfig.rust_analyzer.setup {
   capabilities = capabilities
 }
+lspconfig.tsserver.setup {
+  capabilities = capabilities
+}
+lspconfig.html.setup {
+  capabilities = capabilities
+}
+lspconfig.cssls.setup {
+  capabilities = capabilities
+}
+lspconfig.eslint.setup {
+  capabilities = capabilities
+}
+lspconfig.bashls.setup {
+  capabilities = capabilities
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
