@@ -72,6 +72,11 @@
         config = builtins.readFile (./plugins/fugitive.lua);
       }
       {
+        plugin = comment-nvim;
+        type = "lua";
+        config = builtins.readFile (./plugins/comment.lua);
+      }
+      {
         plugin = gruvbox-nvim;
         type = "lua";
         config = builtins.readFile (./theme.lua);
