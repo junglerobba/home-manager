@@ -78,6 +78,11 @@
         config = builtins.readFile (./plugins/comment.lua);
       }
       {
+        plugin = harpoon;
+        type = "lua";
+        config = builtins.readFile (./plugins/harpoon.lua);
+      }
+      {
         plugin = gruvbox-nvim;
         type = "lua";
         config = builtins.readFile (./theme.lua);
