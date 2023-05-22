@@ -29,6 +29,9 @@ lspconfig.eslint.setup {
 lspconfig.bashls.setup {
   capabilities = capabilities
 }
+lspconfig.rnix.setup {
+  capabilities = capabilities
+}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
