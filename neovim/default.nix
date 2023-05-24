@@ -11,6 +11,7 @@
       pkgs.nodePackages.vscode-langservers-extracted
       pkgs.nodePackages.bash-language-server
       pkgs.rnix-lsp
+      pkgs.wl-clipboard
     ];
 
     plugins = with pkgs.vimPlugins; [

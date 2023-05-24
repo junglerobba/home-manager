@@ -18,3 +18,6 @@ end
 vim.keymap.set("n", "dd", smart_dd, { noremap = true, expr = true })
 
 vim.keymap.set("n", "c", '"_c', {})
+
+-- use system clipboard, same number of keypresses but hopefully less awkward
+vim.keymap.set({ "n", "v" }, "<leader>c", "\"+")
