@@ -8,7 +8,6 @@
   targets.genericLinux.enable = true;
 
   home.packages = with pkgs; [
-    distrobox
     ffmpeg
     lm_sensors
     neofetch
@@ -35,11 +34,4 @@
       highlight_base_name = true;
     };
   };
-
-  services.gpg-agent = {
-    enable = true;
-    enableFishIntegration = true;
-    pinentryFlavor = "tty";
-  };
-
 }

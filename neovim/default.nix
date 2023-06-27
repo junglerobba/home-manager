@@ -8,7 +8,6 @@
       pkgs.ripgrep 
       pkgs.shellcheck
       pkgs.nodePackages.typescript-language-server
-      pkgs.nodePackages.vscode-langservers-extracted
       pkgs.nodePackages.bash-language-server
       pkgs.rnix-lsp
       pkgs.wl-clipboard
