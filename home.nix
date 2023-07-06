@@ -20,7 +20,6 @@
 
   imports = [
     ./fish
-    ./git
     ./tmux
     ./neovim
   ];
