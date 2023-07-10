@@ -11,9 +11,7 @@
     ffmpeg
     lm_sensors
     neofetch
-    nixfmt
     ranger
-    speedtest-cli
     tmux-sessionizer
     yt-dlp
   ];
