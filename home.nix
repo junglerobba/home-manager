@@ -11,6 +11,7 @@
     ffmpeg
     lm_sensors
     neofetch
+    nvtop-amd
     ranger
     tmux-sessionizer
     yt-dlp
