@@ -2,7 +2,7 @@
 
   home.username = "junglerobba";
   home.homeDirectory = "/var/home/junglerobba";
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
   targets.genericLinux.enable = true;
