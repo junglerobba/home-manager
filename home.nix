@@ -14,6 +14,8 @@
     nvtop-amd
     ranger
     tmux-sessionizer
+    wl-clipboard
+    yarn
     yt-dlp
   ];
 
