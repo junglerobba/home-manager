@@ -1,4 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  nodePackages = with pkgs.nodePackages; [
+    prettier
+    eslint
+    typescript-language-server
+  ];
+in {
 
   home.username = "junglerobba";
   home.homeDirectory = "/var/home/junglerobba";
@@ -7,20 +14,24 @@
 
   targets.genericLinux.enable = true;
 
-  home.packages = with pkgs; [
-    ffmpeg
-    lm_sensors
-    neofetch
-    nvtop-amd
-    ranger
-    tmux-sessionizer
-    wl-clipboard
-    yarn
-    yt-dlp
-  ];
+  home.packages = with pkgs;
+    [
+      dive
+      ffmpeg
+      lm_sensors
+      neofetch
+      nil
+      nvtop-amd
+      ranger
+      tmux-sessionizer
+      wl-clipboard
+      yarn
+      yt-dlp
+    ] ++ nodePackages;
 
   imports = [
     ./fish
+    ./helix
     ./tmux
     ./neovim
   ];
