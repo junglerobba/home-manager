@@ -7,6 +7,9 @@
     keyMode = "vi";
     mouse = true;
     extraConfig = ''
+      set -ga terminal-overrides ",screen-256color*:Tc"
+      set-option -g default-terminal "screen-256color"
+
       set -g status-style 'bg=default fg=default'
       set -g status-left-length 25
       set -g status-left '#{=20:session_name} / '
