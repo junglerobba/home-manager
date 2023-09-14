@@ -33,7 +33,6 @@ in {
     ./fish
     ./helix
     ./tmux
-    ./neovim
   ];
 
   programs.direnv = { enable = true; };
