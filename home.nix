@@ -23,6 +23,7 @@ in {
       nil
       nvtop-amd
       ranger
+      rust-analyzer
       tmux-sessionizer
       wl-clipboard
       yarn
