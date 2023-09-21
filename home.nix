@@ -32,6 +32,7 @@ in {
   imports = [
     ./fish
     ./helix
+    ./lazygit
     ./tmux
   ];
 
