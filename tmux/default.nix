@@ -19,6 +19,7 @@
 
       bind-key -r C-f display-popup -E "tms"
       bind-key -r f display-popup -E "tms switch"
+      bind-key -r Q run-shell "tms kill"
 
       bind -n M-h select-pane -L
       bind -n M-j select-pane -D
