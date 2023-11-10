@@ -1,5 +1,19 @@
 { pkgs, ... }:
 let
+  packages = with pkgs; [
+    dive
+    ffmpeg
+    lm_sensors
+    neofetch
+    nil
+    nvtop-amd
+    ranger
+    rust-analyzer
+    tmux-sessionizer
+    wl-clipboard
+    yarn
+    yt-dlp
+  ];
   nodePackages = with pkgs.nodePackages; [
     prettier
     eslint
@@ -14,21 +28,7 @@ in {
 
   targets.genericLinux.enable = true;
 
-  home.packages = with pkgs;
-    [
-      dive
-      ffmpeg
-      lm_sensors
-      neofetch
-      nil
-      nvtop-amd
-      ranger
-      rust-analyzer
-      tmux-sessionizer
-      wl-clipboard
-      yarn
-      yt-dlp
-    ] ++ nodePackages;
+  home.packages = packages ++ nodePackages;
 
   imports = [
     ./fish
