@@ -18,6 +18,7 @@ let
     prettier
     eslint
     typescript-language-server
+    vscode-langservers-extracted
   ];
 in {
 
