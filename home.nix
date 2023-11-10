@@ -38,7 +38,11 @@ in {
     ./tmux
   ];
 
-  programs.direnv = { enable = true; };
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.htop = {
     enable = true;
     settings = {
