@@ -7,6 +7,7 @@ let
     lm_sensors
     nil
     nvtop-amd
+    onefetch
     ranger
     rust-analyzer
     tmux-sessionizer
