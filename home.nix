@@ -2,9 +2,9 @@
 let
   packages = with pkgs; [
     dive
+    fastfetch
     ffmpeg
     lm_sensors
-    neofetch
     nil
     nvtop-amd
     ranger
