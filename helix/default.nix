@@ -1,9 +1,7 @@
-{ pkgs, helix, ... }: {
+{ pkgs, ... }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
-
-    package = helix.packages."x86_64-linux".default;
 
     settings = {
 
