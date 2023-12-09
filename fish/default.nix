@@ -1,10 +1,6 @@
 { pkgs, ... }: {
   programs.fish = {
     enable = true;
-    shellInit = ''
-      set -e NIX_PATH
-      export DIRENV_LOG_FORMAT=""
-    '';
     functions = {
       fish_greeting = "";
       fish_prompt = ''
