@@ -20,6 +20,7 @@ let
     eslint
     typescript-language-server
     vscode-langservers-extracted
+    bash-language-server
   ];
 in {
 
