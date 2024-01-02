@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, tms, ... }:
 let
   packages = with pkgs; [
     dive
@@ -10,7 +10,7 @@ let
     onefetch
     ranger
     rust-analyzer
-    tmux-sessionizer
+    tms.packages."x86_64-linux".default
     wl-clipboard
     yarn
     yt-dlp
