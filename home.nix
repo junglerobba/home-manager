@@ -1,26 +1,13 @@
 { pkgs, tms, ... }:
 let
   packages = with pkgs; [
-    dive
     fastfetch
     ffmpeg
-    lm_sensors
-    nil
-    nvtop-amd
     onefetch
     ranger
-    rust-analyzer
     tms.packages."x86_64-linux".default
     wl-clipboard
-    yarn
     yt-dlp
-  ];
-  nodePackages = with pkgs.nodePackages; [
-    prettier
-    eslint
-    typescript-language-server
-    vscode-langservers-extracted
-    bash-language-server
   ];
 in {
 
@@ -31,7 +18,7 @@ in {
 
   targets.genericLinux.enable = true;
 
-  home.packages = packages ++ nodePackages;
+  home.packages = packages;
 
   imports = [
     ./fish
