@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  prettier = parser: {
+    command = "prettier";
+    args = [ "--parser" parser ];
+  };
+in {
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -46,25 +52,8 @@
     };
 
     languages = {
-      language-server.typescript-language-server = with pkgs.nodePackages; {
-        command =
-          "${typescript-language-server}/bin/typescript-language-server";
-      };
-      language-server.vscode-html-language-server = with pkgs.nodePackages; {
-        command =
-          "${vscode-langservers-extracted}/bin/vscode-html-language-server";
-      };
-      language-server.vscode-css-language-server = with pkgs.nodePackages; {
-        command =
-          "${vscode-langservers-extracted}/bin/vscode-css-language-server";
-      };
-      language-server.vscode-json-language-server = with pkgs.nodePackages; {
-        command =
-          "${vscode-langservers-extracted}/bin/vscode-json-language-server";
-      };
-      language-server.eslint = with pkgs.nodePackages; {
-        command =
-          "${vscode-langservers-extracted}/bin/vscode-eslint-language-server";
+      language-server.eslint = {
+        command = "vscode-eslint-language-server";
         args = [ "--stdio" ];
         config = {
           validate = "on";
@@ -84,81 +73,64 @@
           };
         };
       };
+
       language-server.emmet-ls = with pkgs; {
         command = "${emmet-ls}/bin/emmet-ls";
         args = [ "--stdio" ];
       };
-      # TODO: angular language-server not packaged yet
-      language-server.angular = with pkgs; {
-        command = pkgs.nodePackages."@angular/cli" + "/bin/ngserver";
+
+      language-server.angular = {
+        command = "ngserver";
+        args = [ "--stdio" ];
         scope = "source.angular";
         roots = [ "angular.json" ];
-        args = [
-          "--stdio"
-          "--tsProbeLocations"
-          "${nodePackages.typescript}/lib/node_modules"
-          "--ngProbeLocations"
-          (pkgs.nodePackages."@angular/cli" + "/lib/node_modules")
-        ];
         file-types = [ "ts" "html" ];
       };
+
       language-server.nil = with pkgs; { command = "${nil}/bin/nil"; };
+
       language-server.bash-language-server = with pkgs.nodePackages; {
         command = "${bash-language-server}/bin/bash-language-server";
       };
+
       language-server.yaml-language-server = with pkgs; {
         command = "${yaml-language-server}/bin/yaml-language-server";
       };
 
       language = [
-        (with pkgs.nodePackages; {
+        {
           name = "typescript";
           auto-format = true;
           language-servers =
             [ "typescript-language-server" "angular" "eslint" "emmet-ls" ];
-          formatter = {
-            command = "${prettier}/bin/prettier";
-            args = [ "--parser" "typescript" ];
-          };
-        })
-        (with pkgs.nodePackages; {
+          formatter = prettier "typescript";
+        }
+        {
           name = "html";
           language-servers =
-            [ "vscode-html-language-server" "angular" "eslint" "emmet-ls" ];
-          formatter = {
-            command = "${prettier}/bin/prettier";
-            args = [ "--parser" "angular" ];
-          };
-        })
-        (with pkgs.nodePackages; {
+            [ "angular" "vscode-html-language-server" "eslint" "emmet-ls" ];
+          formatter = prettier "angular";
+        }
+        {
           name = "css";
           language-servers = [ "vscode-css-language-server" "emmet-ls" ];
-          formatter = {
-            command = "${prettier}/bin/prettier";
-            args = [ "--parser" "css" ];
-          };
-        })
-        (with pkgs.nodePackages; {
+          formatter = prettier "css";
+        }
+        {
           name = "scss";
           language-servers = [ "vscode-css-language-server" "emmet-ls" ];
-          formatter = {
-            command = "${prettier}/bin/prettier";
-            args = [ "--parser" "css" ];
-          };
-        })
-        (with pkgs.nodePackages; {
+          formatter = prettier "css";
+        }
+        {
           name = "json";
           auto-format = false;
           language-servers = [ "vscode-json-language-server" ];
-          formatter = {
-            command = "${prettier}/bin/prettier";
-            args = [ "--parser" "json" ];
-          };
-        })
-        (with pkgs; {
+          formatter = prettier "json";
+        }
+        {
           name = "nix";
-          formatter = { command = "${nixfmt}/bin/nixfmt"; };
-        })
+          formatter = { command = "${pkgs.nixfmt}/bin/nixfmt"; };
+        }
       ];
     };
   };
