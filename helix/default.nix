@@ -87,6 +87,11 @@ in {
         file-types = [ "ts" "html" ];
       };
 
+      language-server.tailwindcss = {
+        command = "tailwindcss-language-server";
+        args = [ "--stdio" ];
+      };
+
       language-server.nil = with pkgs; { command = "${nil}/bin/nil"; };
 
       language-server.bash-language-server = with pkgs.nodePackages; {
@@ -113,8 +118,13 @@ in {
         }
         {
           name = "html";
-          language-servers =
-            [ "angular" "vscode-html-language-server" "eslint" "emmet-ls" ];
+          language-servers = [
+            "angular"
+            "vscode-html-language-server"
+            "tailwindcss"
+            "eslint"
+            "emmet-ls"
+          ];
           formatter = prettier "angular";
         }
         {
