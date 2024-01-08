@@ -97,6 +97,12 @@ in {
         command = "${yaml-language-server}/bin/yaml-language-server";
       };
 
+      language-server.docker-langserver = with pkgs; {
+        command = "${dockerfile-language-server-nodejs}/bin/docker-langserver";
+      };
+
+      language-server.taplo = with pkgs; { command = "${taplo}/bin/taplo"; };
+
       language = [
         {
           name = "typescript";
