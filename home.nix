@@ -1,31 +1,36 @@
-{ pkgs, tms, ... }:
+{ pkgs, tms, username, homedir, system, isMac, isLinux, ... }:
 let
   packages = with pkgs; [
     fastfetch
     ffmpeg
     onefetch
     ranger
-    tms.packages."x86_64-linux".default
+    tms.packages.${system}.default
     wl-clipboard
     yt-dlp
   ];
+  macPackages = with pkgs; [
+    audacity
+    colima
+    docker
+    docker-compose
+    gimp
+    gnupg
+    keepassxc
+  ];
 in {
 
-  home.username = "junglerobba";
-  home.homeDirectory = "/var/home/junglerobba";
+  home.username = username;
+  home.homeDirectory = homedir + "/" + username;
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  targets.genericLinux.enable = true;
+  targets.genericLinux.enable = isLinux;
 
-  home.packages = packages;
+  home.packages = packages ++ (if isMac then macPackages else [ ]);
 
-  imports = [
-    ./fish
-    ./helix
-    ./lazygit
-    ./tmux
-  ];
+  imports =
+    [ ./fish ./helix ./lazygit ./tmux ./alacritty ./colima ./git ./mpv ];
 
   programs.direnv = {
     enable = true;

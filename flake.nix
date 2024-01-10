@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,16 +14,21 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, tms, ... }:
-    let arch = "x86_64-linux";
-    in {
-      defaultPackage.${arch} = home-manager.defaultPackage.${arch};
+  outputs = { nixpkgs, flake-utils, home-manager, tms, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+        isMac = pkgs.stdenv.hostPlatform.isDarwin;
+        isLinux = pkgs.stdenv.hostPlatform.isLinux;
+      in {
+        defaultPackage = { username, homedir }:
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            extraSpecialArgs = {
+              inherit tms username homedir system isMac isLinux;
+            };
+            modules = [ ./home.nix ];
+          };
+      });
 
-      homeConfigurations.junglerobba =
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.${arch};
-          extraSpecialArgs = { inherit tms; };
-          modules = [ ./home.nix ];
-        };
-    };
 }
