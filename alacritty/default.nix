@@ -11,7 +11,7 @@
         option_as_alt = "Both";
       };
       font = {
-        family = "jetbrains mono";
+        normal = { family = "jetbrains mono"; };
         size = 13.0;
         offset.y = 5;
       };
