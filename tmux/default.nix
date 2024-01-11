@@ -21,7 +21,7 @@
 
       bind -r C-f display-popup -E "tms"
       bind -r f display-popup -E "tms switch"
-      bind -r Q run-shell "tms kill"
+      bind -r * confirm -p "Kill session?" "run-shell \"tms kill\""
 
       bind -r v split-window -h -c "#{pane_current_path}"
       bind -r s split-window -v -c "#{pane_current_path}"
