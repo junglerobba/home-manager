@@ -3,6 +3,8 @@ let
   packages = with pkgs; [
     fastfetch
     ffmpeg
+    jless
+    jq
     onefetch
     ranger
     tms.packages.${system}.default
