@@ -1,20 +1,20 @@
-{ isMac, ... }: {
+{ pkgs, isMac, ... }: {
   programs.git = {
-    enable = isMac;
-    userName = "Tobias Langendorf";
-    userEmail = "junglerobba@jngl.one";
-    signing = { key = "063BB04D11363703"; };
+    enable = true;
+    package = pkgs.gitFull;
     extraConfig = {
       commit.verbose = true;
       pull.rebase = true;
       rebase.autostash = true;
       init.defaultBranch = "main";
+      sendemail = { annotate = "yes"; };
+      credential.helper = if isMac then "osxkeychain" else "libsecret";
     };
     aliases = {
       ignore = "update-index --assume-unchanged";
       unignore = "update-index --no-assume-unchanged";
       ignored = "!git ls-files -v | grep ^[[:lower:]]";
     };
-    ignores = [ "shell.nix" ".envrc" ];
+    includes = [{ path = "~/.config/git/config.d/overrides"; }];
   };
 }
