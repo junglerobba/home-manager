@@ -31,8 +31,7 @@ in {
 
   home.packages = packages ++ (if isMac then macPackages else [ ]);
 
-  imports =
-    [ ./fish ./helix ./lazygit ./tmux ./alacritty ./colima ./git ./mpv ];
+  imports = [ ./fish ./helix ./lazygit ./tmux ./colima ./git ./mpv ];
 
   programs.direnv = {
     enable = true;
