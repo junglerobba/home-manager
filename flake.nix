@@ -12,9 +12,13 @@
       url = "github:jrmoulton/tmux-sessionizer";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, flake-utils, home-manager, tms, ... }:
+  outputs = { nixpkgs, flake-utils, home-manager, tms, helix, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
@@ -25,7 +29,7 @@
           home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs;
             extraSpecialArgs = {
-              inherit tms username homedir system isMac isLinux;
+              inherit tms helix username homedir system isMac isLinux;
             };
             modules = [ ./home.nix ];
           };

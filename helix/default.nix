@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, system, helix, ... }:
 let
   prettier = parser: {
     command = "prettier";
@@ -8,6 +8,8 @@ in {
   programs.helix = {
     enable = true;
     defaultEditor = true;
+
+    package = helix.packages.${system}.default;
 
     settings = {
 
