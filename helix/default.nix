@@ -45,8 +45,11 @@ in {
       };
       keys = {
         normal = {
-          space.F = "file_picker_in_current_buffer_directory";
-          space.W = ":lsp-workspace-command";
+          space = {
+            F = "file_picker_in_current_buffer_directory";
+            W = ":lsp-workspace-command";
+            g = [ ":new" ":insert-output git status --porcelain" ];
+          };
         };
       };
     };
