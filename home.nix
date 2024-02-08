@@ -5,6 +5,7 @@ let
     ffmpeg
     jless
     jq
+    just
     onefetch
     ranger
     tms.packages.${system}.default
