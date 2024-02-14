@@ -113,14 +113,6 @@ in {
 
       language-server.taplo = with pkgs; { command = "${taplo}/bin/taplo"; };
 
-      language-server.jdtls = with pkgs; {
-        command = "${jdt-language-server}/bin/jdtls";
-        args = [
-          "--jvm-arg=-javaagent:${lombok}/share/java/lombok.jar"
-          "--jvm-arg=-Xbootclasspath/a:${lombok}/share/java/lombok.jar"
-        ];
-      };
-
       language = [
         {
           name = "typescript";
