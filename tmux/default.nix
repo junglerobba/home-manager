@@ -1,4 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  popup = pkgs.writeShellApplication {
+    name = "tmux-popup";
+    runtimeInputs = [ pkgs.tmux ];
+    text = builtins.readFile ./popup.sh;
+  };
+in {
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";
@@ -21,6 +28,7 @@
 
       bind -r C-f display-popup -E "tms"
       bind -r f display-popup -E "tms switch"
+      bind -r - run-shell "${popup}/bin/tmux-popup"
       bind -r * confirm -p "Kill session?" "run-shell \"tms kill\""
 
       bind -r v split-window -h -c "#{pane_current_path}"
