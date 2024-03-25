@@ -46,12 +46,18 @@ in {
         soft-wrap = { enable = true; };
       };
       keys = {
+
         normal = {
+          V = [ "extend_to_line_bounds" "select_mode" ];
           space = {
             F = "file_picker_in_current_buffer_directory";
             W = ":lsp-workspace-command";
             g = [ ":new" ":insert-output git status --porcelain" ];
           };
+        };
+        select = {
+          J = [ "extend_line_down" "extend_to_line_bounds" ];
+          K = [ "extend_line_up" "extend_to_line_bounds" ];
         };
       };
     };
