@@ -9,9 +9,9 @@ let
     onefetch
     ranger
     tms.packages.${system}.default
-    wl-clipboard
     yt-dlp
   ];
+  linuxPackages = with pkgs; [ wl-clipboard ];
   macPackages = with pkgs; [
     audacity
     colima
@@ -30,7 +30,8 @@ in {
 
   targets.genericLinux.enable = isLinux;
 
-  home.packages = packages ++ (if isMac then macPackages else [ ]);
+  home.packages = packages ++ (if isMac then macPackages else [ ])
+    ++ (if isLinux then linuxPackages else [ ]);
 
   imports = [ ./fish ./helix ./lazygit ./tmux ./colima ./git ./mpv ];
 
