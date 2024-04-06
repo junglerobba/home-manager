@@ -25,9 +25,15 @@
   outputs = { nixpkgs, nixgl, flake-utils, home-manager, tms, helix, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
+        mpv-overlay = (self: super: {
+          mpv = if self.stdenv.hostPlatform.isLinux then
+            super.mpv.override { scripts = [ self.mpvScripts.mpris ]; }
+          else
+            super.mpv;
+        });
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ nixgl.overlay ];
+          overlays = [ nixgl.overlay mpv-overlay ];
         };
         isMac = pkgs.stdenv.hostPlatform.isDarwin;
         isLinux = pkgs.stdenv.hostPlatform.isLinux;
