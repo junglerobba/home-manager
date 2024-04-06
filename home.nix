@@ -33,19 +33,11 @@ in {
   home.packages = packages ++ (if isMac then macPackages else [ ])
     ++ (if isLinux then linuxPackages else [ ]);
 
-  imports = [ ./fish ./helix ./lazygit ./tmux ./colima ./git ./mpv ];
+  imports = [ ./colima ./fish ./git ./helix ./htop ./lazygit ./mpv ./tmux ];
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
 
-  programs.htop = {
-    enable = true;
-    settings = {
-      tree_view = true;
-      hide_userland_threads = true;
-      highlight_base_name = true;
-    };
-  };
 }
