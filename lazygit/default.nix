@@ -1,5 +1,1 @@
-{ pkgs, ... }: {
-  programs.lazygit = {
-    enable = true;
-  };
-}
+{ pkgs, ... }: { programs.lazygit = { enable = true; }; }

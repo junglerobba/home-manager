@@ -11,7 +11,12 @@ let
     tms.packages.${system}.default
     yt-dlp
   ];
-  linuxPackages = with pkgs; [ wl-clipboard ];
+  linuxPackages = with pkgs; [
+    mangohud
+    nixgl.nixGLIntel
+    nixgl.nixVulkanIntel
+    wl-clipboard
+  ];
   macPackages = with pkgs; [
     audacity
     colima
