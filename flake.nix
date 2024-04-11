@@ -35,24 +35,35 @@
           inherit system;
           overlays = [ nixgl.overlay mpv-overlay ];
         };
-        isMac = pkgs.stdenv.hostPlatform.isDarwin;
-        isLinux = pkgs.stdenv.hostPlatform.isLinux;
         nixGLPrefix = "${nixgl.packages.${system}.nixGLIntel}/bin/nixGLIntel ${
             nixgl.packages.${system}.nixVulkanIntel
           }/bin/nixVulkanIntel";
-        nixGL = import ./nixgl.nix {
-          inherit pkgs;
-          config = { inherit nixGLPrefix; };
+        extraSpecialArgs = { username, homedir, isNixOs }: {
+          inherit pkgs username homedir isNixOs tms helix system;
+          isMac = pkgs.stdenv.hostPlatform.isDarwin;
+          isLinux = pkgs.stdenv.hostPlatform.isLinux;
+          nixGL = import ./nixgl.nix {
+            inherit pkgs;
+            config = { nixGLPrefix = if !isNixOs then nixGLPrefix else ""; };
+          };
         };
       in {
         defaultPackage = { username, homedir }:
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
-            extraSpecialArgs = {
-              inherit nixGL tms helix username homedir system isMac isLinux;
+            extraSpecialArgs = extraSpecialArgs {
+              inherit username homedir;
+              isNixOs = false;
             };
             modules = [ ./home.nix ];
           };
+        packages.module = { username, homedir }: {
+          users.${username} = import ./home.nix;
+          extraSpecialArgs = extraSpecialArgs {
+            inherit username homedir;
+            isNixOs = true;
+          };
+        };
       });
 
 }

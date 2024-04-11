@@ -1,4 +1,4 @@
-{ pkgs, tms, username, homedir, system, isMac, isLinux, ... }:
+{ pkgs, tms, username, homedir, system, isMac, isLinux, isNixOs, ... }:
 let
   packages = with pkgs; [
     fastfetch
@@ -11,12 +11,9 @@ let
     tms.packages.${system}.default
     yt-dlp
   ];
-  linuxPackages = with pkgs; [
-    mangohud
-    nixgl.nixGLIntel
-    nixgl.nixVulkanIntel
-    wl-clipboard
-  ];
+  linuxPackages = with pkgs;
+    [ mangohud wl-clipboard ]
+    ++ (if isNixOs then [ ] else [ nixgl.nixGLIntel nixgl.nixVulkanIntel ]);
   macPackages = with pkgs; [
     audacity
     colima
