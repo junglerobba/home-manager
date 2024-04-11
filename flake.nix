@@ -16,13 +16,9 @@
       url = "github:jrmoulton/tmux-sessionizer";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { nixpkgs, nixgl, flake-utils, home-manager, tms, helix, ... }:
+  outputs = { nixpkgs, nixgl, flake-utils, home-manager, tms, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         mpv-overlay = (self: super: {
@@ -39,7 +35,7 @@
             nixgl.packages.${system}.nixVulkanIntel
           }/bin/nixVulkanIntel";
         extraSpecialArgs = { username, homedir, isNixOs }: {
-          inherit pkgs username homedir isNixOs tms helix system;
+          inherit pkgs username homedir isNixOs tms system;
           isMac = pkgs.stdenv.hostPlatform.isDarwin;
           isLinux = pkgs.stdenv.hostPlatform.isLinux;
           nixGL = import ./nixgl.nix {
