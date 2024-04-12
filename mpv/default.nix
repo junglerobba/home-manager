@@ -1,7 +1,7 @@
-{ pkgs, isLinux, nixGL, isNixOs, ... }: {
+{ pkgs, isLinux, nixGL, ... }: {
   programs.mpv = {
     enable = true;
-    package = if isLinux && !isNixOs then (nixGL pkgs.mpv) else pkgs.mpv;
+    package = if isLinux then (nixGL pkgs.mpv) else pkgs.mpv;
     config = {
       keep-open = true;
       audio-display = false;
