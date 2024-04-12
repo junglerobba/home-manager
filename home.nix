@@ -12,8 +12,12 @@ let
     yt-dlp
   ];
   linuxPackages = with pkgs;
-    [ mangohud wl-clipboard ]
-    ++ (if isNixOs then [ ] else [ nixgl.nixGLIntel nixgl.nixVulkanIntel ]);
+    [ mangohud wl-clipboard ] ++ (if isNixOs then
+      [ gnupg ]
+    else [
+      nixgl.nixGLIntel
+      nixgl.nixVulkanIntel
+    ]);
   macPackages = with pkgs; [
     audacity
     colima
