@@ -93,5 +93,34 @@ in {
 
   };
 
-  programs.i3status-rust = { enable = isNixOs; };
+  programs.i3status-rust = {
+    enable = isNixOs;
+    bars.default.blocks = [
+      {
+        block = "music";
+        separator = " / ";
+        interface_name_exclude = [ "firefox" ];
+      }
+      {
+        block = "memory";
+        format = " $icon $mem_used_percents ";
+        format_alt = " $icon $swap_used_percents ";
+      }
+      {
+        block = "cpu";
+        interval = 1;
+      }
+      {
+        block = "load";
+        format = " $icon $1m ";
+        interval = 1;
+      }
+      { block = "sound"; }
+      {
+        block = "time";
+        format = " $timestamp.datetime(f:'%a %F %T') ";
+        interval = 1;
+      }
+    ];
+  };
 }
