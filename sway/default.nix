@@ -1,4 +1,4 @@
-{ lib, pkgs, isLinux, ... }:
+{ lib, pkgs, isNixOs, ... }:
 let
   modifier = "Mod4";
   fonts = {
@@ -7,7 +7,7 @@ let
   };
 in {
   wayland.windowManager.sway = {
-    enable = isLinux;
+    enable = isNixOs;
 
     config = with pkgs; {
       inherit modifier fonts;
@@ -93,5 +93,5 @@ in {
 
   };
 
-  programs.i3status-rust = { enable = isLinux; };
+  programs.i3status-rust = { enable = isNixOs; };
 }

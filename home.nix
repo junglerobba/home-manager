@@ -46,6 +46,7 @@ in {
     ./git
     ./helix
     ./htop
+    ./keyring
     ./lazygit
     ./mpv
     ./sway
