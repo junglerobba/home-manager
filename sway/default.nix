@@ -5,9 +5,9 @@ let
     names = [ "jetbrains mono" ];
     size = 10.0;
   };
-in {
+in lib.mkIf isNixOs {
   wayland.windowManager.sway = {
-    enable = isNixOs;
+    enable = true;
 
     config = with pkgs; {
       inherit modifier fonts;
@@ -77,7 +77,6 @@ in {
       };
       startup = [{ command = "${mako}/bin/mako"; }];
 
-      output."*".adaptive_sync = "on";
     };
 
     extraConfig = ''
@@ -94,7 +93,7 @@ in {
   };
 
   programs.i3status-rust = {
-    enable = isNixOs;
+    enable = true;
     bars.default.blocks = [
       {
         block = "music";
