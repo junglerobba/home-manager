@@ -34,7 +34,10 @@ in lib.mkIf isNixOs {
         shortcuts_inhibitor = "disable";
       };
       input = {
-        "type:pointer" = { accel_profile = "flat"; };
+        "type:pointer" = {
+          accel_profile = "flat";
+          natural_scroll = "enabled";
+        };
         "type:keyboard" = {
           xkb_numlock = "enabled";
           xkb_layout = "us";
