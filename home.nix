@@ -12,7 +12,7 @@ let
     yt-dlp
   ];
   linuxPackages = with pkgs;
-    [ mangohud wl-clipboard ] ++ (if isNixOs then
+    [ wl-clipboard ] ++ (if isNixOs then
       [ gnupg ]
     else [
       nixgl.nixGLIntel
@@ -48,6 +48,7 @@ in {
     ./htop
     ./keyring
     ./lazygit
+    ./mangohud
     ./mpv
     ./sway
     ./tmux
