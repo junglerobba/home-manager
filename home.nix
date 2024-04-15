@@ -12,7 +12,7 @@ let
     yt-dlp
   ];
   linuxPackages = with pkgs;
-    [ wl-clipboard ] ++ (if isNixOs then [
+    [ wl-clipboard distrobox ] ++ (if isNixOs then [
       gnupg
       gnomeExtensions.night-theme-switcher
     ] else [
