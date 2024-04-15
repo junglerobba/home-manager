@@ -12,9 +12,10 @@ let
     yt-dlp
   ];
   linuxPackages = with pkgs;
-    [ wl-clipboard ] ++ (if isNixOs then
-      [ gnupg ]
-    else [
+    [ wl-clipboard ] ++ (if isNixOs then [
+      gnupg
+      gnomeExtensions.night-theme-switcher
+    ] else [
       nixgl.nixGLIntel
       nixgl.nixVulkanIntel
     ]);
@@ -44,13 +45,13 @@ in {
     ./colima
     ./fish
     ./git
+    ./gnome
     ./helix
     ./htop
     ./keyring
     ./lazygit
     ./mangohud
     ./mpv
-    ./sway
     ./tmux
   ];
 

@@ -5,7 +5,7 @@ let
     names = [ "jetbrains mono" ];
     size = 10.0;
   };
-in lib.mkIf isNixOs {
+in lib.mkIf false {
   wayland.windowManager.sway = {
     enable = true;
 
