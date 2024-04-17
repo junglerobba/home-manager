@@ -1,18 +1,9 @@
-{ pkgs, ... }:
-let
-  prettier = parser: {
-    command = "prettier";
-    args = [ "--parser" parser ];
-  };
-in {
+{ pkgs, ... }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
-
     settings = {
-
       theme = "gruvbox";
-
       editor = {
         auto-save = true;
         line-number = "relative";
@@ -32,8 +23,8 @@ in {
           display-inlay-hints = true;
           display-messages = true;
         };
-        cursor-shape = { insert = "bar"; };
-        file-picker = { hidden = false; };
+        cursor-shape.insert = "bar";
+        file-picker.hidden = false;
         whitespace = {
           render = {
             space = "all";
@@ -41,10 +32,9 @@ in {
             newline = "none";
           };
         };
-        soft-wrap = { enable = true; };
+        soft-wrap.enable = true;
       };
       keys = {
-
         normal = {
           V = [ "extend_to_line_bounds" "select_mode" ];
           space = {
@@ -60,7 +50,7 @@ in {
       };
     };
 
-    languages = {
+    languages = with pkgs; {
       language-server.eslint = {
         command = "vscode-eslint-language-server";
         args = [ "--stdio" ];
@@ -83,7 +73,7 @@ in {
         };
       };
 
-      language-server.emmet-ls = with pkgs; {
+      language-server.emmet-ls = {
         command = "${emmet-ls}/bin/emmet-ls";
         args = [ "--stdio" ];
       };
@@ -101,23 +91,25 @@ in {
         args = [ "--stdio" ];
       };
 
-      language-server.nil = with pkgs; { command = "${nil}/bin/nil"; };
+      language-server.nil.command = "${nil}/bin/nil";
 
-      language-server.bash-language-server = with pkgs.nodePackages; {
-        command = "${bash-language-server}/bin/bash-language-server";
-      };
+      language-server.bash-language-server.command =
+        "${nodePackages.bash-language-server}/bin/bash-language-server";
 
-      language-server.yaml-language-server = with pkgs; {
-        command = "${yaml-language-server}/bin/yaml-language-server";
-      };
+      language-server.yaml-language-server.command =
+        "${yaml-language-server}/bin/yaml-language-server";
 
-      language-server.docker-langserver = with pkgs; {
-        command = "${dockerfile-language-server-nodejs}/bin/docker-langserver";
-      };
+      language-server.docker-langserver.command =
+        "${dockerfile-language-server-nodejs}/bin/docker-langserver";
 
-      language-server.taplo = with pkgs; { command = "${taplo}/bin/taplo"; };
+      language-server.taplo.command = "${taplo}/bin/taplo";
 
-      language = [
+      language = let
+        prettier = parser: {
+          command = "prettier";
+          args = [ "--parser" parser ];
+        };
+      in [
         {
           name = "typescript";
           auto-format = true;
@@ -154,7 +146,7 @@ in {
         }
         {
           name = "nix";
-          formatter = { command = "${pkgs.nixfmt}/bin/nixfmt"; };
+          formatter.command = "${nixfmt}/bin/nixfmt";
         }
       ];
     };
