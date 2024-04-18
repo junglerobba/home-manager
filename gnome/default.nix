@@ -4,7 +4,10 @@ lib.mkIf isNixOs {
     "org/gnome-shell" = {
       enabled-extensions = [ "nightthemeswitcher@romainvigier.fr'" ];
     };
-    "org/gnome/desktop/interface" = { enable-hot-corners = true; };
+    "org/gnome/desktop/interface" = {
+      enable-hot-corners = true;
+      monospace-font-name = "JetBrains Mono 10";
+    };
     "org/gnome/mutter" = {
       dynamic-workspaces = true;
       workspaces-only-on-primary = true;
