@@ -31,7 +31,7 @@ let
 in {
 
   home.username = username;
-  home.homeDirectory = homedir + "/" + username;
+  home.homeDirectory = homedir;
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
