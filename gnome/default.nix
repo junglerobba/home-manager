@@ -1,5 +1,5 @@
-{ lib, isNixOs, ... }:
-lib.mkIf isNixOs {
+{ lib, desktop, ... }:
+lib.mkIf (desktop == "gnome") {
   dconf.settings = {
     "org/gnome-shell" = {
       enabled-extensions = [ "nightthemeswitcher@romainvigier.fr'" ];

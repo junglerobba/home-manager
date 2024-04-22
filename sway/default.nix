@@ -1,11 +1,11 @@
-{ lib, pkgs, isNixOs, ... }:
+{ lib, pkgs, desktop, ... }:
 let
   modifier = "Mod4";
   fonts = {
     names = [ "jetbrains mono" ];
     size = 10.0;
   };
-in lib.mkIf false {
+in lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
     enable = true;
 

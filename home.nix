@@ -1,4 +1,4 @@
-{ pkgs, tms, username, homedir, system, isMac, isLinux, isNixOs, ... }:
+{ pkgs, tms, username, homedir, system, isMac, isLinux, isNixOs, desktop, ... }:
 let
   packages = with pkgs; [
     fastfetch
@@ -12,13 +12,15 @@ let
     yt-dlp
   ];
   linuxPackages = with pkgs;
-    [ wl-clipboard distrobox ] ++ (if isNixOs then [
-      gnupg
-      gnomeExtensions.night-theme-switcher
-    ] else [
+    [ wl-clipboard distrobox ] ++ (if isNixOs then
+      [ gnupg ]
+    else [
       nixgl.nixGLIntel
       nixgl.nixVulkanIntel
-    ]);
+    ]) ++ (if desktop == "gnome" then
+      [ gnomeExtensions.night-theme-switcher ]
+    else
+      [ ]);
   macPackages = with pkgs; [
     audacity
     colima
@@ -52,6 +54,7 @@ in {
     ./lazygit
     ./mangohud
     ./mpv
+    ./sway
     ./tmux
   ];
 

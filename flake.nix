@@ -34,8 +34,8 @@
         nixGLPrefix = "${nixgl.packages.${system}.nixGLIntel}/bin/nixGLIntel ${
             nixgl.packages.${system}.nixVulkanIntel
           }/bin/nixVulkanIntel";
-        extraSpecialArgs = { username, homedir, isNixOs }: {
-          inherit pkgs username homedir isNixOs tms system;
+        extraSpecialArgs = { username, homedir, isNixOs, desktop }: {
+          inherit pkgs username homedir isNixOs desktop tms system;
           isMac = pkgs.stdenv.hostPlatform.isDarwin;
           isLinux = pkgs.stdenv.hostPlatform.isLinux;
           nixGL = import ./nixgl.nix {
@@ -44,7 +44,7 @@
           };
         };
       in {
-        defaultPackage = { username, homedir }:
+        defaultPackage = { username, homedir, desktop }:
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = extraSpecialArgs {
@@ -53,10 +53,10 @@
             };
             modules = [ ./home.nix ];
           };
-        packages.module = { username, homedir }: {
+        packages.module = { username, homedir, desktop }: {
           users.${username} = import ./home.nix;
           extraSpecialArgs = extraSpecialArgs {
-            inherit username homedir;
+            inherit username homedir desktop;
             isNixOs = true;
           };
         };
