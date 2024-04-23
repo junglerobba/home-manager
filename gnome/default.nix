@@ -2,7 +2,7 @@
 lib.mkIf (desktop == "gnome") {
   dconf.settings = {
     "org/gnome-shell" = {
-      enabled-extensions = [ "nightthemeswitcher@romainvigier.fr'" ];
+      enabled-extensions = [ "nightthemeswitcher@romainvigier.fr" ];
     };
     "org/gnome/desktop/interface" = {
       enable-hot-corners = true;
