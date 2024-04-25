@@ -44,12 +44,13 @@
           };
         };
       in {
-        defaultPackage = { username, homedir, desktop }:
+        defaultPackage = { username, homedir }:
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = extraSpecialArgs {
               inherit username homedir;
               isNixOs = false;
+              desktop = null;
             };
             modules = [ ./home.nix ];
           };
