@@ -1,4 +1,5 @@
-{ ... }: {
+{ lib, desktop, ... }:
+lib.mkIf (desktop == "sway") {
   programs.alacritty = {
     enable = true;
     settings = {
