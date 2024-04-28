@@ -8,6 +8,7 @@ lib.mkIf isNixOs {
       no_display = true;
       media_player = false;
       gamemode = false;
+      fps_limit = "144,120,90,60,48,30,15,0";
     };
   };
 }
