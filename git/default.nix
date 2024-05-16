@@ -1,7 +1,15 @@
 { pkgs, isMac, ... }: {
   programs.git = {
     enable = true;
-    package = pkgs.gitFull;
+    package = let
+      nullPkg = pkgs.stdenv.mkDerivation {
+        name = "null";
+        dontUnpack = true;
+        buildPhase = ''
+          mkdir -p $out
+        '';
+      };
+    in if isMac then nullPkg else pkgs.gitFull;
     extraConfig = {
       commit.verbose = true;
       pull.rebase = true;
