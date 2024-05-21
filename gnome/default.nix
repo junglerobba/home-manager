@@ -23,5 +23,7 @@ lib.mkIf (desktop == "gnome") {
       xkb-options = [ "lv3:menu_switch" "compose:ralt" ];
     };
     "org/gnome/settings-daemon/plugins/color" = { night-light-enabled = true; };
+    "org/gnome/shell/extensions/nightthemeswitcher/time"."fullscreen-transition" =
+      false;
   };
 }
