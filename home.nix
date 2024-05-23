@@ -28,6 +28,7 @@ let
     docker-compose
     gimp
     gnupg
+    iterm2
     keepassxc
   ];
 in {
