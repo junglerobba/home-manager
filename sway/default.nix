@@ -5,14 +5,14 @@ let
     names = [ "jetbrains mono" ];
     size = 10.0;
   };
+  terminal = "${pkgs.alacritty}/bin/alacritty";
 in lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
     enable = true;
 
     config = with pkgs; {
-      inherit modifier fonts;
+      inherit modifier fonts terminal;
 
-      terminal = "${alacritty}/bin/alacritty";
       menu = "${rofi-wayland}/bin/rofi -show run";
 
       bars = [{
@@ -49,6 +49,7 @@ in lib.mkIf (desktop == "sway") {
         inherit modifier;
         wpctl = "${wireplumber}/bin/wpctl";
         playerctl = "${pkgs.playerctl}/bin/playerctl";
+        pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
       in lib.mkOptionDefault {
         "XF86AudioMute" = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
         "XF86AudioLowerVolume" =
@@ -62,6 +63,8 @@ in lib.mkIf (desktop == "sway") {
         "XF86AudioNext" = "exec ${playerctl} next";
         "XF86AudioPrev" = "exec ${playerctl} previous";
         "XF86AudioStop" = "exec ${playerctl} stop";
+
+        "${modifier}+p" = "exec ${terminal} -e ${pulsemixer}";
 
         "Print" = let
           screenshot = writeShellApplication {
