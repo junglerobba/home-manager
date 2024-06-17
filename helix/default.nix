@@ -146,7 +146,7 @@
         }
         {
           name = "nix";
-          formatter.command = "${nixfmt}/bin/nixfmt";
+          formatter.command = "${nixfmt-rfc-style}/bin/nixfmt";
         }
       ];
     };
