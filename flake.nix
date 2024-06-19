@@ -18,33 +18,67 @@
     };
   };
 
-  outputs = { nixpkgs, nixgl, flake-utils, home-manager, tms, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      nixpkgs,
+      nixgl,
+      flake-utils,
+      home-manager,
+      tms,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
-        mpv-overlay = (self: super: {
-          mpv = if self.stdenv.hostPlatform.isLinux then
-            super.mpv.override { scripts = [ self.mpvScripts.mpris ]; }
-          else
-            super.mpv;
-        });
+        mpv-overlay = (
+          self: super: {
+            mpv =
+              if self.stdenv.hostPlatform.isLinux then
+                super.mpv.override { scripts = [ self.mpvScripts.mpris ]; }
+              else
+                super.mpv;
+          }
+        );
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ nixgl.overlay mpv-overlay ];
+          overlays = [
+            nixgl.overlay
+            mpv-overlay
+          ];
         };
         nixGLPrefix = "${nixgl.packages.${system}.nixGLIntel}/bin/nixGLIntel ${
-            nixgl.packages.${system}.nixVulkanIntel
-          }/bin/nixVulkanIntel";
-        extraSpecialArgs = { username, homedir, isNixOs, desktop }: {
-          inherit pkgs username homedir isNixOs desktop tms system;
-          isMac = pkgs.stdenv.hostPlatform.isDarwin;
-          isLinux = pkgs.stdenv.hostPlatform.isLinux;
-          nixGL = import ./nixgl.nix {
-            inherit pkgs;
-            config = { nixGLPrefix = if !isNixOs then nixGLPrefix else ""; };
+          nixgl.packages.${system}.nixVulkanIntel
+        }/bin/nixVulkanIntel";
+        extraSpecialArgs =
+          {
+            username,
+            homedir,
+            isNixOs,
+            desktop,
+          }:
+          {
+            inherit
+              pkgs
+              username
+              homedir
+              isNixOs
+              desktop
+              tms
+              system
+              ;
+            isMac = pkgs.stdenv.hostPlatform.isDarwin;
+            isLinux = pkgs.stdenv.hostPlatform.isLinux;
+            nixGL = import ./nixgl.nix {
+              inherit pkgs;
+              config = {
+                nixGLPrefix = if !isNixOs then nixGLPrefix else "";
+              };
+            };
           };
-        };
-      in {
-        defaultPackage = { username, homedir }:
+      in
+      {
+        defaultPackage =
+          { username, homedir }:
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = extraSpecialArgs {
@@ -54,13 +88,20 @@
             };
             modules = [ ./home.nix ];
           };
-        packages.module = { username, homedir, desktop }: {
-          users.${username} = import ./home.nix;
-          extraSpecialArgs = extraSpecialArgs {
-            inherit username homedir desktop;
-            isNixOs = true;
+        packages.module =
+          {
+            username,
+            homedir,
+            desktop,
+          }:
+          {
+            users.${username} = import ./home.nix;
+            extraSpecialArgs = extraSpecialArgs {
+              inherit username homedir desktop;
+              isNixOs = true;
+            };
           };
-        };
-      });
+      }
+    );
 
 }

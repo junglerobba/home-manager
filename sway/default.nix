@@ -1,4 +1,9 @@
-{ lib, pkgs, desktop, ... }:
+{
+  lib,
+  pkgs,
+  desktop,
+  ...
+}:
 let
   modifier = "Mod4";
   fonts = {
@@ -6,7 +11,8 @@ let
     size = 10.0;
   };
   terminal = "${pkgs.alacritty}/bin/alacritty";
-in lib.mkIf (desktop == "sway") {
+in
+lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
     enable = true;
 
@@ -15,15 +21,19 @@ in lib.mkIf (desktop == "sway") {
 
       menu = "${rofi-wayland}/bin/rofi -show run";
 
-      bars = [{
-        inherit fonts;
-        position = "top";
-        statusCommand = "${i3status-rust}/bin/i3status-rs config-default.toml";
-        trayOutput = "*";
+      bars = [
+        {
+          inherit fonts;
+          position = "top";
+          statusCommand = "${i3status-rust}/bin/i3status-rs config-default.toml";
+          trayOutput = "*";
 
-      }];
+        }
+      ];
 
-      window = { titlebar = false; };
+      window = {
+        titlebar = false;
+      };
 
       defaultWorkspace = "workspace number 1";
       workspaceAutoBackAndForth = true;
@@ -45,43 +55,48 @@ in lib.mkIf (desktop == "sway") {
         };
       };
 
-      keybindings = let
-        inherit modifier;
-        wpctl = "${wireplumber}/bin/wpctl";
-        playerctl = "${pkgs.playerctl}/bin/playerctl";
-        pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
-      in lib.mkOptionDefault {
-        "XF86AudioMute" = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-        "XF86AudioLowerVolume" =
-          "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%-";
-        "XF86AudioRaiseVolume" =
-          "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ --limit 1.0";
-        "XF86AudioMicMute" =
-          "exec ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+      keybindings =
+        let
+          inherit modifier;
+          wpctl = "${wireplumber}/bin/wpctl";
+          playerctl = "${pkgs.playerctl}/bin/playerctl";
+          pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
+        in
+        lib.mkOptionDefault {
+          "XF86AudioMute" = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%-";
+          "XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ --limit 1.0";
+          "XF86AudioMicMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
-        "XF86AudioPlay" = "exec ${playerctl} play-pause";
-        "XF86AudioNext" = "exec ${playerctl} next";
-        "XF86AudioPrev" = "exec ${playerctl} previous";
-        "XF86AudioStop" = "exec ${playerctl} stop";
+          "XF86AudioPlay" = "exec ${playerctl} play-pause";
+          "XF86AudioNext" = "exec ${playerctl} next";
+          "XF86AudioPrev" = "exec ${playerctl} previous";
+          "XF86AudioStop" = "exec ${playerctl} stop";
 
-        "${modifier}+p" = "exec ${terminal} -e ${pulsemixer}";
+          "${modifier}+p" = "exec ${terminal} -e ${pulsemixer}";
 
-        "Print" = let
-          screenshot = writeShellApplication {
-            name = "screenshot";
-            runtimeInputs = [ grim slurp wl-clipboard ];
-            text = builtins.readFile ./screenshot.sh;
-          };
-        in "exec ${screenshot}/bin/screenshot";
+          "Print" =
+            let
+              screenshot = writeShellApplication {
+                name = "screenshot";
+                runtimeInputs = [
+                  grim
+                  slurp
+                  wl-clipboard
+                ];
+                text = builtins.readFile ./screenshot.sh;
+              };
+            in
+            "exec ${screenshot}/bin/screenshot";
 
-        "${modifier}+period" = "focus output right";
-        "${modifier}+comma" = "focus output left";
-        "${modifier}+Shift+period" = "move workspace to output right";
-        "${modifier}+Shift+comma" = "move workspace to output left";
+          "${modifier}+period" = "focus output right";
+          "${modifier}+comma" = "focus output left";
+          "${modifier}+Shift+period" = "move workspace to output right";
+          "${modifier}+Shift+comma" = "move workspace to output left";
 
-        "${modifier}+s" = "sticky toggle";
-      };
-      startup = [{ command = "${mako}/bin/mako"; }];
+          "${modifier}+s" = "sticky toggle";
+        };
+      startup = [ { command = "${mako}/bin/mako"; } ];
 
     };
 
@@ -89,7 +104,9 @@ in lib.mkIf (desktop == "sway") {
       include ~/.config/sway/config.d/*
     '';
 
-    systemd = { xdgAutostart = true; };
+    systemd = {
+      xdgAutostart = true;
+    };
 
     wrapperFeatures = {
       base = true;

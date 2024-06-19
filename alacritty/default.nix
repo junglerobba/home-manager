@@ -4,7 +4,9 @@ lib.mkIf (desktop == "sway") {
     enable = true;
     settings = {
       font = {
-        normal = { family = "jetbrains mono"; };
+        normal = {
+          family = "jetbrains mono";
+        };
         size = 10;
         offset.y = 5;
       };

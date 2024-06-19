@@ -1,8 +1,17 @@
-{ lib, pkgs, isNixOs, ... }:
+{
+  lib,
+  pkgs,
+  isNixOs,
+  ...
+}:
 lib.mkIf isNixOs {
   services.gnome-keyring = {
     enable = true;
-    components = [ "pkcs11" "secrets" "ssh" ];
+    components = [
+      "pkcs11"
+      "secrets"
+      "ssh"
+    ];
   };
   services.gpg-agent = {
     enable = true;

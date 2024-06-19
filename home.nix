@@ -1,4 +1,15 @@
-{ pkgs, tms, username, homedir, system, isMac, isLinux, isNixOs, desktop, ... }:
+{
+  pkgs,
+  tms,
+  username,
+  homedir,
+  system,
+  isMac,
+  isLinux,
+  isNixOs,
+  desktop,
+  ...
+}:
 let
   packages = with pkgs; [
     fastfetch
@@ -11,16 +22,22 @@ let
     tms.packages.${system}.default
     yt-dlp
   ];
-  linuxPackages = with pkgs;
-    [ wl-clipboard distrobox ] ++ (if isNixOs then
-      [ gnupg ]
-    else [
-      nixgl.nixGLIntel
-      nixgl.nixVulkanIntel
-    ]) ++ (if desktop == "gnome" then
-      [ gnomeExtensions.night-theme-switcher ]
-    else
-      [ ]);
+  linuxPackages =
+    with pkgs;
+    [
+      wl-clipboard
+      distrobox
+    ]
+    ++ (
+      if isNixOs then
+        [ gnupg ]
+      else
+        [
+          nixgl.nixGLIntel
+          nixgl.nixVulkanIntel
+        ]
+    )
+    ++ (if desktop == "gnome" then [ gnomeExtensions.night-theme-switcher ] else [ ]);
   macPackages = with pkgs; [
     audacity
     colima
@@ -31,7 +48,8 @@ let
     iterm2
     keepassxc
   ];
-in {
+in
+{
 
   home.username = username;
   home.homeDirectory = homedir;
@@ -40,8 +58,8 @@ in {
 
   targets.genericLinux.enable = isLinux;
 
-  home.packages = packages ++ (if isMac then macPackages else [ ])
-    ++ (if isLinux then linuxPackages else [ ]);
+  home.packages =
+    packages ++ (if isMac then macPackages else [ ]) ++ (if isLinux then linuxPackages else [ ]);
 
   imports = [
     ./alacritty

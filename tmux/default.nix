@@ -5,7 +5,8 @@ let
     runtimeInputs = [ pkgs.tmux ];
     text = builtins.readFile ./popup.sh;
   };
-in {
+in
+{
   programs.tmux = {
     enable = true;
     shell = "${pkgs.fish}/bin/fish";

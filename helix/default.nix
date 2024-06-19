@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -10,7 +11,12 @@
         cursorline = true;
         completion-trigger-len = 1;
         statusline = {
-          left = [ "mode" "spinner" "file-name" "file-modification-indicator" ];
+          left = [
+            "mode"
+            "spinner"
+            "file-name"
+            "file-modification-indicator"
+          ];
           right = [
             "diagnostics"
             "selections"
@@ -36,16 +42,28 @@
       };
       keys = {
         normal = {
-          V = [ "extend_to_line_bounds" "select_mode" ];
+          V = [
+            "extend_to_line_bounds"
+            "select_mode"
+          ];
           space = {
             F = "file_picker_in_current_buffer_directory";
             W = ":lsp-workspace-command";
-            g = [ ":new" ":insert-output git status --porcelain" ];
+            g = [
+              ":new"
+              ":insert-output git status --porcelain"
+            ];
           };
         };
         select = {
-          J = [ "extend_line_down" "extend_to_line_bounds" ];
-          K = [ "extend_line_up" "extend_to_line_bounds" ];
+          J = [
+            "extend_line_down"
+            "extend_to_line_bounds"
+          ];
+          K = [
+            "extend_line_up"
+            "extend_to_line_bounds"
+          ];
         };
       };
     };
@@ -56,19 +74,27 @@
         args = [ "--stdio" ];
         config = {
           validate = "on";
-          experimental = { useFlatConfig = false; };
+          experimental = {
+            useFlatConfig = false;
+          };
           rulesCustomizations = [ ];
           run = "onType";
-          problems = { shortenToSingleLine = false; };
+          problems = {
+            shortenToSingleLine = false;
+          };
           nodePath = "";
           quiet = false;
-          format = { enable = false; };
+          format = {
+            enable = false;
+          };
           codeAction = {
             disableRuleComment = {
               enable = true;
               location = "separateLine";
             };
-            showDocumentation = { enable = true; };
+            showDocumentation = {
+              enable = true;
+            };
           };
         };
       };
@@ -83,7 +109,10 @@
         args = [ "--stdio" ];
         scope = "source.angular";
         roots = [ "angular.json" ];
-        file-types = [ "ts" "html" ];
+        file-types = [
+          "ts"
+          "html"
+        ];
       };
 
       language-server.tailwindcss = {
@@ -93,62 +122,74 @@
 
       language-server.nil.command = "${nil}/bin/nil";
 
-      language-server.bash-language-server.command =
-        "${bash-language-server}/bin/bash-language-server";
+      language-server.bash-language-server.command = "${bash-language-server}/bin/bash-language-server";
 
-      language-server.yaml-language-server.command =
-        "${yaml-language-server}/bin/yaml-language-server";
+      language-server.yaml-language-server.command = "${yaml-language-server}/bin/yaml-language-server";
 
-      language-server.docker-langserver.command =
-        "${dockerfile-language-server-nodejs}/bin/docker-langserver";
+      language-server.docker-langserver.command = "${dockerfile-language-server-nodejs}/bin/docker-langserver";
 
       language-server.taplo.command = "${taplo}/bin/taplo";
 
-      language = let
-        prettier = parser: {
-          command = "prettier";
-          args = [ "--parser" parser ];
-        };
-      in [
-        {
-          name = "typescript";
-          auto-format = true;
-          language-servers =
-            [ "typescript-language-server" "angular" "eslint" "emmet-ls" ];
-          formatter = prettier "typescript";
-        }
-        {
-          name = "html";
-          language-servers = [
-            "angular"
-            "vscode-html-language-server"
-            "tailwindcss"
-            "eslint"
-            "emmet-ls"
-          ];
-          formatter = prettier "angular";
-        }
-        {
-          name = "css";
-          language-servers = [ "vscode-css-language-server" "emmet-ls" ];
-          formatter = prettier "css";
-        }
-        {
-          name = "scss";
-          language-servers = [ "vscode-css-language-server" "emmet-ls" ];
-          formatter = prettier "css";
-        }
-        {
-          name = "json";
-          auto-format = false;
-          language-servers = [ "vscode-json-language-server" ];
-          formatter = prettier "json";
-        }
-        {
-          name = "nix";
-          formatter.command = "${nixfmt-rfc-style}/bin/nixfmt";
-        }
-      ];
+      language =
+        let
+          prettier = parser: {
+            command = "prettier";
+            args = [
+              "--parser"
+              parser
+            ];
+          };
+        in
+        [
+          {
+            name = "typescript";
+            auto-format = true;
+            language-servers = [
+              "typescript-language-server"
+              "angular"
+              "eslint"
+              "emmet-ls"
+            ];
+            formatter = prettier "typescript";
+          }
+          {
+            name = "html";
+            language-servers = [
+              "angular"
+              "vscode-html-language-server"
+              "tailwindcss"
+              "eslint"
+              "emmet-ls"
+            ];
+            formatter = prettier "angular";
+          }
+          {
+            name = "css";
+            language-servers = [
+              "vscode-css-language-server"
+              "emmet-ls"
+            ];
+            formatter = prettier "css";
+          }
+          {
+            name = "scss";
+            language-servers = [
+              "vscode-css-language-server"
+              "emmet-ls"
+            ];
+            formatter = prettier "css";
+          }
+          {
+            name = "json";
+            auto-format = false;
+            language-servers = [ "vscode-json-language-server" ];
+            formatter = prettier "json";
+          }
+          {
+            name = "nix";
+            formatter.command = "${nixfmt-rfc-style}/bin/nixfmt";
+          }
+        ];
     };
   };
 }
