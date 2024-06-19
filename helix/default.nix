@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, helix, ... }:
 {
   programs.helix = {
     enable = true;
     defaultEditor = true;
+    package = helix;
     settings = {
       theme = "gruvbox";
       editor = {
@@ -49,10 +50,6 @@
           space = {
             F = "file_picker_in_current_buffer_directory";
             W = ":lsp-workspace-command";
-            g = [
-              ":new"
-              ":insert-output git status --porcelain"
-            ];
           };
         };
         select = {
@@ -69,50 +66,13 @@
     };
 
     languages = with pkgs; {
-      language-server.eslint = {
-        command = "vscode-eslint-language-server";
-        args = [ "--stdio" ];
-        config = {
-          validate = "on";
-          experimental = {
-            useFlatConfig = false;
-          };
-          rulesCustomizations = [ ];
-          run = "onType";
-          problems = {
-            shortenToSingleLine = false;
-          };
-          nodePath = "";
-          quiet = false;
-          format = {
-            enable = false;
-          };
-          codeAction = {
-            disableRuleComment = {
-              enable = true;
-              location = "separateLine";
-            };
-            showDocumentation = {
-              enable = true;
-            };
-          };
-        };
-      };
-
       language-server.emmet-ls = {
         command = "${emmet-ls}/bin/emmet-ls";
         args = [ "--stdio" ];
       };
 
       language-server.angular = {
-        command = "ngserver";
         args = [ "--stdio" ];
-        scope = "source.angular";
-        roots = [ "angular.json" ];
-        file-types = [
-          "ts"
-          "html"
-        ];
       };
 
       language-server.tailwindcss = {
@@ -147,7 +107,7 @@
             language-servers = [
               "typescript-language-server"
               "angular"
-              "eslint"
+              "vscode-eslint-language-server"
               "emmet-ls"
             ];
             formatter = prettier "typescript";

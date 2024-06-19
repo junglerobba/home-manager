@@ -3,7 +3,6 @@
   tms,
   username,
   homedir,
-  system,
   isMac,
   isLinux,
   isNixOs,
@@ -19,7 +18,7 @@ let
     just
     onefetch
     ranger
-    tms.packages.${system}.default
+    tms
     yt-dlp
   ];
   linuxPackages =
