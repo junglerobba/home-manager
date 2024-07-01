@@ -1,9 +1,8 @@
-{ pkgs, helix, ... }:
+{ pkgs, ... }:
 {
   programs.helix = {
     enable = true;
     defaultEditor = true;
-    package = helix;
     settings = {
       theme = "gruvbox";
       editor = {

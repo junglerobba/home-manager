@@ -3,13 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tms = {
@@ -20,10 +20,14 @@
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    coffee-break = {
+      url = "github:junglerobba/coffee-break";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { nixgl, home-manager, ... }@inputs:
+    { home-manager, ... }@inputs:
     inputs.flake-utils.lib.eachDefaultSystem (
       system:
       let
@@ -39,13 +43,13 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
-            nixgl.overlay
             mpv-overlay
+            inputs.nixgl.overlays.default
+            inputs.tms.overlays.default
+            inputs.helix.overlays.default
+            inputs.coffee-break.overlays.default
           ];
         };
-        nixGLPrefix = "${nixgl.packages.${system}.nixGLIntel}/bin/nixGLIntel ${
-          nixgl.packages.${system}.nixVulkanIntel
-        }/bin/nixVulkanIntel";
         extraSpecialArgs =
           {
             username,
@@ -55,7 +59,6 @@
           }:
           {
             inherit
-              pkgs
               username
               homedir
               isNixOs
@@ -64,12 +67,15 @@
               ;
             isMac = pkgs.stdenv.hostPlatform.isDarwin;
             isLinux = pkgs.stdenv.hostPlatform.isLinux;
-            tms = inputs.tms.packages.${system}.default;
-            helix = inputs.helix.packages.${system}.default;
             nixGL = import ./nixgl.nix {
               inherit pkgs;
               config = {
-                nixGLPrefix = if !isNixOs then nixGLPrefix else "";
+                nixGLPrefix =
+                  with pkgs;
+                  if !isNixOs then
+                    "${nixgl.nixGLIntel}/bin/nixGLIntel ${nixgl.nixVulkanIntel}/bin/nixVulkanIntel"
+                  else
+                    "";
               };
             };
           };

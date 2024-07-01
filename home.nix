@@ -1,6 +1,5 @@
 {
   pkgs,
-  tms,
   username,
   homedir,
   isMac,
@@ -18,7 +17,7 @@ let
     just
     onefetch
     ranger
-    tms
+    tmux-sessionizer
     yt-dlp
   ];
   linuxPackages =
@@ -39,6 +38,7 @@ let
     ++ (if desktop == "gnome" then [ gnomeExtensions.night-theme-switcher ] else [ ]);
   macPackages = with pkgs; [
     audacity
+    coffee-break
     colima
     docker
     docker-compose
