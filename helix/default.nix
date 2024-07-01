@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, isMac, ... }:
 {
   programs.helix = {
     enable = true;
@@ -81,7 +81,12 @@
 
       language-server.nil.command = "${nil}/bin/nil";
 
-      language-server.bash-language-server.command = "${bash-language-server}/bin/bash-language-server";
+      language-server.bash-language-server.command =
+        let
+          # remove once swift builds again
+          bashls = if isMac then nodePackages.bash-language-server else bash-language-server;
+        in
+        "${bashls}/bin/bash-language-server";
 
       language-server.yaml-language-server.command = "${yaml-language-server}/bin/yaml-language-server";
 
