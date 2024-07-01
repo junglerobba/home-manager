@@ -59,11 +59,11 @@
           }:
           {
             inherit
+              pkgs
               username
               homedir
               isNixOs
               desktop
-              system
               ;
             isMac = pkgs.stdenv.hostPlatform.isDarwin;
             isLinux = pkgs.stdenv.hostPlatform.isLinux;
