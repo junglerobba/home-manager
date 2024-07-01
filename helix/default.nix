@@ -74,11 +74,6 @@
         args = [ "--stdio" ];
       };
 
-      language-server.tailwindcss = {
-        command = "tailwindcss-language-server";
-        args = [ "--stdio" ];
-      };
-
       language-server.nil.command = "${nil}/bin/nil";
 
       language-server.bash-language-server.command =
@@ -121,7 +116,7 @@
             language-servers = [
               "angular"
               "vscode-html-language-server"
-              "tailwindcss"
+              "tailwindcss-ls"
               "eslint"
               "emmet-ls"
             ];
