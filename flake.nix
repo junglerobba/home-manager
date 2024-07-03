@@ -31,25 +31,29 @@
     inputs.flake-utils.lib.eachDefaultSystem (
       system:
       let
-        mpv-overlay = (
-          self: super: {
-            mpv =
-              if self.stdenv.hostPlatform.isLinux then
-                super.mpv.override { scripts = [ self.mpvScripts.mpris ]; }
-              else
-                super.mpv;
-          }
-        );
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = [
-            mpv-overlay
-            inputs.nixgl.overlays.default
-            inputs.tms.overlays.default
-            inputs.helix.overlays.default
-            inputs.coffee-break.overlays.default
-          ];
+          overlays =
+            let
+              mpv-overlay = (
+                self: super: {
+                  mpv =
+                    if self.stdenv.hostPlatform.isLinux then
+                      super.mpv.override { scripts = [ self.mpvScripts.mpris ]; }
+                    else
+                      super.mpv;
+                }
+              );
+            in
+            [
+              mpv-overlay
+              inputs.nixgl.overlays.default
+              inputs.tms.overlays.default
+              inputs.helix.overlays.default
+              inputs.coffee-break.overlays.default
+            ];
         };
+
         extraSpecialArgs =
           {
             username,
@@ -57,23 +61,26 @@
             isNixOs,
             desktop,
           }:
+          let
+            isLinux = pkgs.stdenv.hostPlatform.isLinux;
+            isMac = pkgs.stdenv.hostPlatform.isDarwin;
+          in
           {
             inherit
               pkgs
               username
               homedir
               isNixOs
+              isLinux
+              isMac
               desktop
               ;
-            isMac = pkgs.stdenv.hostPlatform.isDarwin;
-            isLinux = pkgs.stdenv.hostPlatform.isLinux;
             nixGL = import ./nixgl.nix {
               inherit pkgs;
               config = {
                 nixGLPrefix =
-                  with pkgs;
-                  if !isNixOs then
-                    "${nixgl.nixGLIntel}/bin/nixGLIntel ${nixgl.nixVulkanIntel}/bin/nixVulkanIntel"
+                  if isLinux && !isNixOs then
+                    with pkgs; "${nixgl.nixGLIntel}/bin/nixGLIntel ${nixgl.nixVulkanIntel}/bin/nixVulkanIntel"
                   else
                     "";
               };
@@ -92,6 +99,7 @@
             };
             modules = [ ./home.nix ];
           };
+
         packages.module =
           {
             username,
@@ -107,5 +115,4 @@
           };
       }
     );
-
 }

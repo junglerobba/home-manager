@@ -7,7 +7,7 @@
 {
   programs.mpv = {
     enable = true;
-    package = if isLinux then (nixGL pkgs.mpv) else pkgs.mpv;
+    package = nixGL pkgs.mpv;
     config =
       {
         keep-open = true;
