@@ -1,4 +1,4 @@
-{ pkgs, isMac, ... }:
+{ pkgs, ... }:
 {
   programs.helix = {
     enable = true;
