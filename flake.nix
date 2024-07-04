@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,6 +35,7 @@
         pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = (import ./overlays.nix) ++ [
+            (final: prev: { swift = inputs.nixpkgs-stable.legacyPackages.${final.system}.swift; })
             inputs.nixgl.overlays.default
             inputs.tms.overlays.default
             inputs.helix.overlays.default
