@@ -259,6 +259,22 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/5daf0514482af3f97abaefc78a6606365c9108e2.tar.gz"
       }
     },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1726128686,
+        "narHash": "sha256-qUIQvhhl74JCTVLCK99ExKwRIJnij8/3ZQ0SNjEIqnA=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "ed8fdf5b9506b0011a3c2efa8ab6c2249f2327b5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "release-24.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "coffee-break": "coffee-break",
@@ -268,6 +284,7 @@
         "home-manager": "home-manager",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-stable": "nixpkgs-stable",
         "tms": "tms"
       }
     },
