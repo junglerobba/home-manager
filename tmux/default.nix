@@ -57,6 +57,8 @@ with pkgs;
         bind -r C-k resize-pane -U
         bind -r C-l resize-pane -R
 
+        bind -r g set-option status
+
         bind -T copy-mode-vi v send-keys -X begin-selection
         bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
       '';
