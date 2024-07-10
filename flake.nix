@@ -33,25 +33,12 @@
       let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays =
-            let
-              mpv-overlay = (
-                self: super: {
-                  mpv =
-                    if self.stdenv.hostPlatform.isLinux then
-                      super.mpv.override { scripts = [ self.mpvScripts.mpris ]; }
-                    else
-                      super.mpv;
-                }
-              );
-            in
-            [
-              mpv-overlay
-              inputs.nixgl.overlays.default
-              inputs.tms.overlays.default
-              inputs.helix.overlays.default
-              inputs.coffee-break.overlays.default
-            ];
+          overlays = (import ./overlays.nix) ++ [
+            inputs.nixgl.overlays.default
+            inputs.tms.overlays.default
+            inputs.helix.overlays.default
+            inputs.coffee-break.overlays.default
+          ];
         };
 
         extraSpecialArgs =

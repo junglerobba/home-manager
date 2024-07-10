@@ -25,6 +25,7 @@ let
     [
       wl-clipboard
       distrobox
+      flatpak-cargo-generator
     ]
     ++ (
       if isNixOs then
