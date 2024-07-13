@@ -20,6 +20,7 @@ let
     tmux-sessionizer
     yt-dlp
   ];
+  gnomeExtensions = import ./gnome/extensions.nix { inherit pkgs desktop; };
   linuxPackages =
     with pkgs;
     [
@@ -36,7 +37,7 @@ let
           nixgl.nixVulkanIntel
         ]
     )
-    ++ (if desktop == "gnome" then [ gnomeExtensions.night-theme-switcher ] else [ ]);
+    ++ gnomeExtensions;
   macPackages = with pkgs; [
     audacity
     coffee-break

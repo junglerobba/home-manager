@@ -1,8 +1,17 @@
-{ lib, desktop, ... }:
+{
+  pkgs,
+  lib,
+  desktop,
+  ...
+}:
+let
+  extensions = import ./extensions.nix { inherit pkgs desktop; };
+  enabled-extensions = builtins.map (ext: ext.extensionUuid) extensions;
+in
 lib.mkIf (desktop == "gnome") {
   dconf.settings = {
     "org/gnome-shell" = {
-      enabled-extensions = [ "nightthemeswitcher@romainvigier.fr" ];
+      inherit enabled-extensions;
     };
     "org/gnome/desktop/interface" = {
       enable-hot-corners = true;
