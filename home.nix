@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   username,
   homedir,
   isMac,
@@ -50,7 +51,17 @@ let
     keepassxc
   ];
 in
-{
+(pkgs.lib.optionalAttrs (!isNixOs) {
+  nix = {
+    package = pkgs.nixVersions.latest;
+    gc = {
+      automatic = true;
+      frequency = "daily";
+      options = "--delete-older-than 10d";
+    };
+  };
+})
+// {
 
   home.username = username;
   home.homeDirectory = homedir;
@@ -60,7 +71,10 @@ in
   targets.genericLinux.enable = isLinux;
 
   home.packages =
-    packages ++ (if isMac then macPackages else [ ]) ++ (if isLinux then linuxPackages else [ ]);
+    packages
+    ++ (if isMac then macPackages else [ ])
+    ++ (if isLinux then linuxPackages else [ ])
+    ++ (if !isNixOs then [ config.nix.package ] else [ ]);
 
   imports = [
     ./alacritty
