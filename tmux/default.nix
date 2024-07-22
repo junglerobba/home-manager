@@ -4,7 +4,7 @@ with pkgs;
   programs.tmux = {
     enable = true;
     shell = "${fish}/bin/fish";
-    terminal = "screen-256color";
+    terminal = "xterm-256color";
     baseIndex = 1;
     escapeTime = 0;
     keyMode = "vi";
