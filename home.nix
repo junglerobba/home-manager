@@ -16,8 +16,8 @@ let
     jless
     jq
     just
+    lf
     onefetch
-    ranger
     tmux-sessionizer
     yt-dlp
   ];
