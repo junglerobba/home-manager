@@ -38,6 +38,8 @@
             newline = "none";
           };
         };
+        end-of-line-diagnostics = "hint";
+        inline-diagnostics.cursor-line = "warning";
         soft-wrap.enable = true;
       };
       keys = {
