@@ -11,6 +11,8 @@
 }:
 let
   packages = with pkgs; [
+    dive
+    docker-client
     fastfetch
     ffmpeg
     jless
@@ -43,8 +45,6 @@ let
     audacity
     coffee-break
     colima
-    docker
-    docker-compose
     gimp
     gnupg
     iterm2
