@@ -19,6 +19,7 @@ let
     jq
     just
     lf
+    nix-tree
     onefetch
     tmux-sessionizer
     yt-dlp
