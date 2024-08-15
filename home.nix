@@ -50,6 +50,7 @@ let
     gnupg
     iterm2
     keepassxc
+    maccy
   ];
 in
 (pkgs.lib.optionalAttrs (!isNixOs) {
