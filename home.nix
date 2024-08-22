@@ -70,7 +70,7 @@ in
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  targets.genericLinux.enable = isLinux;
+  targets.genericLinux.enable = isLinux && !isNixOs;
 
   home.packages =
     packages
