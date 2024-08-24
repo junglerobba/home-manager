@@ -1,3 +1,10 @@
 { pkgs, desktop, ... }:
 with pkgs;
-lib.optionals (desktop == "gnome") (with gnomeExtensions; [ night-theme-switcher ])
+lib.optionals (desktop == "gnome") (
+  with gnomeExtensions;
+  [
+    clipboard-indicator
+    night-theme-switcher
+    wiggle
+  ]
+)
