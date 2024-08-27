@@ -1,3 +1,7 @@
+{
+  flatpak-builder-tools,
+  ...
+}:
 let
   flatpak-cargo-generator =
     pkgs:
@@ -12,14 +16,7 @@ let
     in
     stdenv.mkDerivation rec {
       name = "flatpak-cargo-generator";
-      src =
-        fetchFromGitHub {
-          owner = "flatpak";
-          repo = "flatpak-builder-tools";
-          rev = "338ce9c6512d49d98ae9a508d219ffe19b5144e8";
-          sha256 = "sha256-O4tXlkR7FmoqMC3jZZGrO19Ds0KUV07bWLqMMrFYL7w=";
-        }
-        + "/cargo/flatpak-cargo-generator.py";
+      src = "${flatpak-builder-tools}/cargo/flatpak-cargo-generator.py";
       dontUnpack = true;
       dontBuild = true;
       nativeBuildInputs = [ python ];

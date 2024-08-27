@@ -24,6 +24,10 @@
       url = "github:junglerobba/coffee-break";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flatpak-builder-tools = {
+      url = "github:flatpak/flatpak-builder-tools";
+      flake = false;
+    };
   };
 
   outputs =
@@ -33,12 +37,16 @@
       let
         pkgs = import inputs.nixpkgs {
           inherit system;
-          overlays = (import ./overlays.nix) ++ [
-            inputs.nixgl.overlays.default
-            inputs.tms.overlays.default
-            inputs.helix.overlays.default
-            inputs.coffee-break.overlays.default
-          ];
+          overlays =
+            (import ./overlays.nix {
+              flatpak-builder-tools = inputs.flatpak-builder-tools;
+            })
+            ++ [
+              inputs.nixgl.overlays.default
+              inputs.tms.overlays.default
+              inputs.helix.overlays.default
+              inputs.coffee-break.overlays.default
+            ];
         };
 
         extraSpecialArgs =

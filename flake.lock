@@ -151,6 +151,22 @@
         "type": "github"
       }
     },
+    "flatpak-builder-tools": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1724503759,
+        "narHash": "sha256-0mZ07TF0+7Iukcsu+3Dij4We52S8RecOSs5PGvzOicg=",
+        "owner": "flatpak",
+        "repo": "flatpak-builder-tools",
+        "rev": "55836084674f8a6eef06ac4a7919fea02da0ce30",
+        "type": "github"
+      },
+      "original": {
+        "owner": "flatpak",
+        "repo": "flatpak-builder-tools",
+        "type": "github"
+      }
+    },
     "helix": {
       "inputs": {
         "crane": "crane_2",
@@ -161,11 +177,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1724200909,
-        "narHash": "sha256-+nUWRR6mV+EV6pG51tgTG7CckGrHcp3Fq6zz0OzcA9w=",
+        "lastModified": 1724614030,
+        "narHash": "sha256-B6zj13s17m+LeXW8MrN2wRH3gQuVuA6+3PaDdhenPW0=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "38e6fcd5c51478635ffa405815c7b9bbeadc35a9",
+        "rev": "af7a1fd20c0a2915e0dae1b5bea7cb6bde6c2746",
         "type": "github"
       },
       "original": {
@@ -181,11 +197,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1723986931,
-        "narHash": "sha256-Fy+KEvDQ+Hc8lJAV3t6leXhZJ2ncU5/esxkgt3b8DEY=",
+        "lastModified": 1724435763,
+        "narHash": "sha256-UNky3lJNGQtUEXT2OY8gMxejakSWPTfWKvpFkpFlAfM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2598861031b78aadb4da7269df7ca9ddfc3e1671",
+        "rev": "c2cd2a52e02f1dfa1c88f95abeb89298d46023be",
         "type": "github"
       },
       "original": {
@@ -217,11 +233,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1724300212,
-        "narHash": "sha256-x3jl6OWTs+L9C7EtscuWZmGZWI0iSBDafvg3X7JMa1A=",
+        "lastModified": 1724395761,
+        "narHash": "sha256-zRkDV/nbrnp3Y8oCADf5ETl1sDrdmAW6/bBVJ8EbIdQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "4de4818c1ffa76d57787af936e8a23648bda6be4",
+        "rev": "ae815cee91b417be55d43781eb4b73ae1ecc396c",
         "type": "github"
       },
       "original": {
@@ -247,6 +263,7 @@
       "inputs": {
         "coffee-break": "coffee-break",
         "flake-utils": "flake-utils_2",
+        "flatpak-builder-tools": "flatpak-builder-tools",
         "helix": "helix",
         "home-manager": "home-manager",
         "nixgl": "nixgl",
@@ -332,11 +349,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1723957094,
-        "narHash": "sha256-y4hikmBrmwz/P39V6yPiuzsVsJOKGe3pGf/1khigCWg=",
+        "lastModified": 1724443187,
+        "narHash": "sha256-XW9VZLNJwLIm8P3+ZSgNfewfHXq9j9LqT1TgyP68GZs=",
         "owner": "jrmoulton",
         "repo": "tmux-sessionizer",
-        "rev": "23e0e013ab0f6422fa57e954f7fb6340a38b679f",
+        "rev": "b23e8a0bfb1ae6a131b26e5d8d7611703640b9ad",
         "type": "github"
       },
       "original": {
