@@ -99,4 +99,15 @@ in
     nix-direnv.enable = true;
   };
 
+  home.pointerCursor = pkgs.lib.mkIf (desktop == "sway") {
+    name = "Adwaita";
+    size = 24;
+    package = pkgs.adwaita-icon-theme;
+    gtk.enable = true;
+    x11 = {
+      enable = true;
+      defaultCursor = "Adwaita";
+    };
+  };
+
 }
