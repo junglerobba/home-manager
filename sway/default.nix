@@ -19,7 +19,7 @@ lib.mkIf (desktop == "sway") {
     config = with pkgs; {
       inherit modifier fonts terminal;
 
-      menu = "${rofi-wayland}/bin/rofi -show run";
+      menu = "${rofi-wayland}/bin/rofi -show drun";
 
       bars = [
         {
@@ -144,5 +144,11 @@ lib.mkIf (desktop == "sway") {
         interval = 1;
       }
     ];
+  };
+
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    font = "jetbrains mono 12";
   };
 }
