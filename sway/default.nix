@@ -63,7 +63,7 @@ lib.mkIf (desktop == "sway") {
           pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
         in
         lib.mkOptionDefault {
-          "XF86AudioMute" = "${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%-";
           "XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ --limit 1.0";
           "XF86AudioMicMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
