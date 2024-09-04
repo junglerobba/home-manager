@@ -106,6 +106,9 @@ lib.mkIf (desktop == "sway") {
 
     systemd = {
       xdgAutostart = true;
+      variables = [
+        "--all"
+      ];
     };
 
     wrapperFeatures = {
