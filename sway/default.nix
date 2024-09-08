@@ -11,6 +11,7 @@ let
     size = 10.0;
   };
   terminal = "${pkgs.alacritty}/bin/alacritty";
+  swaylockCommand = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
@@ -63,6 +64,8 @@ lib.mkIf (desktop == "sway") {
           pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
         in
         lib.mkOptionDefault {
+          "${modifier}+Escape" = "exec ${swaylockCommand}";
+
           "XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
           "XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%-";
           "XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ --limit 1.0";
@@ -159,5 +162,20 @@ lib.mkIf (desktop == "sway") {
     enable = true;
     latitude = 51.1;
     longitude = 10.4;
+  };
+
+  services.swayidle = {
+    enable = true;
+    timeouts = [
+      {
+        timeout = 600;
+        command = swaylockCommand;
+      }
+      {
+        timeout = 600;
+        command = "swaymsg 'output * power off'";
+        resumeCommand = "swaymsg 'output * power on'";
+      }
+    ];
   };
 }
