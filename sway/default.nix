@@ -96,8 +96,6 @@ lib.mkIf (desktop == "sway") {
 
           "${modifier}+s" = "sticky toggle";
         };
-      startup = [ { command = "${mako}/bin/mako"; } ];
-
     };
 
     extraConfig = ''
@@ -153,5 +151,13 @@ lib.mkIf (desktop == "sway") {
     enable = true;
     package = pkgs.rofi-wayland;
     font = "jetbrains mono 12";
+  };
+
+  services.mako.enable = true;
+
+  services.wlsunset = {
+    enable = true;
+    latitude = 51.1;
+    longitude = 10.4;
   };
 }
