@@ -75,17 +75,17 @@ lib.mkIf (desktop == "sway") {
           pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
         in
         lib.mkOptionDefault {
-          "${modifier}+Escape" = "exec ${swaylockCommand}";
+          "${modifier}+Ctrl+q" = "exec ${swaylockCommand}";
 
-          "XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
-          "XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%-";
-          "XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ --limit 1.0";
-          "XF86AudioMicMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
+          "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          "--locked XF86AudioLowerVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%-";
+          "--locked XF86AudioRaiseVolume" = "exec ${wpctl} set-volume @DEFAULT_AUDIO_SINK@ 1%+ --limit 1.0";
+          "--locked XF86AudioMicMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SOURCE@ toggle";
 
-          "XF86AudioPlay" = "exec ${playerctl} play-pause";
-          "XF86AudioNext" = "exec ${playerctl} next";
-          "XF86AudioPrev" = "exec ${playerctl} previous";
-          "XF86AudioStop" = "exec ${playerctl} stop";
+          "--locked XF86AudioPlay" = "exec ${playerctl} play-pause";
+          "--locked XF86AudioNext" = "exec ${playerctl} next";
+          "--locked XF86AudioPrev" = "exec ${playerctl} previous";
+          "--locked XF86AudioStop" = "exec ${playerctl} stop";
 
           "${modifier}+p" = "exec ${terminal} -e ${pulsemixer}";
 
