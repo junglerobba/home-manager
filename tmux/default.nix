@@ -22,10 +22,15 @@ with pkgs;
               text = builtins.readFile ./coffee-status.sh;
             };
           in
-          lib.concatStrings [
-            "#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,} #{=21:pane_title} %a %F %T"
-            (if isMac then " #(${coffee-status}/bin/coffee-status)" else "")
-          ];
+          lib.concatStringsSep "  " (
+            [
+              "#(${gitmux}/bin/gitmux #{pane_current_path})"
+              "%a %F %T"
+            ]
+            ++ lib.optionals isMac [
+              "#(${coffee-status}/bin/coffee-status)"
+            ]
+          );
         popup = writeShellApplication {
           name = "tmux-popup";
           runtimeInputs = [ tmux ];
@@ -57,7 +62,7 @@ with pkgs;
         bind -r C-k resize-pane -U
         bind -r C-l resize-pane -R
 
-        bind -r g set-option status
+        bind -r q set-option status
 
         bind -T copy-mode-vi v send-keys -X begin-selection
         bind -T copy-mode-vi C-v send-keys -X rectangle-toggle

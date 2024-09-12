@@ -10,21 +10,6 @@
         line-number = "relative";
         cursorline = true;
         completion-trigger-len = 1;
-        statusline = {
-          left = [
-            "mode"
-            "spinner"
-            "file-name"
-            "file-modification-indicator"
-          ];
-          right = [
-            "diagnostics"
-            "selections"
-            "position"
-            "file-encoding"
-            "version-control"
-          ];
-        };
         lsp = {
           display-inlay-hints = true;
           display-messages = true;
