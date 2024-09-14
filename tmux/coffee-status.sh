@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [[ $(pgrep caffeinate) ]]; then
-  echo "☕️"
+  echo " ☕️"
   exit 0
 fi
 echo ""

@@ -22,10 +22,10 @@ with pkgs;
               text = builtins.readFile ./coffee-status.sh;
             };
           in
-          lib.concatStringsSep "  " (
+          lib.concatStrings (
             [
               "#(${gitmux}/bin/gitmux #{pane_current_path})"
-              "%a %F %T"
+              " %a %F %T"
             ]
             ++ lib.optionals isMac [
               "#(${coffee-status}/bin/coffee-status)"
