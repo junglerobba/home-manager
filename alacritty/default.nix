@@ -1,10 +1,15 @@
-{ lib, desktop, ... }:
+{
+  lib,
+  desktop,
+  isMac,
+  ...
+}:
 lib.mkIf (desktop != "gnome") {
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
-        decorations = "None";
+        decorations = lib.mkIf (!isMac) "None";
         padding = {
           x = 5;
           y = 5;
@@ -12,7 +17,7 @@ lib.mkIf (desktop != "gnome") {
       };
       font = {
         normal = {
-          family = "jetbrains mono";
+          family = if isMac then "monaco" else "jetbrains mono";
         };
         size = 10.6;
         offset.y = 3;
