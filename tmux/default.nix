@@ -41,7 +41,7 @@ with pkgs;
         set -g status-style 'bg=default fg=default'
         set -g status-left-length 25
         set -g status-left '#{=20:session_name} / '
-        set -g window-status-current-format '#[fg=black,bg=white]#[bold][#{window_index}:#{pane_current_command}]'
+        set -g window-status-current-format '#[bold][#{window_index}:#{pane_current_command}]'
         set -g status-right-length 100
         set -g status-right "${status-right}"
         bind -r C-f display-popup -E "tms"
