@@ -165,6 +165,12 @@ lib.mkIf (desktop == "sway") {
     enable = true;
     package = pkgs.rofi-wayland;
     font = "jetbrains mono 12";
+    theme = "Monokai";
+    inherit terminal;
+
+    extraConfig = {
+      show-icons = true;
+    };
   };
 
   services.mako.enable = true;
