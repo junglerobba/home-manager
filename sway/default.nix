@@ -113,6 +113,20 @@ lib.mkIf (desktop == "sway") {
           "${modifier}+s" = "sticky toggle";
 
           "${modifier}+Shift+v" = "exec ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wtype}/bin/wtype -";
+
+          "${modifier}+delete" =
+            let
+              powermenu = writeShellApplication {
+                name = "powermenu";
+                runtimeInputs = [
+                  rofi-wayland
+                ];
+
+                text = builtins.readFile ./powermenu.sh;
+
+              };
+            in
+            "exec ${powermenu}/bin/powermenu";
         };
 
       startup = [
