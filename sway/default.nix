@@ -127,6 +127,8 @@ lib.mkIf (desktop == "sway") {
               };
             in
             "exec ${powermenu}/bin/powermenu";
+
+          "${modifier}+escape" = "exec rofi -mode emoji -show emoji";
         };
 
       startup = [
@@ -195,6 +197,10 @@ lib.mkIf (desktop == "sway") {
     extraConfig = {
       show-icons = true;
     };
+
+    plugins = with pkgs; [
+      rofi-emoji-wayland
+    ];
   };
 
   services.mako.enable = true;
