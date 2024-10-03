@@ -28,9 +28,10 @@ let
   linuxPackages =
     with pkgs;
     [
-      wl-clipboard
+      cliphist
       distrobox
       flatpak-cargo-generator
+      wl-clipboard
     ]
     ++ (
       if isNixOs then

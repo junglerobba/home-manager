@@ -12,6 +12,8 @@ let
   };
   terminal = "${pkgs.alacritty}/bin/alacritty";
   swaylockCommand = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+  cliphist = "${pkgs.cliphist}/bin/cliphist";
+  rofi = "${pkgs.rofi-wayland}/bin/rofi";
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
@@ -20,7 +22,7 @@ lib.mkIf (desktop == "sway") {
     config = with pkgs; {
       inherit modifier fonts terminal;
 
-      menu = "${rofi-wayland}/bin/rofi -show drun";
+      menu = "${rofi} -show drun";
 
       bars = [
         {
@@ -109,7 +111,15 @@ lib.mkIf (desktop == "sway") {
           "${modifier}+Shift+comma" = "move workspace to output left";
 
           "${modifier}+s" = "sticky toggle";
+
+          "${modifier}+Shift+v" = "exec ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wtype}/bin/wtype -";
         };
+
+      startup = [
+        {
+          command = "${wl-clipboard}/bin/wl-paste --type text --watch ${cliphist} store";
+        }
+      ];
     };
 
     extraConfig = ''
