@@ -112,7 +112,18 @@ lib.mkIf (desktop == "sway") {
 
           "${modifier}+s" = "sticky toggle";
 
-          "${modifier}+Shift+v" = "exec ${cliphist} list | ${rofi} -dmenu | ${cliphist} decode | ${wtype}/bin/wtype -";
+          "${modifier}+Shift+v" =
+            let
+              rofi-cliphist = writeShellApplication {
+                name = "rofi-cliphist";
+                runtimeInputs = [
+                  cliphist
+                  wtype
+                ];
+                text = builtins.readFile ./rofi-cliphist.sh;
+              };
+            in
+            "exec ${rofi} -show cliphist -modes \"cliphist:${rofi-cliphist}/bin/rofi-cliphist\" -kb-custom-1 \"Ctrl+x\"";
 
           "${modifier}+delete" =
             let
