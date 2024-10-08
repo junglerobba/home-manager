@@ -10,6 +10,7 @@ lib.mkIf (desktop != "gnome") {
     settings = {
       window = {
         decorations = lib.mkIf (!isMac) "None";
+        option_as_alt = lib.mkIf isMac "Both";
         padding = {
           x = 5;
           y = 5;
