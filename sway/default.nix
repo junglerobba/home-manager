@@ -235,11 +235,16 @@ lib.mkIf (desktop == "sway") {
         timeout = 600;
         command = swaylockCommand;
       }
-      {
-        timeout = 600;
-        command = "swaymsg 'output * power off'";
-        resumeCommand = "swaymsg 'output * power on'";
-      }
+      (
+        let
+          swaymsg = "${pkgs.sway}/bin/swaymsg";
+        in
+        {
+          timeout = 600;
+          command = "${swaymsg} 'output * power off'";
+          resumeCommand = "${swaymsg} 'output * power on'";
+        }
+      )
     ];
   };
 }
