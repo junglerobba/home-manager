@@ -4,12 +4,16 @@
   isMac,
   ...
 }:
-lib.mkIf (desktop != "gnome") {
+{
   programs.alacritty = {
     enable = true;
     settings = {
       window = {
-        decorations = lib.mkIf (!isMac) "None";
+        decorations =
+          let
+            enabled = desktop == "gnome" || isMac;
+          in
+          lib.mkIf (!enabled) "None";
         option_as_alt = lib.mkIf isMac "Both";
         padding = {
           x = 5;
