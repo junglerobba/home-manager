@@ -49,7 +49,6 @@ let
     colima
     gimp
     gnupg
-    iterm2
     keepassxc
     maccy
   ];
