@@ -1,4 +1,9 @@
-{ ... }:
+{
+  isMac,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.fish = {
     enable = true;
@@ -35,6 +40,29 @@
 
         echo -n -s (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal " "$prompt_status " " $suffix " "
       '';
+
+      podman-docker-sock =
+        with pkgs;
+        let
+          _jq = "${jq}/bin/jq";
+        in
+        lib.mkIf isMac ''
+          set -l inspect (${podman}/bin/podman machine inspect)
+          set -l state (echo $inspect | ${_jq} -r '.[0].State')
+          if test "$state" != running
+            return 1
+          end
+          set -l socket (echo $inspect | ${_jq} -r '.[0].ConnectionInfo.PodmanSocket.Path')
+
+          export DOCKER_HOST="unix://$socket"
+          export DOCKER_BUILDKIT=0
+        '';
     };
+
+    shellInit =
+      ''''
+      + lib.optionalString isMac ''
+        podman-docker-sock
+      '';
   };
 }

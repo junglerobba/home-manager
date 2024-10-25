@@ -44,13 +44,11 @@ let
     )
     ++ gnomeExtensions;
   macPackages = with pkgs; [
-    audacity
     coffee-break
-    colima
     gimp
     gnupg
-    keepassxc
     maccy
+    podman
   ];
 in
 (pkgs.lib.optionalAttrs (!isNixOs) {
