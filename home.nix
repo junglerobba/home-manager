@@ -18,6 +18,7 @@ let
     jless
     jq
     just
+    lazyjj
     lf
     nix-tree
     onefetch
@@ -84,6 +85,7 @@ in
     ./gnome
     ./helix
     ./htop
+    ./jujutsu
     ./keyring
     ./lazygit
     ./mangohud
