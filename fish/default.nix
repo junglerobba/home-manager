@@ -45,24 +45,36 @@
         with pkgs;
         let
           _jq = "${jq}/bin/jq";
+          _yq = "${yq-go}/bin/yq";
         in
-        lib.mkIf isMac ''
-          set -l inspect (${podman}/bin/podman machine inspect)
-          set -l state (echo $inspect | ${_jq} -r '.[0].State')
-          if test "$state" != running
-            return 1
-          end
-          set -l socket (echo $inspect | ${_jq} -r '.[0].ConnectionInfo.PodmanSocket.Path')
-
-          export DOCKER_HOST="unix://$socket"
-          export DOCKER_BUILDKIT=0
-        '';
+        lib.concatStringsSep "\n" [
+          (
+            if isMac then
+              ''
+                set -l inspect (${podman}/bin/podman machine inspect)
+                set -l state (echo $inspect | ${_jq} -r '.[0].State')
+                if test "$state" != running
+                  return 1
+                end
+                set -l socket (echo $inspect | ${_jq} -r '.[0].ConnectionInfo.PodmanSocket.Path')
+              ''
+            else
+              ''
+                if not type -q podman
+                  return 1
+                end
+                set -l socket (${podman}/bin/podman system info | ${_yq} -r '.host.remoteSocket.path')
+              ''
+          )
+          ''
+            export DOCKER_HOST="unix://$socket"
+            export DOCKER_BUILDKIT=0
+          ''
+        ];
     };
 
-    shellInit =
-      ''''
-      + lib.optionalString isMac ''
-        podman-docker-sock
-      '';
+    shellInit = ''
+      podman-docker-sock
+    '';
   };
 }
