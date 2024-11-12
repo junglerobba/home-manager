@@ -84,13 +84,16 @@
       in
       {
         defaultPackage =
-          { username, homedir }:
+          {
+            username,
+            homedir,
+            desktop ? null,
+          }:
           home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = extraSpecialArgs {
-              inherit username homedir;
+              inherit username homedir desktop;
               isNixOs = false;
-              desktop = null;
             };
             modules = [ ./home.nix ];
           };
