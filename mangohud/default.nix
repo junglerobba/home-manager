@@ -1,8 +1,19 @@
-{ lib, isNixOs, ... }:
-lib.mkIf isNixOs {
+{
+  pkgs,
+  lib,
+  isNixOs,
+  isLinux,
+  ...
+}:
+lib.mkIf (isNixOs || isLinux) {
   programs.mangohud = {
     enable = true;
-    enableSessionWide = true;
+    enableSessionWide = isNixOs;
+    package =
+      let
+        nullPkg = pkgs.callPackage ../pkgs/null { };
+      in
+      lib.mkIf (!isNixOs) nullPkg;
     settings = {
       full = true;
       no_display = true;
