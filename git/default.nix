@@ -2,6 +2,7 @@
   pkgs,
   lib,
   isMac,
+  isNixOs,
   ...
 }:
 {
@@ -11,7 +12,7 @@
       let
         nullPkg = pkgs.callPackage ../pkgs/null { };
       in
-      if isMac then nullPkg else pkgs.gitFull;
+      if (!isNixOs) then nullPkg else pkgs.gitFull;
     extraConfig = {
       commit.verbose = true;
       pull.rebase = true;
