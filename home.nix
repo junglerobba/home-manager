@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   username,
   homedir,
   isMac,
@@ -54,7 +53,6 @@ let
 in
 (pkgs.lib.optionalAttrs (!isNixOs) {
   nix = {
-    package = pkgs.nixVersions.latest;
     gc = {
       automatic = true;
       frequency = "daily";
@@ -74,8 +72,7 @@ in
   home.packages =
     packages
     ++ (if isMac then macPackages else [ ])
-    ++ (if isLinux then linuxPackages else [ ])
-    ++ (if !isNixOs then [ config.nix.package ] else [ ]);
+    ++ (if isLinux then linuxPackages else [ ]);
 
   imports = [
     ./alacritty
