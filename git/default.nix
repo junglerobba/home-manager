@@ -1,16 +1,15 @@
-{ pkgs, isMac, ... }:
+{
+  pkgs,
+  lib,
+  isMac,
+  ...
+}:
 {
   programs.git = {
     enable = true;
     package =
       let
-        nullPkg = pkgs.stdenv.mkDerivation {
-          name = "null";
-          dontUnpack = true;
-          buildPhase = ''
-            mkdir -p $out
-          '';
-        };
+        nullPkg = pkgs.callPackage ../pkgs/null { };
       in
       if isMac then nullPkg else pkgs.gitFull;
     extraConfig = {
@@ -21,7 +20,7 @@
       sendemail = {
         annotate = "yes";
       };
-      credential.helper = if isMac then "osxkeychain" else "libsecret";
+      credential.helper = lib.mkIf isMac "osxkeychain";
     };
     aliases = {
       ignore = "update-index --assume-unchanged";

@@ -2,6 +2,7 @@
   lib,
   pkgs,
   desktop,
+  isNixOs,
   ...
 }:
 let
@@ -10,10 +11,16 @@ let
     names = [ "jetbrains mono" ];
     size = 10.0;
   };
-  terminal = "${pkgs.alacritty}/bin/alacritty";
-  swaylockCommand = "${pkgs.swaylock}/bin/swaylock -f -c 000000";
+  terminal = if isNixOs then "${pkgs.alacritty}/bin/alacritty" else "alacritty";
+  swaylockCommand = lib.concatStringsSep " " [
+    (if isNixOs then "${pkgs.swaylock}/bin/swaylock" else "swaylock")
+    "-f"
+    "-c"
+    "000000"
+  ];
   cliphist = "${pkgs.cliphist}/bin/cliphist";
-  rofi = "${pkgs.rofi-wayland}/bin/rofi";
+  rofi = if isNixOs then "${pkgs.rofi-wayland}/bin/rofi" else "rofi";
+  nullPkg = pkgs.callPackage ../pkgs/null { };
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
@@ -72,7 +79,7 @@ lib.mkIf (desktop == "sway") {
       keybindings =
         let
           inherit modifier;
-          wpctl = "${wireplumber}/bin/wpctl";
+          wpctl = if isNixOs then "${wireplumber}/bin/wpctl" else "wpctl";
           playerctl = "${pkgs.playerctl}/bin/playerctl";
           pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
         in
@@ -129,7 +136,7 @@ lib.mkIf (desktop == "sway") {
             let
               powermenu = writeShellApplication {
                 name = "powermenu";
-                runtimeInputs = [
+                runtimeInputs = lib.optionals isNixOs [
                   rofi-wayland
                 ];
 
@@ -138,8 +145,6 @@ lib.mkIf (desktop == "sway") {
               };
             in
             "exec ${powermenu}/bin/powermenu";
-
-          "${modifier}+escape" = "exec rofi -mode emoji -show emoji";
         };
 
       startup = [
@@ -160,7 +165,7 @@ lib.mkIf (desktop == "sway") {
       ];
     };
 
-    wrapperFeatures = {
+    wrapperFeatures = lib.mkIf isNixOs {
       base = true;
       gtk = true;
     };
@@ -200,7 +205,7 @@ lib.mkIf (desktop == "sway") {
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = if isNixOs then pkgs.rofi-wayland else nullPkg;
     font = "jetbrains mono 12";
     theme = "Monokai";
     inherit terminal;
@@ -208,10 +213,6 @@ lib.mkIf (desktop == "sway") {
     extraConfig = {
       show-icons = true;
     };
-
-    plugins = with pkgs; [
-      rofi-emoji-wayland
-    ];
   };
 
   services.mako.enable = true;
@@ -237,7 +238,7 @@ lib.mkIf (desktop == "sway") {
       }
       (
         let
-          swaymsg = "${pkgs.sway}/bin/swaymsg";
+          swaymsg = if isNixOs then "${pkgs.sway}/bin/swaymsg" else "swaymsg";
         in
         {
           timeout = 600;

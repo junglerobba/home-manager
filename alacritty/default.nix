@@ -1,12 +1,19 @@
 {
+  pkgs,
   lib,
   desktop,
   isMac,
+  isNixOs,
   ...
 }:
 {
   programs.alacritty = {
     enable = true;
+    package =
+      let
+        nullPkg = pkgs.callPackage ../pkgs/null { };
+      in
+      lib.mkIf (!isMac && !isNixOs) nullPkg;
     settings = {
       window = {
         decorations =
