@@ -73,6 +73,12 @@
 
       language-server.taplo.command = "${taplo}/bin/taplo";
 
+      language-server.rust-analyzer = {
+        config = {
+          check.command = "clippy";
+        };
+      };
+
       language =
         let
           prettier = parser: {
