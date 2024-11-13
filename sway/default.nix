@@ -35,6 +35,7 @@ lib.mkIf (desktop == "sway") {
       bars = [
         {
           inherit fonts;
+          command = lib.mkIf (!isNixOs) "swaybar";
           position = "top";
           statusCommand = "${i3status-rust}/bin/i3status-rs config-default.toml";
           trayOutput = "*";
