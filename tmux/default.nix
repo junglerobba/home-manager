@@ -67,6 +67,17 @@ with pkgs;
         bind -r C-k resize-pane -U
         bind -r C-l resize-pane -R
 
+        bind -r P switch-client -l
+
+        bind -r h run-shell "tms marks 0"
+        bind -r j run-shell "tms marks 1"
+        bind -r k run-shell "tms marks 2"
+        bind -r l run-shell "tms marks 3"
+        bind -r H run-shell "tms marks set 0"
+        bind -r J run-shell "tms marks set 1"
+        bind -r K run-shell "tms marks set 2"
+        bind -r L run-shell "tms marks set 3"
+
         bind -r q set-option status
 
         bind -T copy-mode-vi v send-keys -X begin-selection
