@@ -157,11 +157,13 @@ lib.mkIf (desktop == "sway") {
 
     extraConfig = ''
       include ~/.config/sway/config.d/*
+      include /etc/sway/config.d/*
     '';
 
     systemd = {
-      xdgAutostart = true;
-      variables = [
+      enable = isNixOs;
+      xdgAutostart = isNixOs;
+      variables = lib.optionals isNixOs [
         "--all"
       ];
     };
