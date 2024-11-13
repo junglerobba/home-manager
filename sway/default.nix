@@ -25,6 +25,7 @@ in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
     enable = true;
+    package = lib.mkIf (!isNixOs) null;
 
     config = with pkgs; {
       inherit modifier fonts terminal;
