@@ -1,10 +1,13 @@
 {
   lib,
   pkgs,
-  isNixOs,
+  desktop,
   ...
 }:
-lib.mkIf isNixOs {
+let
+  isSway = desktop == "sway";
+in
+lib.mkIf isSway {
   services.gnome-keyring = {
     enable = true;
     components = [
