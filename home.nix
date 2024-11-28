@@ -17,6 +17,7 @@ let
     jless
     jq
     just
+    lazydocker
     lazyjj
     lf
     nix-tree

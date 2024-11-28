@@ -107,7 +107,7 @@
               "angular"
               "vscode-html-language-server"
               "tailwindcss-ls"
-              "eslint"
+              "vscode-eslint-language-server"
               "emmet-ls"
             ];
             formatter = prettier "angular";
