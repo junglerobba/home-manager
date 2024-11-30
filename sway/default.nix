@@ -27,6 +27,8 @@ lib.mkIf (desktop == "sway") {
     enable = true;
     package = lib.mkIf (!isNixOs) null;
 
+    xwayland = isNixOs;
+
     config = with pkgs; {
       inherit modifier fonts terminal;
 
