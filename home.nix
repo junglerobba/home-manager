@@ -18,7 +18,6 @@ let
     jq
     just
     lazydocker
-    lazyjj
     lf
     nix-tree
     onefetch
@@ -85,7 +84,6 @@ in
     ./htop
     ./jujutsu
     ./keyring
-    ./lazygit
     ./mangohud
     ./mpv
     ./sway
