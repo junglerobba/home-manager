@@ -6,8 +6,12 @@
     settings = {
       theme = "gruvbox";
       editor = {
-        auto-save = true;
+        auto-save = {
+          focus-lost = true;
+          after-delay.enable = true;
+        };
         line-number = "relative";
+        rulers = [ 80 ];
         cursorline = true;
         completion-trigger-len = 1;
         lsp = {
@@ -35,7 +39,6 @@
           ];
           space = {
             F = "file_picker_in_current_buffer_directory";
-            W = ":lsp-workspace-command";
           };
         };
         select = {
@@ -60,8 +63,6 @@
       language-server.angular = {
         args = [ "--stdio" ];
       };
-
-      language-server.nil.command = "${nil}/bin/nil";
 
       language-server.nixd.command = "${nixd}/bin/nixd";
 
