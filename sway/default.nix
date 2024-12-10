@@ -155,6 +155,7 @@ lib.mkIf (desktop == "sway") {
         {
           command = "${wl-clipboard}/bin/wl-paste --type text --watch ${cliphist} store";
         }
+        { command = "${mako}/bin/mako"; }
       ];
     };
 
@@ -220,8 +221,6 @@ lib.mkIf (desktop == "sway") {
       show-icons = true;
     };
   };
-
-  services.mako.enable = true;
 
   services.wlsunset = {
     enable = true;
