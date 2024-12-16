@@ -41,6 +41,14 @@ with pkgs;
           runtimeInputs = [ tmux ];
           text = builtins.readFile ./popup.sh;
         };
+        kill = writeShellApplication {
+          name = "tmux-kill-session";
+          runtimeInputs = [
+            tmux
+            tmux-sessionizer
+          ];
+          text = builtins.readFile ./kill.sh;
+        };
       in
       ''
         set -g status-style 'bg=default fg=default'
@@ -52,7 +60,7 @@ with pkgs;
         bind -r C-f display-popup -E "tms"
         bind -r f display-popup -E "tms switch"
         bind -r - run-shell "${popup}/bin/tmux-popup"
-        bind -r * confirm -p "Kill session?" "run-shell \"tms kill\""
+        bind -r * confirm -p "Kill session?" "run-shell \"${kill}/bin/tmux-kill-session\""
 
         bind -r v split-window -h -c "#{pane_current_path}"
         bind -r s split-window -v -c "#{pane_current_path}"
