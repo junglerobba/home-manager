@@ -66,6 +66,8 @@
 
       language-server.nixd.command = "${nixd}/bin/nixd";
 
+      language-server.nil.command = "${nil}/bin/nil";
+
       language-server.bash-language-server.command = "${bash-language-server}/bin/bash-language-server";
 
       language-server.yaml-language-server.command = "${yaml-language-server}/bin/yaml-language-server";
@@ -137,7 +139,6 @@
           }
           {
             name = "nix";
-            language-servers = [ "nixd" ];
             formatter.command = "${nixfmt-rfc-style}/bin/nixfmt";
           }
         ];
