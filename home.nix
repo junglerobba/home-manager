@@ -51,17 +51,7 @@ let
     podman
   ];
 in
-(pkgs.lib.optionalAttrs (!isNixOs) {
-  nix = {
-    gc = {
-      automatic = true;
-      frequency = "daily";
-      options = "--delete-older-than 10d";
-    };
-  };
-})
-// {
-
+{
   home.username = username;
   home.homeDirectory = homedir;
   home.stateVersion = "23.11";
@@ -70,9 +60,7 @@ in
   targets.genericLinux.enable = isLinux && !isNixOs;
 
   home.packages =
-    packages
-    ++ (if isMac then macPackages else [ ])
-    ++ (if isLinux then linuxPackages else [ ]);
+    packages ++ (if isMac then macPackages else [ ]) ++ (if isLinux then linuxPackages else [ ]);
 
   imports = [
     ./alacritty
