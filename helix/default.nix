@@ -3,8 +3,20 @@
   programs.helix = {
     enable = true;
     defaultEditor = true;
+
+    themes = {
+      ayu_custom = {
+        inherits = "ayu_dark";
+        "ui.virtual.inlay-hint" = {
+          fg = "gray";
+          bg = "background";
+          modifiers = [ "dim" ];
+        };
+      };
+    };
+
     settings = {
-      theme = "gruvbox";
+      theme = "ayu_custom";
       editor = {
         auto-save = {
           focus-lost = true;
