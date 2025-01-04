@@ -1,9 +1,4 @@
-{
-  pkgs,
-  isMac,
-  lib,
-  ...
-}:
+{ pkgs, isMac, ... }:
 with pkgs;
 {
   programs.tmux = {
@@ -90,10 +85,6 @@ with pkgs;
 
         bind -T copy-mode-vi v send-keys -X begin-selection
         bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
-      ''
-      # workaround for https://github.com/nix-community/home-manager/issues/5952
-      + lib.optionalString isMac ''
-        set -g default-command "$SHELL"
       '';
   };
 }
