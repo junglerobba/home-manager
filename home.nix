@@ -64,7 +64,6 @@ in
 
   imports = [
     ./alacritty
-    ./colima
     ./fish
     ./git
     ./gnome
