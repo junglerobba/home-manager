@@ -14,7 +14,7 @@
       in
       lib.mkIf (!isMac && !isNixOs) nullPkg;
     settings = {
-      terminal.shell = "${pkgs.fish}/bin/fish";
+      terminal.shell = lib.mkIf (!isMac) "${pkgs.fish}/bin/fish";
       window = {
         option_as_alt = lib.mkIf isMac "Both";
         padding = {
