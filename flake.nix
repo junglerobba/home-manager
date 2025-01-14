@@ -20,10 +20,6 @@
       url = "github:helix-editor/helix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    coffee-break = {
-      url = "github:junglerobba/coffee-break";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     flatpak-builder-tools = {
       url = "github:flatpak/flatpak-builder-tools";
       flake = false;
@@ -45,7 +41,6 @@
               inputs.nixgl.overlays.default
               inputs.tms.overlays.default
               inputs.helix.overlays.default
-              inputs.coffee-break.overlays.default
             ];
         };
 

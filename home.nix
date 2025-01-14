@@ -44,10 +44,9 @@ let
     )
     ++ gnomeExtensions;
   macPackages = with pkgs; [
-    coffee-break
+    colima
     gimp
     gnupg
-    maccy
     podman
   ];
 in
