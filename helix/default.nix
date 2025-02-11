@@ -45,6 +45,7 @@
       };
       keys = {
         normal = {
+          ret = "goto_word";
           V = [
             "extend_to_line_bounds"
             "select_mode"
