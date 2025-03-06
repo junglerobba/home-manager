@@ -50,9 +50,6 @@
             "extend_to_line_bounds"
             "select_mode"
           ];
-          space = {
-            F = "file_picker_in_current_buffer_directory";
-          };
         };
         select = {
           J = [
