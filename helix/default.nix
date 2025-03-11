@@ -1,4 +1,11 @@
-{ pkgs, isMac, ... }:
+{ pkgs, ... }:
+with pkgs;
+let
+  blame = writeShellApplication {
+    name = "blame";
+    text = builtins.readFile ./git-blame.sh;
+  };
+in
 {
   programs.helix = {
     enable = true;
@@ -50,6 +57,7 @@
             "extend_to_line_bounds"
             "select_mode"
           ];
+          B = ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
         };
         select = {
           J = [
