@@ -33,15 +33,7 @@ let
       flatpak-cargo-generator
       wl-clipboard
     ]
-    ++ (
-      if isNixOs then
-        [ gnupg ]
-      else
-        [
-          nixgl.nixGLIntel
-          nixgl.nixVulkanIntel
-        ]
-    )
+    ++ (if isNixOs then [ gnupg ] else [ ])
     ++ gnomeExtensions;
   macPackages = with pkgs; [
     colima
