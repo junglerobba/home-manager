@@ -1,13 +1,12 @@
 {
   pkgs,
   isLinux,
-  nixGL,
+  isNixOs,
   ...
 }:
 {
   programs.mpv = {
-    enable = true;
-    package = nixGL pkgs.mpv;
+    enable = isNixOs;
     config =
       {
         keep-open = true;
