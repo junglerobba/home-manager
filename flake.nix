@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tms = {
-      url = "github:jrmoulton/tmux-sessionizer";
+      url = "github:junglerobba/tmux-sessionizer?ref=jj";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix = {
