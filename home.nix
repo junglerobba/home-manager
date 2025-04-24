@@ -29,7 +29,6 @@ let
   linuxPackages =
     with pkgs;
     [
-      cliphist
       distrobox
       flatpak-cargo-generator
       wl-clipboard
