@@ -65,6 +65,7 @@ in
     ./mangohud
     ./mpv
     ./sway
+    ./tms
     ./tmux
   ];
 
