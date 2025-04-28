@@ -8,7 +8,7 @@
 let
   modifier = "Mod4";
   fonts = {
-    names = [ "jetbrains mono" ];
+    names = [ "adwaita mono" ];
     size = 10.0;
   };
   terminal = if isNixOs then "${pkgs.alacritty}/bin/alacritty" else "alacritty";
@@ -213,7 +213,7 @@ lib.mkIf (desktop == "sway") {
   programs.rofi = {
     enable = true;
     package = if isNixOs then pkgs.rofi-wayland else nullPkg;
-    font = "jetbrains mono 12";
+    font = "adwaita mono 12";
     theme = "Monokai";
     inherit terminal;
 
