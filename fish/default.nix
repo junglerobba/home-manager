@@ -74,36 +74,37 @@
 
       # adapted from https://gist.github.com/hroi/d0dc0e95221af858ee129fd66251897e
       fish_jj_prompt = ''
-        # Defined via `source`
-        function fish_jj_prompt
-            # Is jj installed?
-            if not command -sq jj
-                return 1
-            end
-
-            # Are we in a jj repo?
-            if not jj root --quiet &>/dev/null
-                return 1
-            end
-
-            # Generate prompt
-            set -l branch (jj log --ignore-working-copy --no-graph --color always -r 'closest_bookmark(@)' -T 'bookmarks.join(", ")')
-            set -l info
-            if test -n $branch
-                set -a info $branch
-            end
-            set -a info (jj log --ignore-working-copy --no-graph --color always -r @ -T '
-                separate(
-                    " ",
-                    change_id.shortest(),
-                    if(conflict, "(conflict)"),
-                    if(empty, "(empty)"),
-                    if(divergent, "(divergent)"),
-                    if(hidden, "(hidden)"),
-                )
-            ')
-            echo " ($(string join ' ' $info))"
+        # Is jj installed?
+        if not command -sq jj
+            return 1
         end
+
+        # Are we in a jj repo?
+        if not jj root --quiet &>/dev/null
+            return 1
+        end
+
+        # Generate prompt
+        set -l branches (jj log --ignore-working-copy --no-graph --color always -r 'closest_bookmark(@)' -T 'bookmarks.join(", ") ++ "\n"')
+        set -l info
+        set -l length (count $branches)
+        if test $length -gt 1
+            set -l length (math $length - 1)
+            set -a info "$branches[1]..+$length"
+        else if test $length != 0
+            set -a info $branches
+        end
+        set -a info (jj log --ignore-working-copy --no-graph --color always -r @ -T '
+            separate(
+                " ",
+                change_id.shortest(),
+                if(conflict, "(conflict)"),
+                if(empty, "(empty)"),
+                if(divergent, "(divergent)"),
+                if(hidden, "(hidden)"),
+            )
+        ')
+        echo " ($(string join ' ' $info))"
       '';
 
       fish_vcs_prompt = ''
