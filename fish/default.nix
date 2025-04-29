@@ -51,7 +51,7 @@
           (
             if isMac then
               ''
-                set -l inspect (${podman}/bin/podman machine inspect)
+                set -l inspect (podman machine inspect)
                 set -l state (echo $inspect | ${_jq} -r '.[0].State')
                 if test "$state" != running
                   return 1
@@ -63,7 +63,7 @@
                 if not type -q podman
                   return 1
                 end
-                set -l socket (${podman}/bin/podman system info | ${_yq} -r '.host.remoteSocket.path')
+                set -l socket (podman system info | ${_yq} -r '.host.remoteSocket.path')
               ''
           )
           ''
