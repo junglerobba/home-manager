@@ -58,6 +58,8 @@ in
             "select_mode"
           ];
           B = ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
+          space.f = "file_picker_in_current_directory";
+          space.F = "file_picker";
         };
         select = {
           J = [
