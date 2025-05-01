@@ -20,7 +20,7 @@
       };
       font = {
         normal = {
-          family = if isMac then "monaco" else "adwaita mono";
+          family = "adwaita mono";
         };
         size = 10.6;
         offset.y = 3;

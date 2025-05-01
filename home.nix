@@ -36,6 +36,7 @@ let
     ++ (if isNixOs then [ gnupg ] else [ ])
     ++ gnomeExtensions;
   macPackages = with pkgs; [
+    adwaita-fonts
     colima
     gimp
     gnupg
@@ -68,6 +69,8 @@ in
     ./tms
     ./tmux
   ];
+
+  fonts.fontconfig.enable = true;
 
   programs.direnv = {
     enable = true;

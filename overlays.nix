@@ -18,6 +18,7 @@
     })
   )
   [
+    "adwaita-fonts"
     "mpv"
   ]
 )
