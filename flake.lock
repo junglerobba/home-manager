@@ -84,22 +84,6 @@
         "type": "github"
       }
     },
-    "flatpak-builder-tools": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1745892042,
-        "narHash": "sha256-/3CDFR5sDHkB+lxlvy/SesBBBzNln3t+zf5A5l9yqg8=",
-        "owner": "flatpak",
-        "repo": "flatpak-builder-tools",
-        "rev": "93ba2962f6ef9cdd7a2f40f48cd6e9864e375346",
-        "type": "github"
-      },
-      "original": {
-        "owner": "flatpak",
-        "repo": "flatpak-builder-tools",
-        "type": "github"
-      }
-    },
     "helix": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -129,11 +113,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1745894335,
-        "narHash": "sha256-m47zhftaod/oHOwoVT25jstdcVLhkrVGyvEHKjbnFHI=",
+        "lastModified": 1746040799,
+        "narHash": "sha256-osgPX/SzIpkR50vev/rqoTEAVkEcOWXoQXmbzsaI4KU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "1ad123239957d40e11ef66c203d0a7e272eb48aa",
+        "rev": "5f217e5a319f6c186283b530f8c975e66c028433",
         "type": "github"
       },
       "original": {
@@ -165,11 +149,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1745900683,
-        "narHash": "sha256-ZGi2gjgPtmPmplCVz7dNufqkBr00g6EeAloX3GrFQls=",
+        "lastModified": 1746061036,
+        "narHash": "sha256-OxYwCGJf9VJ2KnUO+w/hVJVTjOgscdDg/lPv8Eus07Y=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "ffa0bb043c25cfc79ff3bc20ba2e44c3724499b1",
+        "rev": "3afd19146cac33ed242fc0fc87481c67c758a59e",
         "type": "github"
       },
       "original": {
@@ -194,7 +178,6 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "flatpak-builder-tools": "flatpak-builder-tools",
         "helix": "helix",
         "home-manager": "home-manager",
         "nixgl": "nixgl",

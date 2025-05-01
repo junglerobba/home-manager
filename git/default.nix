@@ -8,11 +8,7 @@
 {
   programs.git = {
     enable = true;
-    package =
-      let
-        nullPkg = pkgs.callPackage ../pkgs/null { };
-      in
-      if (!isNixOs) then nullPkg else pkgs.gitFull;
+    package = if (!isNixOs) then pkgs.null else pkgs.gitFull;
     extraConfig = {
       commit.verbose = true;
       pull.rebase = true;

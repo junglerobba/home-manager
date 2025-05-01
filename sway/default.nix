@@ -20,7 +20,6 @@ let
   ];
   cliphist = "${pkgs.cliphist}/bin/cliphist";
   rofi = if isNixOs then "${pkgs.rofi-wayland}/bin/rofi" else "rofi";
-  nullPkg = pkgs.callPackage ../pkgs/null { };
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
@@ -212,7 +211,7 @@ lib.mkIf (desktop == "sway") {
 
   programs.rofi = {
     enable = true;
-    package = if isNixOs then pkgs.rofi-wayland else nullPkg;
+    package = if isNixOs then pkgs.rofi-wayland else pkgs.null;
     font = "adwaita mono 12";
     theme = "Monokai";
     inherit terminal;
