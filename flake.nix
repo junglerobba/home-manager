@@ -14,7 +14,6 @@
     };
     tms = {
       url = "github:junglerobba/tmux-sessionizer?ref=jj";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     helix = {
       url = "github:helix-editor/helix";
