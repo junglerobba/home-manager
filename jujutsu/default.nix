@@ -7,6 +7,14 @@ let
   };
 in
 {
+  xdg.configFile."fish/completions/jj.fish".source =
+    pkgs.runCommand "jj.fish"
+      {
+        nativeBuildInputs = [ pkgs.jujutsu ];
+      }
+      ''
+        COMPLETE=fish jj > $out
+      '';
   xdg.configFile."jj/config.toml".source = (pkgs.formats.toml { }).generate "jj" {
     ui = {
       default-command = "log";
