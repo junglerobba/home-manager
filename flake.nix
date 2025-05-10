@@ -12,13 +12,9 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tms = {
-      url = "github:junglerobba/tmux-sessionizer?ref=jj";
-    };
-    helix = {
-      url = "github:helix-editor/helix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    tms.url = "github:junglerobba/tmux-sessionizer?ref=jj";
+    helix.url = "github:helix-editor/helix";
+    jj.url = "github:jj-vcs/jj?ref=v0.29.0";
   };
 
   outputs =
@@ -32,6 +28,7 @@
             inputs.nixgl.overlays.default
             inputs.tms.overlays.default
             inputs.helix.overlays.default
+            inputs.jj.overlays.default
           ];
         };
 
