@@ -25,6 +25,7 @@ in
     revset-aliases = with aliases; {
       "${closest_bookmark "to"}" = "heads(::to & bookmarks())";
       "${tip "branch"}" = "heads(::branch & ~empty() & ~description(exact:\"\"))";
+      "T" = "trunk()";
     };
     aliases = with aliases; {
       tug = [
