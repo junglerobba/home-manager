@@ -52,13 +52,13 @@ with pkgs;
         set -g window-status-current-format '#[bold][#{window_index}:#{pane_current_command}]'
         set -g status-right-length 100
         set -g status-right "${status-right}"
-        bind -r C-f display-popup -E "tms"
-        bind -r f display-popup -E "tms switch"
-        bind -r - run-shell "${popup}/bin/tmux-popup"
-        bind -r * confirm -p "Kill session?" "run-shell \"${kill}/bin/tmux-kill-session\""
+        bind C-f display-popup -E "tms"
+        bind f display-popup -E "tms switch"
+        bind - run-shell "${popup}/bin/tmux-popup"
+        bind * confirm -p "Kill session?" "run-shell \"${kill}/bin/tmux-kill-session\""
 
-        bind -r v split-window -h -c "#{pane_current_path}"
-        bind -r s split-window -v -c "#{pane_current_path}"
+        bind v split-window -h -c "#{pane_current_path}"
+        bind s split-window -v -c "#{pane_current_path}"
 
         bind -n M-h select-pane -L
         bind -n M-j select-pane -D
@@ -70,7 +70,7 @@ with pkgs;
         bind -r C-k resize-pane -U
         bind -r C-l resize-pane -R
 
-        bind -r P switch-client -l
+        bind P switch-client -l
 
       ''
       + (
@@ -78,19 +78,19 @@ with pkgs;
           tms-config = "TMS_CONFIG_FILE=$HOME/.cache/tms/marks.toml";
         in
         ''
-          bind -r h run-shell "${tms-config} tms marks 0"
-          bind -r j run-shell "${tms-config} tms marks 1"
-          bind -r k run-shell "${tms-config} tms marks 2"
-          bind -r l run-shell "${tms-config} tms marks 3"
-          bind -r H run-shell "${tms-config} tms marks set 0"
-          bind -r J run-shell "${tms-config} tms marks set 1"
-          bind -r K run-shell "${tms-config} tms marks set 2"
-          bind -r L run-shell "${tms-config} tms marks set 3"
+          bind h run-shell "${tms-config} tms marks 0"
+          bind j run-shell "${tms-config} tms marks 1"
+          bind k run-shell "${tms-config} tms marks 2"
+          bind l run-shell "${tms-config} tms marks 3"
+          bind H run-shell "${tms-config} tms marks set 0"
+          bind J run-shell "${tms-config} tms marks set 1"
+          bind K run-shell "${tms-config} tms marks set 2"
+          bind L run-shell "${tms-config} tms marks set 3"
 
         ''
       )
       + ''
-        bind -r q set-option status
+        bind q set-option status
 
         bind -T copy-mode-vi v send-keys -X begin-selection
         bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
