@@ -25,6 +25,9 @@
         size = 10.6;
         offset.y = 3;
       };
+      general.import = [
+        "~/.config/alacritty/theme.toml"
+      ];
     };
   };
 }

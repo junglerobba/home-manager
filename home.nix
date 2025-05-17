@@ -56,6 +56,7 @@ in
 
   imports = [
     ./alacritty
+    ./dark-mode-notify
     ./fish
     ./git
     ./gnome
