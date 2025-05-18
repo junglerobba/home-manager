@@ -8,7 +8,7 @@
 {
   programs.alacritty = {
     enable = true;
-    package = lib.mkIf (!isMac && !isNixOs) pkgs.null;
+    package = lib.mkIf (!isNixOs) pkgs.null;
     settings = {
       terminal.shell = lib.mkIf (!isMac) "${pkgs.fish}/bin/fish";
       window = {

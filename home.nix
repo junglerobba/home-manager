@@ -38,7 +38,6 @@ let
   macPackages = with pkgs; [
     adwaita-fonts
     colima
-    gimp
     gnupg
     podman
   ];
@@ -56,7 +55,6 @@ in
 
   imports = [
     ./alacritty
-    ./dark-mode-notify
     ./fish
     ./git
     ./gnome
