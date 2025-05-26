@@ -1,4 +1,8 @@
-Example usage with NixOS:
+## Nix config
+
+### NixOS
+
+Example usage:
 
 ```nix
 {
@@ -10,17 +14,13 @@ Example usage with NixOS:
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    home-config = {
-      url = "github:junglerobba/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    config.url = "github:junglerobba/home-manager";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { nixpkgs, config, ... }:
     let
       system = "x86_64-linux";
-      home-config = inputs.home-config.packages.${system}.module {
+      home-config = config.packages.${system}.module {
         username = "junglerobba";
         homedir = "/home";
       };
@@ -42,21 +42,14 @@ Example usage with NixOS:
 }
 ```
 
-Example standalone usage:
+### Standalone
+
+Example usage:
 
 ```nix
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    config = {
-      url = "github:junglerobba/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    config.url = "github:junglerobba/home-manager";
   };
 
   outputs = { config, ... }:
@@ -64,10 +57,40 @@ Example standalone usage:
       system = "x86_64-linux";
       username = "junglerobba";
     in {
-      homeConfigurations.${username} = config.defaultPackage.${system} {
+      homeConfigurations.${username} = config.packages.${system}.default {
         inherit username;
         homedir = "/home";
       };
     };
 }
+```
+
+```bash
+nix run home-manager/master -- switch
+```
+
+### nix-darwin
+
+Example usage:
+
+```nix
+{
+  inputs = {
+    config.url = "github:junglerobba/home-manager";
+  };
+
+  outputs = { config, ... }:
+    let
+      system = "aarch64-darwin";
+      username = "junglerobba";
+    in {
+      darwinConfigurations.${username} = config.packages.${system}.darwin {
+        inherit username;
+      };
+    };
+}
+```
+
+```bash
+sudo nix run nix-darwin/master#darwin-rebuild switch --flake .
 ```
