@@ -20,6 +20,14 @@ in
           modifiers = [ "dim" ];
         };
       };
+      ayu_custom_light = {
+        inherits = "ayu_light";
+        "ui.virtual.inlay-hint" = {
+          fg = "gray";
+          bg = "background";
+          modifiers = [ "dim" ];
+        };
+      };
     };
 
     settings = {
