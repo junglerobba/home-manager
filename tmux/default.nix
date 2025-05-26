@@ -24,7 +24,23 @@ with pkgs;
           in
           lib.concatStrings (
             [
-              "#(${gitmux}/bin/gitmux #{pane_current_path})"
+              (
+                let
+                  config = (formats.yaml { }).generate "gitmux-conf" {
+                    tmux = {
+                      symbols.branch = "";
+                      layout = [
+                        "branch"
+                        "remote-branch"
+                        "divergence"
+                        " "
+                        "flags"
+                      ];
+                    };
+                  };
+                in
+                "#(${gitmux}/bin/gitmux -cfg ${config} #{pane_current_path}) "
+              )
               " %a %F %T"
             ]
             ++ lib.optionals isMac [
