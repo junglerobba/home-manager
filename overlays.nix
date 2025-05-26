@@ -7,6 +7,7 @@
   )
   [
     "flatpak-cargo-generator"
+    "kotlin-lsp"
     "null"
   ]
 )
