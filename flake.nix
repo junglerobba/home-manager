@@ -16,7 +16,7 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tms.url = "github:junglerobba/tmux-sessionizer?ref=jj";
+    tms.url = "github:jrmoulton/tmux-sessionizer";
     helix.url = "github:helix-editor/helix";
     jj.url = "github:jj-vcs/jj";
   };
