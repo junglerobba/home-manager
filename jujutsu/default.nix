@@ -17,6 +17,10 @@ in
       '';
   programs.jujutsu = {
     enable = true;
+    package = pkgs.jujutsu.overrideAttrs (_: {
+      doCheck = false;
+      doInstallCheck = false;
+    });
     settings = {
       ui = {
         default-command = "log";
