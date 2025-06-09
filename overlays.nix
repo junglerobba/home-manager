@@ -21,5 +21,6 @@
   [
     "adwaita-fonts"
     "mpv"
+    "jujutsu"
   ]
 )

@@ -10,17 +10,15 @@ in
   xdg.configFile."fish/completions/jj.fish".source =
     pkgs.runCommand "jj.fish"
       {
-        nativeBuildInputs = [ pkgs.jujutsu ];
+        nativeBuildInputs = [
+          pkgs.jujutsu
+        ];
       }
       ''
         COMPLETE=fish jj > $out
       '';
   programs.jujutsu = {
     enable = true;
-    package = pkgs.jujutsu.overrideAttrs (_: {
-      doCheck = false;
-      doInstallCheck = false;
-    });
     settings = {
       ui = {
         default-command = "log";

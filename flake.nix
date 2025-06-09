@@ -27,12 +27,12 @@
       system:
       let
         pkgsConfig = {
-          overlays = (import ./overlays.nix) ++ [
+          overlays = [
             inputs.nixgl.overlays.default
             inputs.tms.overlays.default
             inputs.helix.overlays.default
             inputs.jj.overlays.default
-          ];
+          ] ++ (import ./overlays.nix);
         };
         pkgs = import inputs.nixpkgs (
           {
