@@ -68,8 +68,8 @@ with pkgs;
         set -g window-status-current-format '#[bold][#{window_index}:#{pane_current_command}]'
         set -g status-right-length 100
         set -g status-right "${status-right}"
-        bind C-f display-popup -E "tms"
-        bind f display-popup -E "tms switch"
+        bind C-f display-popup -w 100% -h 99% -y 0 -B -E "tms"
+        bind f display-popup -w 100% -h 99% -y 0 -B -E "tms switch"
         bind - run-shell "${popup}/bin/tmux-popup"
         bind * confirm -p "Kill session?" "run-shell \"${kill}/bin/tmux-kill-session\""
 
