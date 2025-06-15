@@ -6,6 +6,7 @@
     })
   )
   [
+    "dbus-settings-portal-monitor"
     "flatpak-cargo-generator"
     "kotlin-lsp"
     "null"
