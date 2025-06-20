@@ -1,0 +1,7 @@
+inherits = "ayu_light"
+
+["ui.virtual.inlay-hint"]
+bg = "background"
+fg = "gray"
+modifiers = ["dim"]
+

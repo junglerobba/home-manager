@@ -11,27 +11,8 @@ in
     enable = true;
     defaultEditor = true;
 
-    themes = {
-      ayu_custom = {
-        inherits = "ayu_dark";
-        "ui.virtual.inlay-hint" = {
-          fg = "gray";
-          bg = "background";
-          modifiers = [ "dim" ];
-        };
-      };
-      ayu_custom_light = {
-        inherits = "ayu_light";
-        "ui.virtual.inlay-hint" = {
-          fg = "gray";
-          bg = "background";
-          modifiers = [ "dim" ];
-        };
-      };
-    };
-
     settings = {
-      theme = "ayu_custom";
+      theme = "adaptive";
       editor = {
         auto-save = {
           focus-lost = true;

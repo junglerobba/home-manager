@@ -1,4 +1,9 @@
-{ pkgs, lib, username, ... }:
+{
+  pkgs,
+  lib,
+  username,
+  ...
+}:
 
 {
 
@@ -29,14 +34,7 @@
       "${dark-mode}" = {
         serviceConfig =
           let
-            script = pkgs.writeShellScript "alacritty-theme-toggle" ''
-              TARGET="''${HOME}/.config/alacritty/theme.toml"
-              if [ "$DARKMODE" -eq "1" ]; then
-                ln -sf ${./alacritty/themes/dark.toml} "''${TARGET}"
-              else
-                ln -sf ${./alacritty/themes/light.toml} "''${TARGET}"
-              fi
-            '';
+            script = pkgs.alacritty-theme-toggle;
           in
           {
             Label = dark-mode;
