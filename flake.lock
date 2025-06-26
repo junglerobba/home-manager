@@ -377,11 +377,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1749110321,
-        "narHash": "sha256-HzDF7oQdhSMzxnaQIwGs+FcX1Cxd0Y98/4zmnv+ve4U=",
+        "lastModified": 1750833219,
+        "narHash": "sha256-a4s4951dUqO1IuVNvTOUbc52WrjjkNrlUXvlbfYBNNQ=",
         "owner": "jrmoulton",
         "repo": "tmux-sessionizer",
-        "rev": "8be71f30f81b7a89b94f80eab78a67cd54d59de5",
+        "rev": "ff5e108c9d29b94c75140670c12097f6c23c75d7",
         "type": "github"
       },
       "original": {
