@@ -41,6 +41,24 @@ in
           "--to"
           (tip "@")
         ];
+        nn = [
+          "new"
+          "--no-edit"
+          "-r"
+        ];
+        l = [
+          "log"
+          "-r"
+          "::@"
+        ];
+        add-parent = [
+          "rebase"
+          "-s"
+          "@"
+          "-d"
+          "all:@-"
+          "-d"
+        ];
       };
       template-aliases = with aliases; {
         "${gerrit_change_id "change_id"}" = ''
