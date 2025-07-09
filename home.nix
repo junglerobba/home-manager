@@ -20,6 +20,7 @@ let
     just
     lazydocker
     lf
+    nh
     nix-tree
     onefetch
     tmux-sessionizer
