@@ -41,7 +41,53 @@
 
         alt-shift-period = "move-workspace-to-monitor next";
         alt-shift-comma = "move-workspace-to-monitor prev";
+
+        alt-w = "layout h_tiles h_accordion";
       };
+
+      workspace-to-monitor-force-assignment =
+        let
+          assign =
+            assignment: indexes:
+            builtins.listToAttrs (
+              builtins.map (index: {
+                name = index;
+                value = assignment;
+              }) indexes
+            );
+        in
+        assign "main" [
+          "1"
+          "2"
+          "3"
+          "4"
+        ]
+        // assign "built-in" [
+          "9"
+          "10"
+        ];
+
+      on-window-detected =
+        let
+          assign = workspace: condition: {
+            "if" = condition;
+            run = [ "move-node-to-workspace ${workspace}" ];
+          };
+        in
+        [
+          (assign "1" { app-id = "org.alacritty"; })
+          (assign "2" { app-id = "com.jetbrains.intellij"; })
+          (assign "5" { app-id = "com.postmanlabs.mac"; })
+          (assign "6" { app-id = "com.google.Chrome"; })
+          (assign "6" { app-id = "com.apple.Safari"; })
+          (assign "7" { app-id = "org.mozilla.firefox"; })
+          (assign "7" { app-id = "org.mozilla.firefoxdeveloperedition"; })
+          (assign "9" { app-id = "com.spotify.client"; })
+          (assign "9" { app-name-regex-substring = "spotify"; })
+          (assign "10" { app-id = "com.hnc.Discord"; })
+          (assign "10" { app-id = "com.tinyspeck.slackmacgap"; })
+        ];
     };
+
   };
 }
