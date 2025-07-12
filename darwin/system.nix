@@ -18,6 +18,8 @@
         persistent-others = [
           "/Applications/Nix Apps"
         ];
+        # helpful for aerospace stability
+        expose-group-apps = true;
       };
       finder = {
         AppleShowAllExtensions = true;

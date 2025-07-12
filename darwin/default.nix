@@ -29,6 +29,7 @@
   imports = [
     ./dark-mode.nix
     ./system.nix
+    ./aerospace.nix
   ];
 
   system.primaryUser = username;
