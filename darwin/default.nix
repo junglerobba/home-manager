@@ -33,4 +33,8 @@
 
   system.primaryUser = username;
   system.stateVersion = 6;
+
+  programs.fish = {
+    enable = true;
+  };
 }
