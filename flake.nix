@@ -112,7 +112,7 @@
               inherit system;
               inherit specialArgs;
               modules = [
-                ./darwin.nix
+                ./darwin
                 home-manager.darwinModules.home-manager
                 {
                   users.users.${username} = {
