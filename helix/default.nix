@@ -7,6 +7,9 @@ let
   };
 in
 {
+  # make sure helix themes directory exists
+  xdg.configFile."helix/themes/.keep".source = pkgs.writeText "" "";
+
   programs.helix = {
     enable = true;
     defaultEditor = true;
