@@ -39,6 +39,7 @@
       };
       NSGlobalDomain = {
         AppleInterfaceStyleSwitchesAutomatically = true;
+        NSWindowShouldDragOnGesture = true;
       };
       ActivityMonitor = {
         ShowCategory = 101; # All Processes, Hierarchally
