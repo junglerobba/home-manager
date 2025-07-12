@@ -17,11 +17,15 @@ let
       ]
     );
   };
+  path = "Library/LaunchAgents/ke.bou.dark-mode-notify.plist";
 in
 # for standalone home-manager usage on mac without nix-darwin
-# load with `launchctl load -w ~/Library/LaunchAgents/ke.bou.dark-mode-notify.plist`
 lib.mkIf (isMac && !darwin) {
-  home.file."Library/LaunchAgents/ke.bou.dark-mode-notify.plist".source = plist;
+  home.file.${path}.source = plist;
+  home.activation.dark-mode-notify = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run launchctl unload ~/${path}
+    run launchctl load -w ~/${path}
+  '';
 }
 // lib.mkIf isLinux {
   systemd.user.services.dark-mode-notify = {
