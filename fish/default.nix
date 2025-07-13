@@ -51,7 +51,7 @@
           (
             if isMac then
               ''
-                set -l inspect (podman machine inspect)
+                set -l inspect (podman machine inspect 2>/dev/null || return 1)
                 set -l state (echo $inspect | ${_jq} -r '.[0].State')
                 if test "$state" != running
                   return 1
