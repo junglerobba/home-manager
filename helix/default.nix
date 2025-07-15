@@ -106,8 +106,9 @@ in
       language =
         let
           prettier = parser: {
-            command = "prettier";
+            command = "npx";
             args = [
+              "prettier"
               "--parser"
               parser
             ];
