@@ -1,15 +1,26 @@
 {
+  pkgs,
   ...
 }:
 {
   services.aerospace = {
     enable = true;
     settings = {
+
+      on-focus-changed = [ "move-mouse window-lazy-center" ];
+
+      gaps.inner = {
+        horizontal = 5;
+        vertical = 5;
+      };
+
+      accordion-padding = 5;
+
       mode.main.binding = {
-        cmd-h = "focus left --boundaries all-monitors-outer-frame";
-        cmd-j = "focus down --boundaries all-monitors-outer-frame";
-        cmd-k = "focus up --boundaries all-monitors-outer-frame";
-        cmd-l = "focus right --boundaries all-monitors-outer-frame";
+        cmd-h = "focus left";
+        cmd-j = "focus down";
+        cmd-k = "focus up";
+        cmd-l = "focus right";
         cmd-shift-h = "move left";
         cmd-shift-j = "move down";
         cmd-shift-k = "move up";
@@ -38,11 +49,18 @@
 
         cmd-period = "focus-monitor next";
         cmd-comma = "focus-monitor prev";
-
-        cmd-shift-period = "move-workspace-to-monitor next";
-        cmd-shift-comma = "move-workspace-to-monitor prev";
+        cmd-shift-comma = [
+          "move-node-to-monitor prev"
+          "focus-monitor prev"
+        ];
+        cmd-shift-period = [
+          "move-node-to-monitor next"
+          "focus-monitor next"
+        ];
 
         alt-w = "layout h_tiles h_accordion";
+
+        cmd-enter = "exec-and-forget open -n '/Applications/Nix Apps/Alacritty.app'";
       };
 
       workspace-to-monitor-force-assignment =
@@ -62,6 +80,18 @@
           "3"
           "4"
         ]
+        //
+          assign
+            [
+              "VG270U P"
+              "1"
+            ]
+            [
+              "5"
+              "6"
+              "7"
+              "8"
+            ]
         // assign "built-in" [
           "9"
           "10"
@@ -75,8 +105,8 @@
           };
         in
         [
-          (assign "1" { app-id = "org.alacritty"; })
           (assign "2" { app-id = "com.jetbrains.intellij"; })
+          (assign "3" { app-id = "com.microsoft.Outlook"; })
           (assign "5" { app-id = "com.postmanlabs.mac"; })
           (assign "6" { app-id = "com.google.Chrome"; })
           (assign "6" { app-id = "com.apple.Safari"; })
