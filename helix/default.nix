@@ -160,6 +160,7 @@ in
           }
           {
             name = "nix";
+            auto-format = true;
             formatter.command = "${nixfmt-rfc-style}/bin/nixfmt";
           }
           {
