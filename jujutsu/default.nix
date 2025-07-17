@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  lib,
+  pkgs,
+  ...
+}:
 let
   aliases = {
     closest_bookmark = rev: "closest_bookmark(${rev})";
@@ -22,6 +26,12 @@ in
     settings = {
       ui = {
         default-command = "log";
+        diff-formatter = [
+          (lib.getExe pkgs.difftastic)
+          "--color=always"
+          "$left"
+          "$right"
+        ];
       };
       git = {
         write-change-id-header = true;
