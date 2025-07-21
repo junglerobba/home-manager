@@ -17,7 +17,9 @@
           x = 5;
           y = 5;
         };
-        decorations = "None";
+        decorations = lib.mkIf isMac "Buttonless";
+        blur = true;
+        opacity = 0.8;
       };
       font = {
         normal = {
