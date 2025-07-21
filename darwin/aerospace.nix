@@ -14,7 +14,14 @@
         vertical = 5;
       };
 
-      accordion-padding = 5;
+      gaps.outer = {
+        left = 5;
+        right = 5;
+        top = 5;
+        bottom = 5;
+      };
+
+      accordion-padding = 15;
 
       mode.main.binding = {
         cmd-h = "focus left";
