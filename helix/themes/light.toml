@@ -1,7 +1,5 @@
 inherits = "ayu_light"
 
-"ui.background" = "white"
-
 ["ui.virtual.inlay-hint"]
 bg = "background"
 fg = "gray"
