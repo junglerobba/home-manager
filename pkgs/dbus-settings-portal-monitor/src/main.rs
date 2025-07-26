@@ -46,8 +46,6 @@ fn main() -> Result<()> {
     })?;
 
     loop {
-        if let Err(err) = conn.process(Duration::from_secs(1)) {
-            println!("{err}");
-        }
+        conn.process(Duration::from_secs(1))?;
     }
 }
