@@ -86,6 +86,9 @@ Example usage:
     in {
       darwinConfigurations.${username} = config.packages.${system}.darwin {
         inherit username;
+        # this needs to be set on the first setup in order to have a linux builder available
+        # after that, nix-rosetta-builder can take over
+        bootstrap = true;
       };
     };
 }
