@@ -20,7 +20,7 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tms.url = "github:jrmoulton/tmux-sessionizer";
+    tms.url = "github:jrmoulton/tmux-sessionizer?ref=v0.5.0";
     helix.url = "github:helix-editor/helix";
     jj.url = "github:jj-vcs/jj?ref=v0.31.0";
   };
@@ -36,7 +36,8 @@
             inputs.tms.overlays.default
             inputs.helix.overlays.default
             inputs.jj.overlays.default
-          ] ++ (import ./overlays.nix);
+          ]
+          ++ (import ./overlays.nix);
         };
         pkgs = import inputs.nixpkgs (
           {
