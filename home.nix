@@ -39,6 +39,7 @@ let
     ++ gnomeExtensions;
   macPackages = with pkgs; [
     adwaita-fonts
+    coffee-break
     colima
     gnupg
     podman
