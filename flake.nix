@@ -22,7 +22,7 @@
     };
     tms.url = "github:jrmoulton/tmux-sessionizer?ref=v0.5.0";
     helix.url = "github:helix-editor/helix";
-    jj.url = "github:jj-vcs/jj?ref=v0.31.0";
+    jj.url = "github:jj-vcs/jj?ref=v0.32.0";
   };
 
   outputs =
