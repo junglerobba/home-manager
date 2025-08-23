@@ -3,6 +3,8 @@ use clap::Parser;
 use dbus::{Message, arg::Variant, blocking::Connection, message::MatchRule};
 use std::{process::Command, time::Duration};
 
+const TIMEOUT: Duration = Duration::from_secs(1);
+
 #[derive(Debug, Parser)]
 struct Args {
     #[arg(short, long)]
@@ -23,19 +25,28 @@ fn handle_msg(msg: &Message, args: &Args) -> Result<()> {
         return Ok(());
     }
     println!("Received setting change: {key} {setting} {}", value.0);
-
-    let mut cmd = args.cmd.iter();
-    Command::new(cmd.next().context("No cmd provided")?)
-        .env(&args.env, value.0.to_string())
-        .args(cmd)
-        .output()?;
-
-    Ok(())
+    handle_setting_change(value.0, args)
 }
 
 fn main() -> Result<()> {
     let args = Args::parse();
     let conn = Connection::new_session()?;
+
+    let proxy = conn.with_proxy(
+        "org.freedesktop.portal.Desktop",
+        "/org/freedesktop/portal/desktop",
+        TIMEOUT,
+    );
+    let (initial,): (Variant<Variant<u32>>,) = proxy.method_call(
+        "org.freedesktop.portal.Settings",
+        "Read",
+        (&args.key, &args.setting),
+    )?;
+    println!(
+        "Initial setting: {} {} {}",
+        args.key, args.setting, initial.0.0
+    );
+    handle_setting_change(initial.0.0, &args)?;
 
     let rule = MatchRule::new_signal("org.freedesktop.impl.portal.Settings", "SettingChanged");
     conn.add_match(rule, move |(), _, msg| {
@@ -46,6 +57,16 @@ fn main() -> Result<()> {
     })?;
 
     loop {
-        conn.process(Duration::from_secs(1))?;
+        conn.process(TIMEOUT)?;
     }
+}
+
+fn handle_setting_change(value: u32, args: &Args) -> Result<()> {
+    let mut cmd = args.cmd.iter();
+    Command::new(cmd.next().context("No cmd provided")?)
+        .env(&args.env, value.to_string())
+        .args(cmd)
+        .output()?;
+
+    Ok(())
 }
