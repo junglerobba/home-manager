@@ -31,11 +31,9 @@ lib.mkIf (isMac && !darwin) {
   systemd.user.services.dark-mode-notify = {
     Unit = {
       Description = "Monitor dark mode setting";
+      After = [ "graphical-session.target" ];
     };
-    Install = {
-      WantedBy = [ "default.target" ];
-    };
-
+    Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       ExecStart = ''
         ${lib.getExe pkgs.dbus-settings-portal-monitor} \
