@@ -3,8 +3,6 @@ use clap::Parser;
 use dbus::{Message, arg::Variant, blocking::Connection, message::MatchRule};
 use std::{process::Command, time::Duration};
 
-const TIMEOUT: Duration = Duration::from_secs(1);
-
 #[derive(Debug, Parser)]
 struct Args {
     #[arg(short, long)]
@@ -35,7 +33,7 @@ fn main() -> Result<()> {
     let proxy = conn.with_proxy(
         "org.freedesktop.portal.Desktop",
         "/org/freedesktop/portal/desktop",
-        TIMEOUT,
+        Duration::from_secs(10),
     );
     let (initial,): (Variant<Variant<u32>>,) = proxy.method_call(
         "org.freedesktop.portal.Settings",
@@ -57,7 +55,7 @@ fn main() -> Result<()> {
     })?;
 
     loop {
-        conn.process(TIMEOUT)?;
+        conn.process(Duration::from_secs(1))?;
     }
 }
 
