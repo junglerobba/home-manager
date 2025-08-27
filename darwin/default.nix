@@ -2,7 +2,6 @@
   pkgs,
   lib,
   username,
-  bootstrap,
   ...
 }:
 {
@@ -22,7 +21,6 @@
         "@admin"
       ];
     };
-    linux-builder.enable = bootstrap;
   };
 
   environment.systemPackages = with pkgs; [

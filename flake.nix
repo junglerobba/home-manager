@@ -12,10 +12,6 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-rosetta-builder = {
-      url = "github:cpick/nix-rosetta-builder";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixgl = {
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,7 +51,6 @@
             isNixOs ? false,
             desktop ? null,
             darwin ? false,
-            bootstrap ? false,
           }:
           let
             isLinux = pkgs.stdenv.hostPlatform.isLinux;
@@ -71,7 +66,6 @@
               isMac
               desktop
               darwin
-              bootstrap
               ;
             nixGL = import ./nixgl.nix {
               inherit pkgs;
@@ -107,7 +101,6 @@
             {
               modules ? [ ],
               username,
-              bootstrap ? false, # required on initial setup to have a linux builder
             }:
             let
               specialArgs = extraSpecialArgs {
@@ -135,14 +128,6 @@
                     useGlobalPkgs = true;
                     useUserPackages = true;
                     users.${username} = import ./home.nix;
-                  };
-                }
-                inputs.nix-rosetta-builder.darwinModules.default
-                {
-                  nix-rosetta-builder = {
-                    enable = !bootstrap;
-                    onDemand = true;
-                    onDemandLingerMinutes = 5;
                   };
                 }
               ]
