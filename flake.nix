@@ -23,7 +23,7 @@
     tms.url = "github:jrmoulton/tmux-sessionizer?ref=v0.5.0";
     coffee-break.url = "github:junglerobba/coffee-break";
     helix.url = "github:helix-editor/helix";
-    jj.url = "github:jj-vcs/jj?ref=735a27d4efae6b5a0524f10fca23b0b1b61becc0";
+    jj.url = "github:jj-vcs/jj?ref=v0.33.0";
   };
 
   outputs =
