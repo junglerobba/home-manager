@@ -17,7 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     tms.url = "github:jrmoulton/tmux-sessionizer?ref=v0.5.0";
-    coffee-break.url = "github:junglerobba/coffee-break";
+    coffee-break = {
+      url = "github:junglerobba/coffee-break";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     helix.url = "github:helix-editor/helix";
     jj.url = "github:jj-vcs/jj?ref=v0.33.0";
   };
