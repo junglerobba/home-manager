@@ -68,6 +68,7 @@ in
     ./keyring
     ./mangohud
     ./mpv
+    ./neovim
     ./sway
     ./tms
     ./tmux

@@ -37,15 +37,9 @@
             inputs.helix.overlays.default
             inputs.jj.overlays.default
             inputs.coffee-break.overlays.default
-          ]
-          ++ (import ./overlays.nix);
+          ] ++ (import ./overlays.nix);
         };
-        pkgs = import inputs.nixpkgs (
-          {
-            inherit system;
-          }
-          // pkgsConfig
-        );
+        pkgs = import inputs.nixpkgs ({ inherit system; } // pkgsConfig);
 
         extraSpecialArgs =
           {
@@ -133,8 +127,7 @@
                     users.${username} = import ./home.nix;
                   };
                 }
-              ]
-              ++ modules;
+              ] ++ modules;
             };
 
           nixos =
@@ -152,6 +145,14 @@
             };
 
         };
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            lua-language-server
+            nixd
+            nixfmt-rfc-style
+          ];
+        };
+
       }
     );
 }
