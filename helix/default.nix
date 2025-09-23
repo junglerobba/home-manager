@@ -83,7 +83,7 @@ in
 
       language-server.yaml-language-server.command = "${yaml-language-server}/bin/yaml-language-server";
 
-      language-server.docker-langserver.command = "${dockerfile-language-server-nodejs}/bin/docker-langserver";
+      language-server.docker-langserver.command = "${dockerfile-language-server}/bin/docker-langserver";
 
       language-server.taplo.command = "${taplo}/bin/taplo";
 
