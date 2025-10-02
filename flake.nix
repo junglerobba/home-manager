@@ -22,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix.url = "github:helix-editor/helix";
-    jj.url = "github:jj-vcs/jj?ref=v0.33.0";
+    jj.url = "github:jj-vcs/jj?ref=v0.34.0";
   };
 
   outputs =
