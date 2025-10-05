@@ -20,6 +20,7 @@ let
     just
     lazydocker
     lf
+    nerd-fonts.adwaita-mono
     nh
     nixfmt
     nix-tree
@@ -38,7 +39,6 @@ let
     ++ (if isNixOs then [ gnupg ] else [ ])
     ++ gnomeExtensions;
   macPackages = with pkgs; [
-    adwaita-fonts
     coffee-break
     colima
     gnupg

@@ -5,6 +5,7 @@ let
     name = "blame";
     text = builtins.readFile ./git-blame.sh;
   };
+  yazi = lib.getExe pkgs.yazi;
 in
 {
   # make sure helix themes directory exists
@@ -53,6 +54,22 @@ in
           B = ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
           space.f = "file_picker_in_current_directory";
           space.F = "file_picker";
+          space.e =
+            let
+              tmp = "/tmp/hx-yazi";
+            in
+            [
+              ":sh > ${tmp}"
+              ":set mouse false"
+              ":insert-output ${yazi} %{buffer_name} --chooser-file=${tmp}"
+              ":redraw"
+              ":set mouse true"
+              ":open ${tmp}"
+              "select_all"
+              "split_selection_on_newline"
+              "goto_file"
+              ":buffer-close! ${tmp}"
+            ];
         };
         select = {
           J = [
