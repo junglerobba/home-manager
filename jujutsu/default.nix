@@ -69,6 +69,13 @@ in
           "@-"
           "-d"
         ];
+        rba = [
+          "rebase"
+          "-s"
+          "roots(T..@) ~ immutable()"
+          "-d"
+          "T"
+        ];
       };
       template-aliases = with aliases; {
         "${gerrit_change_id "change_id"}" = ''
