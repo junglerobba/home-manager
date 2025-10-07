@@ -55,7 +55,6 @@ in
         nn = [
           "new"
           "--no-edit"
-          "-r"
         ];
         l = [
           "log"
