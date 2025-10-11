@@ -44,44 +44,56 @@ in
         soft-wrap.enable = true;
         rainbow-brackets = true;
       };
-      keys = {
-        normal = {
-          ret = "goto_word";
-          V = [
-            "extend_to_line_bounds"
-            "select_mode"
-          ];
-          B = ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
-          space.f = "file_picker_in_current_directory";
-          space.F = "file_picker";
-          space.e =
-            let
-              tmp = "/tmp/hx-yazi";
-            in
-            [
-              ":sh > ${tmp}"
-              ":set mouse false"
-              ":insert-output ${yazi} %{buffer_name} --chooser-file=${tmp}"
-              ":redraw"
-              ":set mouse true"
-              ":open ${tmp}"
-              "select_all"
-              "split_selection_on_newline"
-              "goto_file"
-              ":buffer-close! ${tmp}"
+      keys =
+        let
+          vim = {
+            "0" = "goto_line_start";
+            "$" = "goto_line_end";
+            "^" = "goto_first_nonwhitespace";
+          };
+        in
+        {
+          normal = {
+            ret = "goto_word";
+            V = [
+              "extend_to_line_bounds"
+              "select_mode"
             ];
+            B = ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
+            space.f = "file_picker_in_current_directory";
+            space.F = "file_picker";
+            space.l = ":reflow";
+            space.space.g = ":reset-diff-change";
+            space.e =
+              let
+                tmp = "/tmp/hx-yazi";
+              in
+              [
+                ":sh > ${tmp}"
+                ":set mouse false"
+                ":insert-output ${yazi} %{buffer_name} --chooser-file=${tmp}"
+                ":redraw"
+                ":set mouse true"
+                ":open ${tmp}"
+                "select_all"
+                "split_selection_on_newline"
+                "goto_file"
+                ":buffer-close! ${tmp}"
+              ];
+          }
+          // vim;
+          select = {
+            J = [
+              "extend_line_down"
+              "extend_to_line_bounds"
+            ];
+            K = [
+              "extend_line_up"
+              "extend_to_line_bounds"
+            ];
+          }
+          // vim;
         };
-        select = {
-          J = [
-            "extend_line_down"
-            "extend_to_line_bounds"
-          ];
-          K = [
-            "extend_line_up"
-            "extend_to_line_bounds"
-          ];
-        };
-      };
     };
 
     languages = with pkgs; {
