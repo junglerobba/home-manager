@@ -63,6 +63,7 @@ in
             space.f = "file_picker_in_current_directory";
             space.F = "file_picker";
             space.l = ":reflow";
+            space.space.f = ":format";
             space.space.g = ":reset-diff-change";
             space.e =
               let
