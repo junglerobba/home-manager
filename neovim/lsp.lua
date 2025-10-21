@@ -61,6 +61,7 @@ lspconfig('tinymist', {})
 lspconfig('yamlls', {})
 lspconfig('taplo', {})
 lspconfig('dockerls', {})
+lspconfig('clangd', {})
 
 vim.lsp.enable({
     "nixd",
@@ -76,4 +77,5 @@ vim.lsp.enable({
     "yamlls",
     "taplo",
     "dockerls",
+    "clangd",
 })
