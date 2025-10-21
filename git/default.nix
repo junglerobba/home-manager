@@ -9,7 +9,7 @@
   programs.git = {
     enable = true;
     package = if (!isNixOs) then pkgs.null else pkgs.gitFull;
-    extraConfig = {
+    settings = {
       commit.verbose = true;
       pull.rebase = true;
       rebase.autostash = true;
@@ -18,11 +18,11 @@
         annotate = "yes";
       };
       credential.helper = lib.mkIf isMac "osxkeychain";
-    };
-    aliases = {
-      ignore = "update-index --assume-unchanged";
-      unignore = "update-index --no-assume-unchanged";
-      ignored = "!git ls-files -v | grep ^[[:lower:]]";
+      alias = {
+        ignore = "update-index --assume-unchanged";
+        unignore = "update-index --no-assume-unchanged";
+        ignored = "!git ls-files -v | grep ^[[:lower:]]";
+      };
     };
     includes = [ { path = "~/.config/git/config.d/overrides"; } ];
   };
