@@ -23,7 +23,7 @@
       };
       font = {
         normal = {
-          family = if isMac then "AdwaitaMono Nerd Font" else "adwaita mono";
+          family = if isMac then "iosevka nerd font" else "adwaita mono";
         };
         size = 10.6;
         offset.y = 3;

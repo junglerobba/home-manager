@@ -20,7 +20,6 @@ let
     just
     lazydocker
     lf
-    nerd-fonts.adwaita-mono
     nh
     nixfmt
     nix-tree
@@ -34,6 +33,7 @@ let
     [
       distrobox
       flatpak-cargo-generator
+      nerd-fonts.adwaita-mono
       wl-clipboard
     ]
     ++ (if isNixOs then [ gnupg ] else [ ])
@@ -42,6 +42,7 @@ let
     coffee-break
     colima
     gnupg
+    nerd-fonts.iosevka
     podman
   ];
 in
