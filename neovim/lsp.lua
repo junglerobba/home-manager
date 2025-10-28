@@ -36,18 +36,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 local lspconfig = vim.lsp.config
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        vim.lsp.buf.code_action({
-            async = false,
-            apply = true,
-            context = {
-                only = { "source.organizeImports" },
-            },
-        })
-    end,
-})
-
 lspconfig('nixd', {})
 lspconfig('rust_analyzer', {})
 lspconfig('ts_ls', {})

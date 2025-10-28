@@ -35,9 +35,7 @@
       {
         plugin = auto-save-nvim;
         type = "lua";
-        config = ''
-          require('auto-save').setup()
-        '';
+        config = lib.fileContents ./auto-save.lua;
       }
       {
         plugin = todo-comments-nvim;
@@ -72,6 +70,11 @@
         plugin = gitsigns-nvim;
         type = "lua";
         config = lib.fileContents ./gitsigns.lua;
+      }
+      {
+        plugin = conform-nvim;
+        type = "lua";
+        config = lib.fileContents ./conform.lua;
       }
     ];
   };
