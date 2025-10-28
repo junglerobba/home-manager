@@ -22,7 +22,6 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      vim-gitgutter
       cmp-nvim-lsp
       nvim-lspconfig
       lsp_signature-nvim
@@ -68,6 +67,11 @@
         config = ''
           require('treesitter-context').setup()
         '';
+      }
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = lib.fileContents ./gitsigns.lua;
       }
     ];
   };
