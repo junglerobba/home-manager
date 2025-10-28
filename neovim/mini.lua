@@ -106,6 +106,8 @@ picker.setup({
         },
     },
 })
-vim.keymap.set('n', '<leader>f', ":Pick files<CR>")
-vim.keymap.set('n', '<leader>b', ":Pick buffers<CR>")
-vim.keymap.set('n', '<leader>/', ":Pick grep_live<CR>")
+
+vim.keymap.set('n', '<leader>f', picker.builtin.files)
+vim.keymap.set('n', '<leader>b', picker.builtin.buffers)
+vim.keymap.set('n', '<leader>/', picker.builtin.grep_live)
+vim.keymap.set('n', "<leader>'", picker.builtin.resume)
