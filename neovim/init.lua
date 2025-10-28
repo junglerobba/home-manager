@@ -42,3 +42,12 @@ require('nvim-treesitter.configs').setup {
     highlight = { enable = true, },
     indent = { enable = true },
 }
+
+table.toString = function(value)
+    local output = ""
+    for i = 1, #value do
+        output = output .. value[i]
+    end
+    return output
+end
+
