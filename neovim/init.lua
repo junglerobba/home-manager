@@ -36,7 +36,7 @@ vim.opt.list = true
 vim.keymap.set('n', "<space>", "<nop>")
 vim.g.mapleader = " "
 
-vim.cmd('colorscheme abra')
+vim.cmd('colorscheme default')
 
 require('nvim-treesitter.configs').setup {
     highlight = { enable = true, },
