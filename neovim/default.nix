@@ -38,13 +38,6 @@
         config = lib.fileContents ./auto-save.lua;
       }
       {
-        plugin = todo-comments-nvim;
-        type = "lua";
-        config = ''
-          require('todo-comments').setup()
-        '';
-      }
-      {
         plugin = mini-nvim;
         type = "lua";
         config = lib.fileContents ./mini.lua;
