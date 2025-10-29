@@ -34,36 +34,22 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end,
 })
 
-local lspconfig = vim.lsp.config
-
-lspconfig('nixd', {})
-lspconfig('rust_analyzer', {})
-lspconfig('ts_ls', {})
-lspconfig('lua_ls', {})
-lspconfig('html', {})
-lspconfig('eslint', {})
-lspconfig('bashls', {})
-lspconfig('angularls', {})
-lspconfig('emmet_ls', {})
-lspconfig('tinymist', {})
-lspconfig('yamlls', {})
-lspconfig('taplo', {})
-lspconfig('dockerls', {})
-lspconfig('clangd', {})
-
-vim.lsp.enable({
-    "nixd",
-    "rust_analyzer",
-    "ts_ls",
-    "lua_ls",
-    "html",
-    "eslint",
-    "bashls",
-    "angularls",
-    "emmet_ls",
-    "tinymist",
-    "yamlls",
-    "taplo",
-    "dockerls",
-    "clangd",
-})
+local function setup_lsps()
+    local enabled = {}
+    local lsps_file = vim.fn.expand("$HOME/.config/nvim/lsps")
+    local file = io.open(lsps_file, 'r')
+    if file then
+        for line in file:lines() do
+            local trimmed = line:match("^%s*(.-)%s*$")
+            if trimmed ~= "" then
+                table.insert(enabled, trimmed)
+            end
+        end
+        file:close()
+    end
+    for _, lsp in pairs(enabled) do
+        vim.lsp.config(lsp, {})
+    end
+    vim.lsp.enable(enabled)
+end
+setup_lsps()
