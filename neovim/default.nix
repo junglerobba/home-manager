@@ -69,6 +69,11 @@
         type = "lua";
         config = lib.fileContents ./conform.lua;
       }
+      {
+        plugin = leap-nvim;
+        type = "lua";
+        config = lib.fileContents ./leap.lua;
+      }
     ];
   };
 }
