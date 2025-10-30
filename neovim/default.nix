@@ -82,6 +82,11 @@
         type = "lua";
         config = lib.fileContents ./leap.lua;
       }
+      {
+        plugin = lsp_signature-nvim;
+        type = "lua";
+        config = lib.fileContents ./lsp-signature.lua;
+      }
     ];
   };
 }
