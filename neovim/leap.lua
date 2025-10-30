@@ -1,4 +1,3 @@
-local leap = require('leap')
 vim.api.nvim_create_autocmd("FileType", {
     group = vim.api.nvim_create_augroup("LeapSetup", { clear = true }),
     pattern = "*",
@@ -6,7 +5,7 @@ vim.api.nvim_create_autocmd("FileType", {
         local function setup()
             vim.keymap.set('n', '<CR>', function()
                 print('--- LEAP ---')
-                leap.leap({
+                require('leap').leap({
                     windows = { vim.api.nvim_get_current_win() },
                     inclusive = true,
                 })
