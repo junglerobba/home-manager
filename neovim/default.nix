@@ -22,7 +22,6 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      cmp-nvim-lsp
       nvim-lspconfig
       lsp_signature-nvim
       vim-colorschemes
@@ -47,6 +46,10 @@
         type = "lua";
         config = lib.fileContents ./cmp.lua;
       }
+      cmp-nvim-lsp
+      cmp-path
+      cmp-buffer
+      cmp-cmdline
       {
         plugin = nvim-lspconfig;
         type = "lua";
