@@ -51,3 +51,7 @@ table.toString = function(value)
     return output
 end
 
+
+-- keymap
+vim.keymap.set({ 'n', 'v' }, '[q', "<cmd>cprev<cr>", { silent = true })
+vim.keymap.set({ 'n', 'v' }, ']q', "<cmd>cnext<cr>", { silent = true })
