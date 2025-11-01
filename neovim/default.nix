@@ -87,6 +87,11 @@
         type = "lua";
         config = lib.fileContents ./lsp-signature.lua;
       }
+      {
+        plugin = pkgs.multicursor-nvim;
+        type = "lua";
+        config = lib.fileContents ./multicursor.lua;
+      }
     ];
   };
 }
