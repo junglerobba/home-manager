@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   username,
   homedir,
   isMac,
@@ -75,6 +76,10 @@ in
     ./tmux
   ];
 
+  services.steam-dl-inhibit = lib.mkIf isLinux {
+    enable = true;
+  };
+
   fonts.fontconfig.enable = true;
 
   programs.direnv = {
@@ -82,7 +87,7 @@ in
     nix-direnv.enable = true;
   };
 
-  home.pointerCursor = pkgs.lib.mkIf (desktop == "sway") {
+  home.pointerCursor = lib.mkIf (desktop == "sway") {
     name = "Adwaita";
     size = 24;
     package = pkgs.adwaita-icon-theme;

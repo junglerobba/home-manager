@@ -23,6 +23,10 @@
     };
     helix.url = "github:helix-editor/helix";
     jj.url = "github:jj-vcs/jj?ref=v0.34.0";
+    steam-dl-inhibit = {
+      url = "github:junglerobba/steam-dl-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -37,7 +41,8 @@
             inputs.helix.overlays.default
             inputs.jj.overlays.default
             inputs.coffee-break.overlays.default
-          ] ++ (import ./overlays.nix);
+          ]
+          ++ (import ./overlays.nix);
         };
         pkgs = import inputs.nixpkgs ({ inherit system; } // pkgsConfig);
 
@@ -91,7 +96,10 @@
                 inherit username homedir desktop;
                 isNixOs = false;
               };
-              modules = [ ./home.nix ];
+              modules = [
+                ./home.nix
+                inputs.steam-dl-inhibit.homeModules.default
+              ];
             };
 
           darwin =
@@ -127,7 +135,8 @@
                     users.${username} = import ./home.nix;
                   };
                 }
-              ] ++ modules;
+              ]
+              ++ modules;
             };
 
           nixos =

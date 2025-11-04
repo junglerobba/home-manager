@@ -143,17 +143,38 @@
         "type": "github"
       }
     },
+    "flakelight": {
+      "inputs": {
+        "nixpkgs": [
+          "steam-dl-inhibit",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759150211,
+        "narHash": "sha256-VxqFZIjhROnp9/AvrcqWxpqATOCzW4kxj1fqtUhesBQ=",
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "rev": "42f6d8ce7aa3221f50419be97edff740823e2c8c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "type": "github"
+      }
+    },
     "helix": {
       "inputs": {
         "nixpkgs": "nixpkgs",
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1759850138,
-        "narHash": "sha256-fYHIxjTvVIAEDWzenUROuzDPxy1rBCXZNPgh4b1dfgo=",
+        "lastModified": 1762211993,
+        "narHash": "sha256-ueW+bADbMgGMYNSZYqK0bTOIvPqPCokDyKPfq2pz9IQ=",
         "owner": "helix-editor",
         "repo": "helix",
-        "rev": "5b0563419eeeaf0595c848865c46be4abad246a7",
+        "rev": "663c9d42f8ebcaaf6036e9b17d54c7d2eda92065",
         "type": "github"
       },
       "original": {
@@ -169,11 +190,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1760130406,
-        "narHash": "sha256-GKMwBaFRw/C1p1VtjDz4DyhyzjKUWyi1K50bh8lgA2E=",
+        "lastModified": 1762266885,
+        "narHash": "sha256-THnfl16UGSjMXdDQZwIuFuDJj+tYjUHAl9w/DNpkuAw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d305eece827a3fe317a2d70138f53feccaf890a1",
+        "rev": "c39c07bf31dc080851377c04352fa06f197f0c1c",
         "type": "github"
       },
       "original": {
@@ -210,11 +231,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758805352,
-        "narHash": "sha256-BHdc43Lkayd+72W/NXRKHzX5AZ+28F3xaUs3a88/Uew=",
+        "lastModified": 1762186368,
+        "narHash": "sha256-dzLBZKccS0jMefj+WAYwsk7gKDluqavC7I4KfFwVh8k=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "c48e963a5558eb1c3827d59d21c5193622a1477c",
+        "rev": "69921864a70b58787abf5ba189095566c3f0ffd3",
         "type": "github"
       },
       "original": {
@@ -231,11 +252,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1752054764,
-        "narHash": "sha256-Ob/HuUhANoDs+nvYqyTKrkcPXf4ZgXoqMTQoCK0RFgQ=",
+        "lastModified": 1762090880,
+        "narHash": "sha256-fbRQzIGPkjZa83MowjbD2ALaJf9y6KMDdJBQMKFeY/8=",
         "owner": "nix-community",
         "repo": "nixGL",
-        "rev": "a8e1ce7d49a149ed70df676785b07f63288f53c5",
+        "rev": "b6105297e6f0cd041670c3e8628394d4ee247ed5",
         "type": "github"
       },
       "original": {
@@ -293,11 +314,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1760103332,
-        "narHash": "sha256-BMsGVfKl4Q80Pr9T1AkCRljO1bpwCmY8rTBVj8XGuhA=",
+        "lastModified": 1762156382,
+        "narHash": "sha256-Yg7Ag7ov5+36jEFC1DaZh/12SEXo6OO3/8rqADRxiqs=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "870493f9a8cb0b074ae5b411b2f232015db19a65",
+        "rev": "7241bcbb4f099a66aafca120d37c65e8dda32717",
         "type": "github"
       },
       "original": {
@@ -333,6 +354,7 @@
         "nix-darwin": "nix-darwin",
         "nixgl": "nixgl",
         "nixpkgs": "nixpkgs_3",
+        "steam-dl-inhibit": "steam-dl-inhibit",
         "tms": "tms"
       }
     },
@@ -417,6 +439,27 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "steam-dl-inhibit": {
+      "inputs": {
+        "flakelight": "flakelight",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1762279900,
+        "narHash": "sha256-Uj7IfNNDNgyYhrEzJZPQGZb/2Yb3iVVeFTIHFsMLVHg=",
+        "owner": "junglerobba",
+        "repo": "steam-dl-inhibit",
+        "rev": "a94cefc2d102378060921b825176532b41ff5b61",
+        "type": "github"
+      },
+      "original": {
+        "owner": "junglerobba",
+        "repo": "steam-dl-inhibit",
         "type": "github"
       }
     },
