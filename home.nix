@@ -71,14 +71,11 @@ in
     ./mangohud
     ./mpv
     ./neovim
+    ./services
     ./sway
     ./tms
     ./tmux
   ];
-
-  services.steam-dl-inhibit = lib.mkIf isLinux {
-    enable = true;
-  };
 
   fonts.fontconfig.enable = true;
 
