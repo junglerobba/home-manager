@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   username,
   homedir,
   isMac,
@@ -59,6 +60,7 @@ in
     packages ++ (if isMac then macPackages else [ ]) ++ (if isLinux then linuxPackages else [ ]);
 
   imports = [
+    inputs.steam-dl-inhibit.homeModules.default
     ./alacritty
     ./dark-mode-notify
     ./fish

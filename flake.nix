@@ -61,6 +61,7 @@
           {
             inherit
               pkgs
+              inputs
               username
               homedir
               isNixOs
@@ -98,7 +99,6 @@
               };
               modules = [
                 ./home.nix
-                inputs.steam-dl-inhibit.homeModules.default
               ];
             };
 
