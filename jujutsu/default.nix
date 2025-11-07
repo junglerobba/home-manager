@@ -12,16 +12,6 @@ let
   };
 in
 {
-  xdg.configFile."fish/completions/jj.fish".source =
-    pkgs.runCommand "jj.fish"
-      {
-        nativeBuildInputs = [
-          pkgs.jujutsu
-        ];
-      }
-      ''
-        COMPLETE=fish jj > $out
-      '';
   programs.jujutsu = {
     enable = true;
     settings = {
