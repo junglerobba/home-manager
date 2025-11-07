@@ -32,6 +32,7 @@ in
         "${closest_bookmark "to"}" = "heads(::to & bookmarks())";
         "${tip "branch"}" = "heads(::branch & ~empty() & ~description(exact:\"\"))";
         "T" = "trunk()";
+        "M" = "exactly(coalesce(@ & merges(), heads(reachable(@, mutable()) & merges())), 1)";
       };
       aliases = with aliases; {
         tug = [
