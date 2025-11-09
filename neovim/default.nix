@@ -92,6 +92,11 @@
         type = "lua";
         config = lib.fileContents ./multicursor.lua;
       }
+      {
+        plugin = fwatch-nvim;
+        type = "lua";
+        config = lib.fileContents ./auto-theme.lua;
+      }
     ];
   };
 }
