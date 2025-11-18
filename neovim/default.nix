@@ -9,6 +9,8 @@
     vimAlias = true;
     vimdiffAlias = true;
 
+    defaultEditor = true;
+
     extraLuaConfig = lib.fileContents ./init.lua;
 
     extraPackages = with pkgs; [
