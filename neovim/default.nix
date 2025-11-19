@@ -66,11 +66,6 @@
         '';
       }
       {
-        plugin = treewalker-nvim;
-        type = "lua";
-        config = lib.fileContents ./treewalker.lua;
-      }
-      {
         plugin = gitsigns-nvim;
         type = "lua";
         config = lib.fileContents ./gitsigns.lua;
