@@ -28,6 +28,7 @@
       lsp_signature-nvim
       vim-colorschemes
       nvim-treesitter.withAllGrammars
+      nvim-treesitter-textobjects
       {
         plugin = oil-nvim;
         type = "lua";

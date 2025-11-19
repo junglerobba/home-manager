@@ -41,6 +41,11 @@ vim.cmd('colorscheme default')
 require('nvim-treesitter.configs').setup {
     highlight = { enable = true, },
     indent = { enable = true },
+    textobjects = {
+        select = {
+            enable = true,
+        },
+    },
 }
 
 vim.diagnostic.config({
