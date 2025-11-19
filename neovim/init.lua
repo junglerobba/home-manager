@@ -43,6 +43,10 @@ require('nvim-treesitter.configs').setup {
     indent = { enable = true },
 }
 
+vim.diagnostic.config({
+    virtual_text = true,
+})
+
 table.toString = function(value)
     local output = ""
     for i = 1, #value do
