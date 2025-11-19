@@ -41,7 +41,6 @@ in
         end-of-line-diagnostics = "hint";
         inline-diagnostics.cursor-line = "warning";
         soft-wrap.enable = true;
-        rainbow-brackets = true;
       };
       keys =
         let

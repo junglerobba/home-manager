@@ -21,7 +21,6 @@
       url = "github:junglerobba/coffee-break";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix.url = "github:helix-editor/helix";
     jj.url = "github:jj-vcs/jj?ref=v0.35.0";
     steam-dl-inhibit = {
       url = "github:junglerobba/steam-dl-inhibit";
@@ -38,7 +37,6 @@
           overlays = [
             inputs.nixgl.overlays.default
             inputs.tms.overlays.default
-            inputs.helix.overlays.default
             inputs.jj.overlays.default
             inputs.coffee-break.overlays.default
           ]
