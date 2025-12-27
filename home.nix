@@ -12,6 +12,7 @@
 }:
 let
   packages = with pkgs; [
+    diffsoup
     dive
     docker-client
     fastfetch

@@ -53,6 +53,27 @@
         "type": "github"
       }
     },
+    "diffsoup": {
+      "inputs": {
+        "flakelight": "flakelight",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1766760541,
+        "narHash": "sha256-O+XhsyYb4puLeItBX/3harH0bqKGXgU6V05W20dJbpg=",
+        "owner": "junglerobba",
+        "repo": "diffsoup",
+        "rev": "9ad0b3ebc3d174fd8fd7ed57cde62fc83bc492ba",
+        "type": "github"
+      },
+      "original": {
+        "owner": "junglerobba",
+        "repo": "diffsoup",
+        "type": "github"
+      }
+    },
     "flake-parts": {
       "inputs": {
         "nixpkgs-lib": "nixpkgs-lib"
@@ -144,6 +165,27 @@
       }
     },
     "flakelight": {
+      "inputs": {
+        "nixpkgs": [
+          "diffsoup",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1765198385,
+        "narHash": "sha256-pFzfw2g98QdI69IUueBWx/peDG+HGnToelHXHS82p/8=",
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "rev": "b6028a5af905d29cfc20fa80e0eac915c840f9a8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "flakelight",
+        "type": "github"
+      }
+    },
+    "flakelight_2": {
       "inputs": {
         "nixpkgs": [
           "steam-dl-inhibit",
@@ -312,6 +354,7 @@
     "root": {
       "inputs": {
         "coffee-break": "coffee-break",
+        "diffsoup": "diffsoup",
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager",
         "jj": "jj",
@@ -387,7 +430,7 @@
     },
     "steam-dl-inhibit": {
       "inputs": {
-        "flakelight": "flakelight",
+        "flakelight": "flakelight_2",
         "nixpkgs": [
           "nixpkgs"
         ]

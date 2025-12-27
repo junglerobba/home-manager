@@ -26,6 +26,10 @@
       url = "github:junglerobba/steam-dl-inhibit";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    diffsoup = {
+      url = "github:junglerobba/diffsoup";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -39,6 +43,7 @@
             inputs.tms.overlays.default
             inputs.jj.overlays.default
             inputs.coffee-break.overlays.default
+            inputs.diffsoup.overlays.default
           ]
           ++ (import ./overlays.nix);
         };
