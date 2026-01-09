@@ -7,7 +7,6 @@ let
   aliases = {
     closest_bookmark = rev: "closest_bookmark(${rev})";
     tip = rev: "tip(${rev})";
-    gerrit_change_id = change_id: "gerrit_change_id(${change_id})";
     jira_ticket_id = description: "jira_ticket_id(${description})";
   };
 in
@@ -69,9 +68,6 @@ in
         ];
       };
       template-aliases = with aliases; {
-        "${gerrit_change_id "change_id"}" = ''
-          "Change-Id: I6a6a6964" ++ change_id.normal_hex()
-        '';
         "${jira_ticket_id "description"}" = ''
           description.match(regex:"^\\b[A-Z][A-Z0-9_]+-[1-9][0-9]*")
         '';
@@ -101,15 +97,7 @@ in
             )
           )
         '';
-        commit_trailers = ''
-          if(
-            config("gerrit.enabled").as_boolean(),
-            gerrit_change_id(change_id)
-          )
-        '';
       };
-      # only exists to override
-      gerrit.enabled = false;
     };
   };
 }
