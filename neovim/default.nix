@@ -27,8 +27,13 @@
       nvim-lspconfig
       lsp_signature-nvim
       vim-colorschemes
-      nvim-treesitter.withAllGrammars
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = lib.fileContents ./treesitter.lua;
+      }
       nvim-treesitter-textobjects
+      nvim-treesitter-context
       {
         plugin = oil-nvim;
         type = "lua";
@@ -57,13 +62,6 @@
         plugin = nvim-lspconfig;
         type = "lua";
         config = lib.fileContents ./lsp.lua;
-      }
-      {
-        plugin = nvim-treesitter-context;
-        type = "lua";
-        config = ''
-          require('treesitter-context').setup()
-        '';
       }
       {
         plugin = gitsigns-nvim;

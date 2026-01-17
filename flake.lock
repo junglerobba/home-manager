@@ -61,11 +61,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1766760541,
-        "narHash": "sha256-O+XhsyYb4puLeItBX/3harH0bqKGXgU6V05W20dJbpg=",
+        "lastModified": 1768255190,
+        "narHash": "sha256-IB/OPYYJE4nn7WGRDg4Y36dEhfYeqhcXQ6qttp7vAsM=",
         "owner": "junglerobba",
         "repo": "diffsoup",
-        "rev": "9ad0b3ebc3d174fd8fd7ed57cde62fc83bc492ba",
+        "rev": "2808b14761882da817a1747b85e598c0aabd73df",
         "type": "github"
       },
       "original": {
@@ -213,11 +213,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762266885,
-        "narHash": "sha256-THnfl16UGSjMXdDQZwIuFuDJj+tYjUHAl9w/DNpkuAw=",
+        "lastModified": 1768598210,
+        "narHash": "sha256-kkgA32s/f4jaa4UG+2f8C225Qvclxnqs76mf8zvTVPg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "c39c07bf31dc080851377c04352fa06f197f0c1c",
+        "rev": "c47b2cc64a629f8e075de52e4742de688f930dc6",
         "type": "github"
       },
       "original": {
@@ -254,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762186368,
-        "narHash": "sha256-dzLBZKccS0jMefj+WAYwsk7gKDluqavC7I4KfFwVh8k=",
+        "lastModified": 1768561867,
+        "narHash": "sha256-prGOZ+w3pZfGTRxworKcJliCNsewF0L4HUPjgU/6eaw=",
         "owner": "nix-darwin",
         "repo": "nix-darwin",
-        "rev": "69921864a70b58787abf5ba189095566c3f0ffd3",
+        "rev": "8b720b9662d4dd19048664b7e4216ce530591adc",
         "type": "github"
       },
       "original": {
@@ -321,11 +321,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1762156382,
-        "narHash": "sha256-Yg7Ag7ov5+36jEFC1DaZh/12SEXo6OO3/8rqADRxiqs=",
+        "lastModified": 1768569498,
+        "narHash": "sha256-bB6Nt99Cj8Nu5nIUq0GLmpiErIT5KFshMQJGMZwgqUo=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7241bcbb4f099a66aafca120d37c65e8dda32717",
+        "rev": "be5afa0fcb31f0a96bf9ecba05a516c66fcd8114",
         "type": "github"
       },
       "original": {
@@ -526,8 +526,8 @@
       },
       "original": {
         "owner": "jrmoulton",
-        "ref": "b8d89b0e52e56c3f3f3190101e6990754863cce2",
         "repo": "tmux-sessionizer",
+        "rev": "b8d89b0e52e56c3f3f3190101e6990754863cce2",
         "type": "github"
       }
     }

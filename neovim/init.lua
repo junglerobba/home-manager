@@ -38,24 +38,6 @@ vim.g.mapleader = " "
 
 vim.cmd('colorscheme default')
 
-require('nvim-treesitter.configs').setup {
-    highlight = { enable = true, },
-    indent = { enable = true },
-    textobjects = {
-        select = {
-            enable = true,
-        },
-    },
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = '<M-o>',
-            node_incremental = '<M-o>',
-            node_decremental = '<M-i>',
-        }
-    }
-}
-
 vim.diagnostic.config({
     virtual_text = true,
 })
