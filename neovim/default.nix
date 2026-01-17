@@ -35,6 +35,11 @@
       nvim-treesitter-textobjects
       nvim-treesitter-context
       {
+        plugin = trouble-nvim;
+        type = "lua";
+        config = lib.fileContents ./trouble.lua;
+      }
+      {
         plugin = oil-nvim;
         type = "lua";
         config = lib.fileContents ./oil.lua;
