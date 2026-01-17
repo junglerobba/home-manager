@@ -7,14 +7,13 @@
 {
 
   nix = {
-    package = pkgs.lixPackageSets.stable.lix;
-    extraOptions =
-      ''
-        experimental-features = nix-command flakes
-      ''
-      + lib.optionalString (pkgs.system == "aarch64-darwin") ''
-        extra-platforms = x86_64-darwin aarch64-darwin
-      '';
+    package = pkgs.lixPackageSets.latest.lix;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    ''
+    + lib.optionalString (pkgs.system == "aarch64-darwin") ''
+      extra-platforms = x86_64-darwin aarch64-darwin
+    '';
     settings = {
       auto-optimise-store = false;
       trusted-users = [
