@@ -206,6 +206,26 @@
         "type": "github"
       }
     },
+    "helix": {
+      "inputs": {
+        "nixpkgs": "nixpkgs",
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "lastModified": 1768985585,
+        "narHash": "sha256-SfdBL5Dle9qazEaHszO4zr1HSmeyk+m01kr0q19xSkc=",
+        "owner": "junglerobba",
+        "repo": "helix",
+        "rev": "f835a1a209e69ed9094e70470ecef362d33a9e7f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "junglerobba",
+        "ref": "code-actions-on-save",
+        "repo": "helix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -229,8 +249,8 @@
     "jj": {
       "inputs": {
         "flake-utils": "flake-utils_3",
-        "nixpkgs": "nixpkgs",
-        "rust-overlay": "rust-overlay_2"
+        "nixpkgs": "nixpkgs_2",
+        "rust-overlay": "rust-overlay_3"
       },
       "locked": {
         "lastModified": 1767832923,
@@ -290,16 +310,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1762604901,
-        "narHash": "sha256-Pr2jpryIaQr9Yx8p6QssS03wqB6UifnnLr3HJw9veDw=",
-        "owner": "NixOS",
+        "lastModified": 1759381078,
+        "narHash": "sha256-gTrEEp5gEspIcCOx9PD8kMaF1iEmfBcTbO0Jag2QhQs=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f6b44b2401525650256b977063dbcf830f762369",
+        "rev": "7df7ff7d8e00218376575f0acdcc5d66741351ee",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "owner": "nixos",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -321,6 +341,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1762604901,
+        "narHash": "sha256-Pr2jpryIaQr9Yx8p6QssS03wqB6UifnnLr3HJw9veDw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "f6b44b2401525650256b977063dbcf830f762369",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1768569498,
         "narHash": "sha256-bB6Nt99Cj8Nu5nIUq0GLmpiErIT5KFshMQJGMZwgqUo=",
         "owner": "nixos",
@@ -335,7 +371,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_3": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1753934836,
         "narHash": "sha256-G06FmIBj0I5bMW1Q8hAEIl5N7IHMK7+Ta4KA+BmneDA=",
@@ -356,11 +392,12 @@
         "coffee-break": "coffee-break",
         "diffsoup": "diffsoup",
         "flake-utils": "flake-utils_2",
+        "helix": "helix",
         "home-manager": "home-manager",
         "jj": "jj",
         "nix-darwin": "nix-darwin",
         "nixgl": "nixgl",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "steam-dl-inhibit": "steam-dl-inhibit",
         "tms": "tms"
       }
@@ -389,6 +426,27 @@
     "rust-overlay_2": {
       "inputs": {
         "nixpkgs": [
+          "helix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1759631821,
+        "narHash": "sha256-V8A1L0FaU/aSXZ1QNJScxC12uP4hANeRBgI4YdhHeRM=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "1d7cbdaad90f8a5255a89a6eddd8af24dc89cafe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "rust-overlay_3": {
+      "inputs": {
+        "nixpkgs": [
           "jj",
           "nixpkgs"
         ]
@@ -407,7 +465,7 @@
         "type": "github"
       }
     },
-    "rust-overlay_3": {
+    "rust-overlay_4": {
       "inputs": {
         "nixpkgs": [
           "tms",
@@ -513,8 +571,8 @@
       "inputs": {
         "crane": "crane_2",
         "flake-parts": "flake-parts",
-        "nixpkgs": "nixpkgs_3",
-        "rust-overlay": "rust-overlay_3"
+        "nixpkgs": "nixpkgs_4",
+        "rust-overlay": "rust-overlay_4"
       },
       "locked": {
         "lastModified": 1762340861,

@@ -30,6 +30,7 @@
       url = "github:junglerobba/diffsoup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    helix.url = "github:junglerobba/helix/code-actions-on-save";
   };
 
   outputs =
@@ -44,6 +45,7 @@
             inputs.jj.overlays.default
             inputs.coffee-break.overlays.default
             inputs.diffsoup.overlays.default
+            inputs.helix.overlays.default
           ]
           ++ (import ./overlays.nix);
         };

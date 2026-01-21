@@ -154,6 +154,9 @@ in
               "emmet-ls"
             ];
             formatter = prettier "typescript";
+            code-actions-on-save = [
+              "source.organizeImports"
+            ];
           }
           {
             name = "html";
