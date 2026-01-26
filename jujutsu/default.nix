@@ -51,19 +51,11 @@ in
           "-r"
           "::@"
         ];
-        add-parent = [
-          "rebase"
-          "-s"
-          "@"
-          "-d"
-          "@-"
-          "-d"
-        ];
         rba = [
           "rebase"
           "-s"
           "roots(T..@) ~ immutable()"
-          "-d"
+          "-o"
           "T"
         ];
       };
