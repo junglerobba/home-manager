@@ -1,5 +1,6 @@
 require("trouble").setup({
     auto_preview = false,
+    auto_refresh = false,
     focus = true,
     follow = false,
     modes = {

@@ -52,5 +52,9 @@ end
 
 
 -- keymap
-vim.keymap.set({ 'n', 'v' }, '[q', "<cmd>cprev<cr>", { silent = true })
-vim.keymap.set({ 'n', 'v' }, ']q', "<cmd>cnext<cr>", { silent = true })
+vim.keymap.set({ 'n', 'v' }, '[q', function()
+    require("trouble").prev()
+end)
+vim.keymap.set({ 'n', 'v' }, ']q', function()
+    require("trouble").next()
+end)
