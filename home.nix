@@ -42,6 +42,7 @@ let
     ++ (if isNixOs then [ gnupg ] else [ ])
     ++ gnomeExtensions;
   macPackages = with pkgs; [
+    alacritty
     coffee-break
     colima
     gnupg
