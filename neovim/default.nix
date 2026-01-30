@@ -11,7 +11,7 @@
 
     defaultEditor = true;
 
-    extraLuaConfig = lib.fileContents ./init.lua;
+    initLua = lib.fileContents ./init.lua;
 
     extraPackages = with pkgs; [
       ripgrep
