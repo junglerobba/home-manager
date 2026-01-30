@@ -58,6 +58,14 @@ in
           "-o"
           "T"
         ];
+        add-parent = [
+          "rebase"
+          "-s"
+          "M"
+          "-o"
+          "M-"
+          "-o"
+        ];
       };
       template-aliases = with aliases; {
         "${jira_ticket_id "description"}" = ''
