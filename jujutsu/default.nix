@@ -66,6 +66,13 @@ in
           "M-"
           "-o"
         ];
+        prune-parents = [
+          "rebase"
+          "-s"
+          "M"
+          "-o"
+          "M- & mine()"
+        ];
       };
       template-aliases = with aliases; {
         "${jira_ticket_id "description"}" = ''
