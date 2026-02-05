@@ -21,7 +21,7 @@
       url = "github:junglerobba/coffee-break";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    jj.url = "github:jj-vcs/jj?ref=v0.37.0";
+    jj.url = "github:jj-vcs/jj?ref=v0.38.0";
     steam-dl-inhibit = {
       url = "github:junglerobba/steam-dl-inhibit";
       inputs.nixpkgs.follows = "nixpkgs";
