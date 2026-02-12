@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   xdg.configFile."tms/config.toml".source = (pkgs.formats.toml { }).generate "tms" {
-    search_submodules = true;
     switch_filter_unknown = true;
     session_sort_order = "LastAttached";
     clone_repo_switch = "Foreground";
