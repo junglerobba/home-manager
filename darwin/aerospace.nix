@@ -122,6 +122,7 @@
           (assign "7" { app-id = "org.mozilla.firefoxdeveloperedition"; })
           (assign "9" { app-id = "com.spotify.client"; })
           (assign "9" { app-name-regex-substring = "spotify"; })
+          (assign "9" { app-name-regex-substring = "Deezer"; })
           (assign "10" { app-id = "com.hnc.Discord"; })
           (assign "10" { app-id = "com.tinyspeck.slackmacgap"; })
         ];
