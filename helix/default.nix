@@ -121,17 +121,6 @@ in
         };
       };
 
-      language-server.kotlin = {
-        command = "${kotlin-lsp}/bin/kotlin-lsp";
-        args = [ "--stdio" ];
-        file-types = [ "kotlin" ];
-        roots = [
-          "build.gradle"
-          "build.gradle.kts"
-          "pom.xml"
-        ];
-      };
-
       language =
         let
           prettier = parser: {
@@ -194,10 +183,6 @@ in
           {
             name = "nix";
             auto-format = true;
-          }
-          {
-            name = "kotlin";
-            language-servers = [ "kotlin" ];
           }
         ];
     };
