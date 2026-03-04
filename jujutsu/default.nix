@@ -57,6 +57,7 @@ in
           "roots(T..@) ~ immutable()"
           "-o"
           "T"
+          "--simplify-parents"
         ];
         add-parent = [
           "rebase"
