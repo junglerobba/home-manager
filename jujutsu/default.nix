@@ -51,6 +51,13 @@ in
           "-r"
           "::@"
         ];
+        ll = [
+          "log"
+          "-r"
+          "::@"
+          "-T"
+          "builtin_log_detailed"
+        ];
         rba = [
           "rebase"
           "-s"
