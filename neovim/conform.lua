@@ -8,6 +8,8 @@ conform.setup({
         typescript = { "prettier" },
         html = { "prettier" },
         nix = { "nixfmt" },
+        java = { "google-java-format" },
+        kotlin = { "ktlint" },
     },
     format_on_save = {
         timeout_ms = 500,
