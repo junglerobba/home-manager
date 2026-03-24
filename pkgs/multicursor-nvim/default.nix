@@ -7,7 +7,7 @@ vimUtils.buildVimPlugin {
   src = fetchFromGitHub {
     owner = "jake-stewart";
     repo = "multicursor.nvim";
-    rev = "0c6ceae228bf209e8b8717df9de500770c4e7022";
-    sha256 = "sha256-QhYUwFGYXoeXr2dRraHvpYx4z/7R9TyL9OC2sGmIAMY=";
+    rev = "704b99f10a72cc05d370cfeb294ff83412a8ab55";
+    sha256 = "sha256-JHl8Z7ESrWus2I6Pe+6gmdgCAZOzAKX7kimy71sAoe4=";
   };
 }
