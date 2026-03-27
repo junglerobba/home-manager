@@ -6,7 +6,8 @@ conform.setup({
     formatters_by_ft = {
         javascript = { "prettier" },
         typescript = { "prettier" },
-        html = { "prettier" },
+        html = { "prettier", lsp_format = "fallback" },
+        htmlangular = { "prettier", lsp_format = "fallback" },
         nix = { "nixfmt" },
         java = { "google-java-format" },
         kotlin = { "ktlint", "ktfmt" },
