@@ -9,7 +9,7 @@ conform.setup({
         html = { "prettier" },
         nix = { "nixfmt" },
         java = { "google-java-format" },
-        kotlin = { "ktlint" },
+        kotlin = { "ktlint", "ktfmt" },
     },
     format_on_save = {
         timeout_ms = 500,
