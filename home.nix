@@ -17,6 +17,7 @@ let
     docker-client
     fastfetch
     ffmpeg
+    gh
     grype
     jless
     jq
