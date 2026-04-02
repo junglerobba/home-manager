@@ -27,7 +27,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     diffsoup = {
-      url = "github:junglerobba/diffsoup";
+      url = "github:junglerobba/diffsoup/pr-target";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix.url = "github:junglerobba/helix/code-actions-on-save";
