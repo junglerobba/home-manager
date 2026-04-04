@@ -12,6 +12,7 @@
 }:
 let
   packages = with pkgs; [
+    aerc
     diffsoup
     dive
     docker-client
