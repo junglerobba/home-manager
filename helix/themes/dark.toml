@@ -1,7 +1,1 @@
-inherits = "ayu_dark"
-
-["ui.virtual.inlay-hint"]
-bg = "background"
-fg = "gray"
-modifiers = ["dim"]
-
+inherits = "nvim-dark"
