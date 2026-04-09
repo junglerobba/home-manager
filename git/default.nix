@@ -9,6 +9,10 @@
   programs.git = {
     enable = true;
     package = if (!isNixOs) then pkgs.null else pkgs.gitFull;
+
+    # default in stateVersion >= 25.05
+    signing.format = null;
+
     settings = {
       commit.verbose = true;
       pull.rebase = true;

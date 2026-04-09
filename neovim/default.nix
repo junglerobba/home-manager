@@ -11,6 +11,10 @@
 
     defaultEditor = true;
 
+    # defaults to false with stateVersion >= 26.05
+    withRuby = false;
+    withPython3 = false;
+
     initLua = lib.fileContents ./init.lua;
 
     extraPackages = with pkgs; [
