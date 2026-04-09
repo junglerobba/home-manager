@@ -22,11 +22,9 @@
       taplo
       dockerfile-language-server
     ];
-
     plugins = with pkgs.vimPlugins; [
       nvim-lspconfig
       lsp_signature-nvim
-      vim-colorschemes
       {
         plugin = nvim-treesitter.withAllGrammars;
         type = "lua";
