@@ -1,1 +1,14 @@
 inherits = "nvim-dark"
+
+[palette]
+panel_light = "#4f5258"
+
+["ui.statusline"]
+bg = "panel_light"
+
+["ui.selection.primary"]
+bg = "panel_light"
+
+["ui.cursor.match"]
+bg = "slate"
+fg = "fog"
