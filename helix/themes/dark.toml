@@ -1,5 +1,7 @@
 inherits = "nvim-dark"
 
+"ui.background" = "transparent"
+
 [palette]
 panel_light = "#4f5258"
 
