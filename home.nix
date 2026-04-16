@@ -71,6 +71,7 @@ in
     ./fish
     ./git
     ./gnome
+    ./gpg
     ./helix
     ./htop
     ./jujutsu
