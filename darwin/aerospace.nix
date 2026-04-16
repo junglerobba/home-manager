@@ -66,6 +66,8 @@
           "focus-monitor next"
         ];
 
+        cmd-m = [ ];
+
         alt-w = "layout h_tiles h_accordion";
 
         cmd-enter = "exec-and-forget ${lib.getExe pkgs.alacritty}";
