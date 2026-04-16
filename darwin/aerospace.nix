@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
@@ -67,7 +68,7 @@
 
         alt-w = "layout h_tiles h_accordion";
 
-        cmd-enter = "exec-and-forget open -n '/Applications/Nix Apps/Alacritty.app'";
+        cmd-enter = "exec-and-forget ${lib.getExe pkgs.alacritty}";
       };
 
       workspace-to-monitor-force-assignment =
