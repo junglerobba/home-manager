@@ -9,7 +9,6 @@
     "alacritty-theme-toggle"
     "dbus-settings-portal-monitor"
     "flatpak-cargo-generator"
-    "multicursor-nvim"
     "null"
   ]
 )
