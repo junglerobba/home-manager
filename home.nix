@@ -45,6 +45,7 @@ let
     ++ gnomeExtensions;
   macPackages = with pkgs; [
     alacritty
+    aerospace
     coffee-break
     colima
     gnupg
