@@ -66,6 +66,7 @@ in
 
   imports = [
     inputs.steam-dl-inhibit.homeModules.default
+    ./aerospace
     ./alacritty
     ./dark-mode-notify
     ./fish
