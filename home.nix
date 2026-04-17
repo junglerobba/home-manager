@@ -24,6 +24,7 @@ let
     jq
     just
     lazydocker
+    lazysql
     lf
     nh
     nixfmt
