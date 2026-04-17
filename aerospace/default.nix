@@ -10,9 +10,22 @@ let
     inherit lib;
     alacritty = pkgs.alacritty;
   };
+  configFile = (pkgs.formats.toml { }).generate "aerospace.toml" config;
 in
 lib.mkIf (isMac && !darwin) {
-  xdg.configFile."aerospace/aerospace.toml".source =
-    (pkgs.formats.toml { }).generate "aerospace"
-      config;
+  launchd.agents.aerospace = {
+    enable = true;
+    config = {
+      ProgramArguments = [
+        "${pkgs.aerospace}/Applications/AeroSpace.app/Contents/MacOS/AeroSpace"
+        "--config-path"
+        "${configFile}"
+      ];
+      KeepAlive = {
+        Crashed = true;
+        SuccessfulExit = false;
+      };
+      RunAtLoad = true;
+    };
+  };
 }
