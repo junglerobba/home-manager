@@ -1,12 +1,5 @@
 { pkgs, ... }:
 with pkgs;
-let
-  blame = writeShellApplication {
-    name = "blame";
-    text = builtins.readFile ./git-blame.sh;
-  };
-  yazi = lib.getExe pkgs.yazi;
-in
 {
   # make sure helix themes directory exists
   xdg.configFile."helix/themes/.keep".source = pkgs.writeText "" "";
@@ -57,7 +50,29 @@ in
               "extend_to_line_bounds"
               "select_mode"
             ];
-            B = ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
+            B =
+              let
+                blame = writeShellApplication {
+                  name = "blame";
+                  text = builtins.readFile ./git-blame.sh;
+                };
+              in
+              ":echo %sh{${blame}/bin/blame %{cursor_line} %{buffer_name}}";
+            space.B =
+              let
+                blame = writeShellApplication {
+                  name = "blame";
+                  text = builtins.readFile ./git-blame-full.sh;
+                };
+              in
+              [
+                ":set-register n %{buffer_name}"
+                ":set-register l %{cursor_line}"
+                ":new"
+                ":set-language diff"
+                ":insert-output ${blame}/bin/blame %reg{l} %reg{n}"
+                "goto_file_start"
+              ];
             space.f = "file_picker_in_current_directory";
             space.F = "file_picker";
             space.l = ":reflow";
@@ -65,6 +80,7 @@ in
             space.space.g = ":reset-diff-change";
             space.e =
               let
+                yazi = lib.getExe pkgs.yazi;
                 tmp = "/tmp/hx-yazi";
               in
               [
