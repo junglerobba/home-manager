@@ -144,7 +144,14 @@ in
             ];
             formatter = prettier "typescript";
             code-actions-on-save = [
+              "source.removeUnused"
               "source.organizeImports"
+            ];
+          }
+          {
+            name = "rust";
+            code-actions-on-save = [
+              "source.removeUnused"
             ];
           }
           {
