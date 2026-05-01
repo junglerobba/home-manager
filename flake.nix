@@ -16,7 +16,7 @@
       url = "github:nix-community/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tms.url = "github:junglerobba/tmux-sessionizer/lazy-repos";
+    tms.url = "github:jrmoulton/tmux-sessionizer";
     coffee-break = {
       url = "github:junglerobba/coffee-break";
       inputs.nixpkgs.follows = "nixpkgs";
