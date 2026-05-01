@@ -58,6 +58,14 @@ in
           "-T"
           "builtin_log_detailed"
         ];
+        sp = [
+          "squash"
+          "-A"
+          "T"
+          "-B"
+          "M"
+          "-i"
+        ];
         rba = [
           "rebase"
           "-s"
