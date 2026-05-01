@@ -7,6 +7,8 @@ with pkgs;
   programs.helix = {
     enable = true;
 
+    defaultEditor = true;
+
     settings = {
       theme = "adaptive";
       editor = {

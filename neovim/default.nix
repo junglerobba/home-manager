@@ -9,8 +9,6 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    defaultEditor = true;
-
     # defaults to false with stateVersion >= 26.05
     withRuby = false;
     withPython3 = false;
