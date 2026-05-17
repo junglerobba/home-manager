@@ -100,6 +100,7 @@ in
     ./sway
     ./tms
     ./tmux
+    ./unnaturalwheels
   ];
 
   fonts.fontconfig.enable = true;
