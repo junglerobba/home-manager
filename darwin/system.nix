@@ -15,9 +15,6 @@
         # Whether to automatically rearrange spaces based on most recent use
         mru-spaces = false;
         show-recents = false;
-        persistent-others = [
-          "/Applications/Nix Apps"
-        ];
         # helpful for aerospace stability
         expose-group-apps = true;
       };
