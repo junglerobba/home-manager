@@ -50,6 +50,7 @@ let
     coffee-break
     colima
     gnupg
+    maccy
     nerd-fonts.iosevka
     podman
   ];
@@ -78,6 +79,7 @@ in
     ./htop
     ./jujutsu
     ./keyring
+    ./maccy
     ./mangohud
     ./mpv
     ./neovim
