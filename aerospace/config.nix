@@ -114,6 +114,7 @@
       (assign "3" { app-id = "com.microsoft.Outlook"; })
       (assign "3" { app-id = "com.apple.mail"; })
       (assign "5" { app-id = "com.postmanlabs.mac"; })
+      (assign "5" { app-id = "com.usebruno.app"; })
       (assign "6" { app-id = "com.google.Chrome"; })
       (assign "6" { app-id = "com.apple.Safari"; })
       (assign "7" { app-id = "org.mozilla.firefox"; })
