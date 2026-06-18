@@ -1,4 +1,9 @@
-{ pkgs, isMac, ... }:
+{
+  lib,
+  pkgs,
+  isMac,
+  ...
+}:
 with pkgs;
 {
   programs.tmux = {
@@ -26,20 +31,9 @@ with pkgs;
             [
               (
                 let
-                  config = (formats.yaml { }).generate "gitmux-conf" {
-                    tmux = {
-                      symbols.branch = "";
-                      layout = [
-                        "branch"
-                        "remote-branch"
-                        "divergence"
-                        " "
-                        "flags"
-                      ];
-                    };
-                  };
+                  script = pkgs.callPackage ./jj-prompt.nix { };
                 in
-                "#(${gitmux}/bin/gitmux -cfg ${config} #{pane_current_path}) "
+                "#(${lib.getExe script} --pwd='#{pane_current_path}' --color=never) "
               )
               " %a %F %T"
             ]
