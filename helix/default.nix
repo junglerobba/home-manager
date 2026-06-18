@@ -160,7 +160,14 @@ with pkgs;
               "vscode-eslint-language-server"
               "emmet-ls"
             ];
-            formatter = prettier "typescript";
+            formatter = {
+              command = "npx";
+              args = [
+                "prettier"
+                "--stdin-filepath=dummy.ts"
+                "--parser=typescript"
+              ];
+            };
             code-actions-on-save = [
               "source.removeUnused"
               "source.organizeImports"
