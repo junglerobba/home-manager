@@ -30,7 +30,7 @@
       url = "github:junglerobba/diffsoup/pr-target";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix.url = "github:junglerobba/helix/code-actions-on-save";
+    helix.url = "github:helix-editor/helix";
   };
 
   outputs =
