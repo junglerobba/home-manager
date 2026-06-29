@@ -12,10 +12,6 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "github:nix-community/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     tms.url = "github:jrmoulton/tmux-sessionizer";
     coffee-break = {
       url = "github:junglerobba/coffee-break";
@@ -40,7 +36,6 @@
       let
         pkgsConfig = {
           overlays = [
-            inputs.nixgl.overlays.default
             inputs.tms.overlays.default
             inputs.jj.overlays.default
             inputs.coffee-break.overlays.default
@@ -75,16 +70,6 @@
               desktop
               darwin
               ;
-            nixGL = import ./nixgl.nix {
-              inherit pkgs;
-              config = {
-                nixGLPrefix =
-                  if isLinux && !isNixOs then
-                    with pkgs; "${nixgl.nixGLIntel}/bin/nixGLIntel ${nixgl.nixVulkanIntel}/bin/nixVulkanIntel"
-                  else
-                    "";
-              };
-            };
           };
       in
       {

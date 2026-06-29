@@ -61,7 +61,12 @@ in
   home.stateVersion = "23.11";
   programs.home-manager.enable = true;
 
-  targets.genericLinux.enable = isLinux && !isNixOs;
+  targets.genericLinux = lib.mkIf (isLinux && !isNixOs) {
+    enable = true;
+    gpu = {
+      enable = true;
+    };
+  };
 
   home.packages =
     packages ++ (if isMac then macPackages else [ ]) ++ (if isLinux then linuxPackages else [ ]);
