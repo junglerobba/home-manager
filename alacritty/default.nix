@@ -17,9 +17,8 @@
           x = 5;
           y = 5;
         };
-        decorations = lib.mkIf isMac "Buttonless";
+        decorations = if isMac then "Buttonless" else "None";
         blur = true;
-        opacity = 0.8;
       };
       font = {
         normal = {
