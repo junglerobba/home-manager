@@ -22,7 +22,22 @@ in
           "$left"
           "$right"
         ];
+
+        diff-editor = "oyui";
+        diff-instructions = false;
       };
+
+      merge-tools = {
+        oyui = {
+          program = "${lib.getExe pkgs.oyui}";
+          edit-args = [
+            "diff"
+            "$left"
+            "$right"
+          ];
+        };
+      };
+
       git = {
         write-change-id-header = true;
         track-default-bookmark-on-clone = false;
