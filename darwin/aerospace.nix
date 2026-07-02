@@ -5,7 +5,7 @@
 }:
 let
   settings = import ../aerospace/config.nix {
-    inherit lib;
+    inherit pkgs lib;
     alacritty = pkgs.alacritty;
   };
 in

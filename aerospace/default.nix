@@ -7,7 +7,7 @@
 }:
 let
   config = import ./config.nix {
-    inherit lib;
+    inherit pkgs lib;
     alacritty = pkgs.alacritty;
   };
   configFile = (pkgs.formats.toml { }).generate "aerospace.toml" config;
