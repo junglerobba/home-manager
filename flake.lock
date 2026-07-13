@@ -61,16 +61,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1781105244,
-        "narHash": "sha256-irkZlsHWTnvfvfgbZvbmP3faJ7T1iufh+85EDBQegAg=",
+        "lastModified": 1783777840,
+        "narHash": "sha256-TI6qjrsmx6u8R/KOjzoKxjDMTL7zrGmiq6W08jVdsvI=",
         "owner": "junglerobba",
         "repo": "diffsoup",
-        "rev": "3c88167a78cd0f13da93be25b4c326254cbfa752",
+        "rev": "671f19b0e4ac03f2cf77f6e48ce014a41ef0449f",
         "type": "github"
       },
       "original": {
         "owner": "junglerobba",
-        "ref": "pr-target",
         "repo": "diffsoup",
         "type": "github"
       }
@@ -155,11 +154,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1774878311,
-        "narHash": "sha256-Ou5sDaR9GydAbxJYY50fqaFYYQCwUMOwSOdTBcgy47g=",
+        "lastModified": 1783352529,
+        "narHash": "sha256-FZDPaZdAAjFbJWR/BoWCCVYB16WV0b472vhUPlQawh0=",
         "owner": "nix-community",
         "repo": "flakelight",
-        "rev": "06ee2d1a00324727c75f1c279c4ede0d871d110d",
+        "rev": "da36ab2f725feb14b287ff1d6d56f6fc8ce6be5a",
         "type": "github"
       },
       "original": {
