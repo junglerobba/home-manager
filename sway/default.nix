@@ -11,7 +11,7 @@ let
     names = [ "adwaita mono" ];
     size = 10.0;
   };
-  terminal = if isNixOs then "${pkgs.alacritty}/bin/alacritty" else "alacritty";
+  terminal = lib.getExe pkgs.alacritty;
   swaylockCommand = lib.concatStringsSep " " [
     (if isNixOs then "${pkgs.swaylock}/bin/swaylock" else "swaylock")
     "-f"

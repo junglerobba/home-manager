@@ -13,6 +13,7 @@
 let
   packages = with pkgs; [
     aerc
+    alacritty
     diffsoup
     dive
     docker-client
@@ -45,7 +46,6 @@ let
     ++ (if isNixOs then [ gnupg ] else [ ])
     ++ gnomeExtensions;
   macPackages = with pkgs; [
-    alacritty
     aerospace
     coffee-break
     colima
