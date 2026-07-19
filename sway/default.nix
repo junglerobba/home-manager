@@ -19,7 +19,7 @@ let
     "000000"
   ];
   cliphist = "${pkgs.cliphist}/bin/cliphist";
-  rofi = "${pkgs.rofi-wayland}/bin/rofi";
+  rofi = lib.getExe pkgs.rofi;
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
@@ -136,7 +136,7 @@ lib.mkIf (desktop == "sway") {
               powermenu = writeShellApplication {
                 name = "powermenu";
                 runtimeInputs = [
-                  rofi-wayland
+                  rofi
                 ];
 
                 text = builtins.readFile ./powermenu.sh;
@@ -207,7 +207,6 @@ lib.mkIf (desktop == "sway") {
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
     font = "adwaita mono 12";
     theme = "Monokai";
     inherit terminal;
