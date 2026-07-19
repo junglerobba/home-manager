@@ -19,14 +19,11 @@ let
     "000000"
   ];
   cliphist = "${pkgs.cliphist}/bin/cliphist";
-  rofi = if isNixOs then "${pkgs.rofi-wayland}/bin/rofi" else "rofi";
+  rofi = "${pkgs.rofi-wayland}/bin/rofi";
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
     enable = true;
-    package = lib.mkIf (!isNixOs) null;
-
-    xwayland = isNixOs;
 
     config = with pkgs; {
       inherit modifier fonts terminal;
@@ -36,7 +33,6 @@ lib.mkIf (desktop == "sway") {
       bars = [
         {
           inherit fonts;
-          command = lib.mkIf (!isNixOs) "swaybar";
           position = "top";
           statusCommand = "${i3status-rust}/bin/i3status-rs config-default.toml";
           trayOutput = "*";
@@ -82,7 +78,7 @@ lib.mkIf (desktop == "sway") {
       keybindings =
         let
           inherit modifier;
-          wpctl = if isNixOs then "${wireplumber}/bin/wpctl" else "wpctl";
+          wpctl = "${wireplumber}/bin/wpctl";
           playerctl = "${pkgs.playerctl}/bin/playerctl";
           pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
         in
@@ -139,7 +135,7 @@ lib.mkIf (desktop == "sway") {
             let
               powermenu = writeShellApplication {
                 name = "powermenu";
-                runtimeInputs = lib.optionals isNixOs [
+                runtimeInputs = [
                   rofi-wayland
                 ];
 
@@ -164,14 +160,14 @@ lib.mkIf (desktop == "sway") {
     '';
 
     systemd = {
-      enable = isNixOs;
-      xdgAutostart = isNixOs;
-      variables = lib.optionals isNixOs [
+      enable = true;
+      xdgAutostart = true;
+      variables = [
         "--all"
       ];
     };
 
-    wrapperFeatures = lib.mkIf isNixOs {
+    wrapperFeatures = {
       base = true;
       gtk = true;
     };
@@ -211,7 +207,7 @@ lib.mkIf (desktop == "sway") {
 
   programs.rofi = {
     enable = true;
-    package = if isNixOs then pkgs.rofi-wayland else pkgs.null;
+    package = pkgs.rofi-wayland;
     font = "adwaita mono 12";
     theme = "Monokai";
     inherit terminal;
@@ -242,7 +238,7 @@ lib.mkIf (desktop == "sway") {
       }
       (
         let
-          swaymsg = if isNixOs then "${pkgs.sway}/bin/swaymsg" else "swaymsg";
+          swaymsg = "${pkgs.sway}/bin/swaymsg";
         in
         {
           timeout = 600;
