@@ -224,12 +224,9 @@ lib.mkIf (desktop == "sway") {
 
   services.swayidle = {
     enable = true;
-    events = [
-      {
-        event = "before-sleep";
-        command = swaylockCommand;
-      }
-    ];
+    events = {
+      before-sleep = swaylockCommand;
+    };
     timeouts = [
       {
         timeout = 600;

@@ -101,7 +101,8 @@ in
     nix-direnv.enable = true;
   };
 
-  home.pointerCursor = lib.mkIf (desktop == "sway") {
+  home.pointerCursor = lib.mkIf isNixOs {
+    enable = true;
     name = "Adwaita";
     size = 24;
     package = pkgs.adwaita-icon-theme;
