@@ -20,15 +20,19 @@ let
   ];
   cliphist = "${pkgs.cliphist}/bin/cliphist";
   rofi = lib.getExe pkgs.rofi;
+  menu = "${rofi} -show drun";
 in
 lib.mkIf (desktop == "sway") {
   wayland.windowManager.sway = {
     enable = true;
 
     config = with pkgs; {
-      inherit modifier fonts terminal;
-
-      menu = "${rofi} -show drun";
+      inherit
+        modifier
+        fonts
+        terminal
+        menu
+        ;
 
       bars = [
         {
@@ -82,6 +86,10 @@ lib.mkIf (desktop == "sway") {
           pulsemixer = "${pkgs.pulsemixer}/bin/pulsemixer";
         in
         lib.mkOptionDefault {
+          "${modifier}+space" = "exec ${menu}";
+          "${modifier}+d" = null;
+          "${modifier}+q" = "kill";
+          "${modifier}+Shift+q" = null;
           "${modifier}+Ctrl+q" = "exec ${swaylockCommand}";
 
           "--locked XF86AudioMute" = "exec ${wpctl} set-mute @DEFAULT_AUDIO_SINK@ toggle";
