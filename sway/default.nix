@@ -66,7 +66,6 @@ lib.mkIf (desktop == "sway") {
       input = {
         "type:pointer" = {
           accel_profile = "flat";
-          natural_scroll = "enabled";
         };
         "type:keyboard" = {
           xkb_numlock = "enabled";
