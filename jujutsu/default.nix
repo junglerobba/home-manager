@@ -102,7 +102,7 @@ in
           "-s"
           "M"
           "-o"
-          "M- & mine()"
+          "M- & mutable()"
         ];
       };
       template-aliases = with aliases; {
