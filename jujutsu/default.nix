@@ -105,9 +105,12 @@ in
           "M- & mutable()"
         ];
       };
-      template-aliases = with aliases; {
-        "${jira_ticket_id "description"}" = ''
-          description.match(regex:"^\\b[A-Z][A-Z0-9_]+-[1-9][0-9]*")
+      template-aliases = {
+        "subject_ticket_id" = ''
+          self.description().match(regex:"^\\b[A-Z][A-Z0-9_]+-[1-9][0-9]*")
+        '';
+        "trailer_ticket_id" = ''
+          self.trailers().filter(|t| t.key() == "Ticket")
         '';
       };
       templates = {
@@ -123,11 +126,20 @@ in
           )
         '';
         git_push_bookmark = ''
-          if(
-            jira_ticket_id(description).len() > 0,
-            concat(
-              "feature/",
-              jira_ticket_id(description)
+          coalesce(
+            if(
+              trailer_ticket_id.len() == 1,
+              concat(
+                "feature/",
+                trailer_ticket_id.first().value()
+              )
+            ),
+            if(
+              subject_ticket_id.len() > 0,
+              concat(
+                "feature/",
+                subject_ticket_id
+              )
             ),
             concat(
               "push-",
