@@ -168,27 +168,6 @@
         "type": "github"
       }
     },
-    "flakelight_2": {
-      "inputs": {
-        "nixpkgs": [
-          "steam-dl-inhibit",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1759150211,
-        "narHash": "sha256-VxqFZIjhROnp9/AvrcqWxpqATOCzW4kxj1fqtUhesBQ=",
-        "owner": "nix-community",
-        "repo": "flakelight",
-        "rev": "42f6d8ce7aa3221f50419be97edff740823e2c8c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "flakelight",
-        "type": "github"
-      }
-    },
     "helix": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -358,7 +337,6 @@
         "jj": "jj",
         "nix-darwin": "nix-darwin",
         "nixpkgs": "nixpkgs_3",
-        "steam-dl-inhibit": "steam-dl-inhibit",
         "tms": "tms"
       }
     },
@@ -443,27 +421,6 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "steam-dl-inhibit": {
-      "inputs": {
-        "flakelight": "flakelight_2",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762279900,
-        "narHash": "sha256-Uj7IfNNDNgyYhrEzJZPQGZb/2Yb3iVVeFTIHFsMLVHg=",
-        "owner": "junglerobba",
-        "repo": "steam-dl-inhibit",
-        "rev": "a94cefc2d102378060921b825176532b41ff5b61",
-        "type": "github"
-      },
-      "original": {
-        "owner": "junglerobba",
-        "repo": "steam-dl-inhibit",
         "type": "github"
       }
     },

@@ -72,7 +72,6 @@ in
     packages ++ (if isMac then macPackages else [ ]) ++ (if isLinux then linuxPackages else [ ]);
 
   imports = [
-    inputs.steam-dl-inhibit.homeModules.default
     ./aerospace
     ./alacritty
     ./dark-mode-notify

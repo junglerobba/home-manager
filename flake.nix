@@ -18,10 +18,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     jj.url = "github:junglerobba/jj/push-soyrunnvtxot";
-    steam-dl-inhibit = {
-      url = "github:junglerobba/steam-dl-inhibit";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     diffsoup = {
       url = "github:junglerobba/diffsoup/reorder";
       inputs.nixpkgs.follows = "nixpkgs";
