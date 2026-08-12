@@ -61,16 +61,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1786386994,
-        "narHash": "sha256-ki1UpCeLs1c546ErkWlSdoIGkqivQc6LVo9L7IwnBoY=",
+        "lastModified": 1786567845,
+        "narHash": "sha256-d6rXpF5P15iLJz1uRcMM6RCxDMmDGLQOfHctA7piW4I=",
         "owner": "junglerobba",
         "repo": "diffsoup",
-        "rev": "1a13a060074a22135cdde14a64b53d58c821b3d6",
+        "rev": "c01aa698894314f6d853b912994805d54a4c5844",
         "type": "github"
       },
       "original": {
         "owner": "junglerobba",
-        "ref": "reorder",
         "repo": "diffsoup",
         "type": "github"
       }
