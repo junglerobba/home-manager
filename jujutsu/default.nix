@@ -106,6 +106,7 @@ in
         ];
       };
       template-aliases = {
+        "commit_timestamp(commit)" = "commit.author().timestamp()";
         "subject_ticket_id" = ''
           self.description().match(regex:"^\\b[A-Z][A-Z0-9_]+-[1-9][0-9]*")
         '';
