@@ -19,7 +19,7 @@
     };
     jj.url = "github:junglerobba/jj/push-soyrunnvtxot";
     diffsoup = {
-      url = "github:junglerobba/diffsoup";
+      url = "github:junglerobba/diffsoup/pending";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     helix.url = "github:helix-editor/helix";
