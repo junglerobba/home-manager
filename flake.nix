@@ -26,128 +26,96 @@
   };
 
   outputs =
-    { home-manager, nix-darwin, ... }@inputs:
-    inputs.flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgsConfig = {
-          overlays = [
-            inputs.tms.overlays.default
-            inputs.jj.overlays.default
-            inputs.coffee-break.overlays.default
-            inputs.diffsoup.overlays.default
-            inputs.helix.overlays.default
-          ]
-          ++ (import ./overlays.nix);
-        };
-        pkgs = import inputs.nixpkgs ({ inherit system; } // pkgsConfig);
+    { self, nixpkgs, ... }@inputs:
+    let
+      overlays = [
+        inputs.tms.overlays.default
+        inputs.jj.overlays.default
+        inputs.coffee-break.overlays.default
+        inputs.diffsoup.overlays.default
+        inputs.helix.overlays.default
+      ]
+      ++ (import ./overlays.nix);
 
-        extraSpecialArgs =
-          {
-            username,
-            homedir ? null,
-            isNixOs ? false,
-            desktop ? null,
-            darwin ? false,
-          }:
-          let
-            isLinux = pkgs.stdenv.hostPlatform.isLinux;
-            isMac = pkgs.stdenv.hostPlatform.isDarwin;
-          in
-          {
+      args =
+        {
+          username,
+          homedir,
+          desktop ? null,
+          darwin ? false,
+          isNixOs ? false,
+        }:
+        { pkgs, ... }: {
+          imports = [ ./home.nix ];
+          _module.args = {
             inherit
-              pkgs
               inputs
               username
               homedir
-              isNixOs
-              isLinux
-              isMac
               desktop
               darwin
+              isNixOs
               ;
+            isLinux = pkgs.stdenv.hostPlatform.isLinux;
+            isMac = pkgs.stdenv.hostPlatform.isDarwin;
           };
+        };
+    in
+    {
+      overlays.default = nixpkgs.lib.composeManyExtensions overlays;
+
+      homeModules.default = args;
+
+      darwinModules.default = { username }: {
+        nixpkgs.overlays = [ self.overlays.default ];
+        imports = [
+          ./darwin
+          inputs.home-manager.darwinModules.home-manager
+        ];
+        users.users.${username} = {
+          name = username;
+          home = "/Users/${username}";
+        };
+        home-manager = {
+          useGlobalPkgs = true;
+          useUserPackages = true;
+          users.${username} = args {
+            inherit username;
+            desktop = null;
+            homedir = "/Users/${username}";
+            darwin = true;
+          };
+        };
+        _module.args = { inherit username; };
+      };
+    }
+    // inputs.flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.default ];
+        };
       in
       {
-        packages = {
-
-          default =
-            {
-              username,
-              homedir,
-              desktop ? null,
-            }:
-            home-manager.lib.homeManagerConfiguration {
-              inherit pkgs;
-              extraSpecialArgs = extraSpecialArgs {
-                inherit username homedir desktop;
-                isNixOs = false;
-              };
-              modules = [
-                ./home.nix
-              ];
-            };
-
-          darwin =
-            {
-              modules ? [ ],
-              username,
-            }:
-            let
-              specialArgs = extraSpecialArgs {
-                inherit username;
-                desktop = null;
-                homedir = "/Users/${username}";
-                isNixOs = false;
-                darwin = true;
-              };
-            in
-            nix-darwin.lib.darwinSystem {
-              inherit system;
-              inherit specialArgs;
-              modules = [
-                ./darwin
-                home-manager.darwinModules.home-manager
-                {
-                  users.users.${username} = {
-                    name = username;
-                    home = "/Users/${username}";
-                  };
-                  nixpkgs = pkgsConfig;
-                  home-manager = {
-                    extraSpecialArgs = specialArgs;
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    users.${username} = import ./home.nix;
-                  };
-                }
-              ]
-              ++ modules;
-            };
-
-          nixos =
-            {
-              username,
-              homedir,
-              desktop,
-            }:
-            {
-              users.${username} = import ./home.nix;
-              extraSpecialArgs = extraSpecialArgs {
-                inherit username homedir desktop;
-                isNixOs = true;
-              };
-            };
-
-        };
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
             lua-language-server
-            nixd
-            nixfmt
           ];
         };
 
+        checks = {
+          home =
+            (inputs.home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
+              modules = [
+                (args {
+                  username = "test";
+                  homedir = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/test" else "/home/test";
+                })
+              ];
+            }).activationPackage;
+        };
       }
     );
 }

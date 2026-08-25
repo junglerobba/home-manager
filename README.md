@@ -6,39 +6,17 @@ Example usage:
 
 ```nix
 {
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+  nixpkgs.overlays = [ config.overlays.default ];
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.${username} = config.homeModules.default {
+      inherit username;
+      homedir = "/home/${username}";
+      desktop = "gnome";
+      isNixOs = true;
     };
-
-    config.url = "github:junglerobba/home-manager";
   };
-
-  outputs = { nixpkgs, config, ... }:
-    let
-      system = "x86_64-linux";
-      home-config = config.packages.${system}.module {
-        username = "junglerobba";
-        homedir = "/home";
-      };
-    in {
-      nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-          inputs.home-manager.nixosModules.default
-          {
-            home-manager = home-config // {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-            };
-          }
-        ];
-      };
-    };
 }
 ```
 
@@ -49,17 +27,29 @@ Example usage:
 ```nix
 {
   inputs = {
+    nixpkgs.follows = "config/nixpkgs";
+    home-manager.follows = "config/home-manager";
     config.url = "github:junglerobba/home-manager";
   };
 
-  outputs = { config, ... }:
+  outputs = { nixpkgs, home-manager, config, ... }:
     let
       system = "x86_64-linux";
       username = "junglerobba";
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [ config.overlays.default ];
+      };
     in {
-      homeConfigurations.${username} = config.packages.${system}.default {
-        inherit username;
-        homedir = "/home";
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          (config.homeModules.default {
+            inherit username;
+            homedir = "/home/${username}";
+          })
+          # other modules
+        ];
       };
     };
 }
@@ -75,19 +65,13 @@ Example usage:
 
 ```nix
 {
-  inputs = {
-    config.url = "github:junglerobba/home-manager";
-  };
-
-  outputs = { config, ... }:
-    let
-      system = "aarch64-darwin";
-      username = "junglerobba";
-    in {
-      darwinConfigurations.${username} = config.packages.${system}.darwin {
-        inherit username;
-      };
-    };
+  darwinConfigurations.${username} = nix-darwin.lib.darwinSystem {
+    inherit system;
+    modules = [
+      (config.darwinModules.default { inherit username; })
+      # other modules
+    ]
+  }
 }
 ```
 
