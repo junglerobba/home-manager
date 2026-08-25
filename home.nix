@@ -48,7 +48,6 @@ let
   macPackages = with pkgs; [
     aerospace
     coffee-break
-    colima
     gnupg
     maccy
     nerd-fonts.iosevka
