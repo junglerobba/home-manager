@@ -30,11 +30,6 @@
     { self, nixpkgs, ... }@inputs:
     let
       overlays = [
-        inputs.tms.overlays.default
-        inputs.jj.overlays.default
-        inputs.coffee-break.overlays.default
-        inputs.diffsoup.overlays.default
-        inputs.helix.overlays.default
       ]
       ++ (import ./overlays.nix);
 

@@ -1,4 +1,8 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  inputs,
+  ...
+}:
 with pkgs;
 {
   # make sure helix themes directory exists
@@ -6,6 +10,8 @@ with pkgs;
 
   programs.helix = {
     enable = true;
+
+    package = inputs.helix.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
     defaultEditor = true;
 

@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  inputs,
   ...
 }:
 let
@@ -13,6 +14,7 @@ in
 {
   programs.jujutsu = {
     enable = true;
+    package = inputs.jj.packages.${pkgs.stdenv.hostPlatform.system}.default;
     settings = {
       ui = {
         default-command = "log";

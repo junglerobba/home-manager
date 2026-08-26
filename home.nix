@@ -11,29 +11,33 @@
   ...
 }:
 let
-  packages = with pkgs; [
-    aerc
-    alacritty
-    diffsoup
-    dive
-    docker-client
-    fastfetch
-    ffmpeg
-    gh
-    grype
-    jless
-    jq
-    just
-    lazydocker
-    lazysql
-    lf
-    nh
-    nixfmt
-    nix-tree
-    onefetch
-    tmux-sessionizer
-    yt-dlp
-  ];
+  system = pkgs.stdenv.hostPlatform.system;
+  packages =
+    (with pkgs; [
+      aerc
+      alacritty
+      dive
+      docker-client
+      fastfetch
+      ffmpeg
+      gh
+      grype
+      jless
+      jq
+      just
+      lazydocker
+      lazysql
+      lf
+      nh
+      nixfmt
+      nix-tree
+      onefetch
+      yt-dlp
+    ])
+    ++ [
+      inputs.diffsoup.packages.${system}.default
+      inputs.tms.packages.${system}.default
+    ];
   gnomeExtensions = import ./gnome/extensions.nix { inherit pkgs desktop; };
   linuxPackages =
     with pkgs;
@@ -45,14 +49,17 @@ let
     ]
     ++ (if isNixOs then [ gnupg ] else [ ])
     ++ gnomeExtensions;
-  macPackages = with pkgs; [
-    aerospace
-    coffee-break
-    gnupg
-    maccy
-    nerd-fonts.iosevka
-    podman
-  ];
+  macPackages =
+    (with pkgs; [
+      aerospace
+      gnupg
+      maccy
+      nerd-fonts.iosevka
+      podman
+    ])
+    ++ [
+      inputs.coffee-break.packages.${system}.default
+    ];
 in
 {
   home.username = username;

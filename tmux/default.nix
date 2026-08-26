@@ -1,10 +1,14 @@
 {
   lib,
   pkgs,
+  inputs,
   isMac,
   ...
 }:
 with pkgs;
+let
+  jujutsu = inputs.jj.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in
 {
   programs.tmux = {
     enable = true;
@@ -31,7 +35,7 @@ with pkgs;
             [
               (
                 let
-                  script = pkgs.callPackage ./jj-prompt.nix { };
+                  script = pkgs.callPackage ./jj-prompt.nix { inherit jujutsu; };
                 in
                 "#(${lib.getExe script} --pwd='#{pane_current_path}' --color=never) "
               )
