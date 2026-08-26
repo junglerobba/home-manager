@@ -29,8 +29,9 @@ let
       lazysql
       lf
       nh
-      nixfmt
+      nix-output-monitor
       nix-tree
+      nixfmt
       onefetch
       yt-dlp
     ])
