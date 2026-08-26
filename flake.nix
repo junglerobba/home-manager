@@ -2,8 +2,7 @@
   description = "Home Manager configuration";
 
   inputs = {
-    # TODO move back to unstable once tmux 3.7c builds
-    nixpkgs.url = "github:nixos/nixpkgs?ref=a831408e6378bc02ebf8cc09b52c96ca86f6bab4";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
