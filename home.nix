@@ -44,7 +44,7 @@ let
     with pkgs;
     [
       distrobox
-      flatpak-cargo-generator
+      (pkgs.callPackage ./pkgs/flatpak-cargo-generator { })
       nerd-fonts.adwaita-mono
       wl-clipboard
     ]

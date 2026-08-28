@@ -1,4 +1,4 @@
-(builtins.map
+(map
   (
     pkg:
     (final: prev: {
@@ -6,13 +6,10 @@
     })
   )
   [
-    "alacritty-theme-toggle"
-    "dbus-settings-portal-monitor"
-    "flatpak-cargo-generator"
     "null"
   ]
 )
-++ (builtins.map
+++ (map
   (
     pkg:
     (final: prev: {

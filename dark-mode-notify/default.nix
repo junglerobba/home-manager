@@ -6,7 +6,8 @@
   ...
 }:
 let
-  script = pkgs.alacritty-theme-toggle;
+  script = pkgs.callPackage ../pkgs/alacritty-theme-toggle { };
+  dbus-monitor = pkgs.callPackage ../pkgs/dbus-settings-portal-monitor { };
 in
 {
   launchd.agents.dark-mode-notify = {
@@ -30,7 +31,7 @@ in
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       ExecStart = ''
-        ${lib.getExe pkgs.dbus-settings-portal-monitor} \
+        ${lib.getExe dbus-monitor} \
           --key org.freedesktop.appearance \
           --setting color-scheme \
           --env DARKMODE \

@@ -1,7 +1,7 @@
 {
-  stdenv,
+  stdenvNoCC,
 }:
-stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
   name = "null";
   dontUnpack = true;
   buildPhase = ''
