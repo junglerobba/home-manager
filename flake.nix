@@ -22,7 +22,7 @@
       url = "github:junglerobba/diffsoup";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    helix.url = "github:helix-editor/helix";
+    helix.url = "git+https://codeberg.org/polyphony/volute";
   };
 
   outputs =
