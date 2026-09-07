@@ -76,11 +76,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787768265,
-        "narHash": "sha256-ZCzAKaezo3vMaXvQG6g/hkIkKP8GuQGaRAbRiTljGhs=",
+        "lastModified": 1788816846,
+        "narHash": "sha256-HajKQinBQp7kTAMv2dcDB4Y+i9qc1ZucnE/DKLVA850=",
         "owner": "junglerobba",
         "repo": "diffsoup",
-        "rev": "3a5f1fd56f9027be2f6fce4bcb504c1812b0ade5",
+        "rev": "f6611d0fc811cf5056071b698e4640df8549f21e",
         "type": "github"
       },
       "original": {
@@ -231,11 +231,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1788378273,
-        "narHash": "sha256-oFsDsRcOk4vaJ7wVTeh3iqQw0li4bvLmAwu3IAxrNgc=",
+        "lastModified": 1788785522,
+        "narHash": "sha256-4hYRUxcf9m99aavAVrKLEFOLmv2Wsk1kxOvriictFyc=",
         "ref": "refs/heads/main",
-        "rev": "913fe9713c968036ab41941bbff049400224e17e",
-        "revCount": 7644,
+        "rev": "cb5da928061025391f37ed088ff3b38e8bcebd38",
+        "revCount": 7647,
         "type": "git",
         "url": "https://codeberg.org/polyphony/volute"
       },
@@ -251,11 +251,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788487777,
-        "narHash": "sha256-Ro/e1N4ZR8/XaFF+sF9SgfPK79HM5YNEppzFj8p+0Ak=",
+        "lastModified": 1788651960,
+        "narHash": "sha256-v9wJd32eZ2bvhBzVOd7TIjLQd011P7nwOhjKtWlci5I=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "693e8ce0fb240a73c116a03cfd7b19269c87af88",
+        "rev": "2c0350c759688177331b8f5242311fae8877bdb3",
         "type": "github"
       },
       "original": {
@@ -271,11 +271,11 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1787770093,
-        "narHash": "sha256-nY6x4PVxLt3hBafSc6uD8qGCxopcqotsWavJ/dh5hMc=",
+        "lastModified": 1788553330,
+        "narHash": "sha256-ztDze7l9ZCo3uCacund5l6vejXxBbcu4AtfIBLxUzi4=",
         "owner": "junglerobba",
         "repo": "jj",
-        "rev": "1e3eabba68a0f2cb04ce6baad2a69f7fd0f9f08e",
+        "rev": "8848dcb90f3d260af8f39ebd464974d8695b1bfe",
         "type": "github"
       },
       "original": {
@@ -369,11 +369,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1788400875,
-        "narHash": "sha256-JIHQ6xNAN53cdo6zZ72LRcQ9lpvnABCnNE4hldJ5uZU=",
+        "lastModified": 1788746152,
+        "narHash": "sha256-RaKngusl5I8pNi8RfrVvsHq3NZe7eFWzDlb01+hEVqY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "5545adfad2e98de106a5544ca7067e03010410bd",
+        "rev": "42f17a57f4f6e33b3de3dca0a2a5ea5233169d02",
         "type": "github"
       },
       "original": {
