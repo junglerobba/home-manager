@@ -57,6 +57,7 @@ let
       maccy
       nerd-fonts.iosevka
       podman
+      watch
     ])
     ++ [
       inputs.coffee-break.packages.${system}.default
