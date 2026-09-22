@@ -57,6 +57,7 @@ let
       maccy
       nerd-fonts.iosevka
       podman
+      tree
       watch
     ])
     ++ [
