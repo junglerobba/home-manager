@@ -214,13 +214,16 @@ lib.mkIf (desktop == "sway") {
 
   programs.rofi = {
     enable = true;
-    font = "adwaita mono 12";
     theme = "Monokai";
-    inherit terminal;
 
-    extraConfig = {
-      show-icons = true;
+    settings = {
+      inherit terminal;
+      font = "adwaita mono 12";
+      extraConfig = {
+        show-icons = true;
+      };
     };
+
   };
 
   services.wlsunset = {
