@@ -17,6 +17,7 @@
         };
         decorations = if isMac then "Buttonless" else "None";
         blur = true;
+        startup_mode = "Maximized";
       };
       font = {
         normal = {
