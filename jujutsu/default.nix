@@ -20,6 +20,7 @@ in
         default-command = "log";
         diff-formatter = [
           (lib.getExe pkgs.difftastic)
+          "--width=$width"
           "--color=always"
           "$left"
           "$right"
