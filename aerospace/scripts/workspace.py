@@ -21,7 +21,7 @@ assignments = {
     "5": ["VG270U P", "1"],
     "6": ["VG270U P", "1"],
     "7": ["VG270U P", "1"],
-    "8": ["VG270U P", "1"],
+    "8": [BUILT_IN],
     "9": [BUILT_IN],
     "10": [BUILT_IN],
     "100": [BUILT_IN],

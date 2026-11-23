@@ -99,10 +99,10 @@ in
       (assign "6" { app-id = "com.apple.Safari"; })
       (assign "7" { app-id = "org.mozilla.firefox"; })
       (assign "7" { app-id = "org.mozilla.firefoxdeveloperedition"; })
+      (assign "8" { app-id = "com.hnc.Discord"; })
+      (assign "8" { app-id = "com.tinyspeck.slackmacgap"; })
       (assign "9" { app-id = "com.spotify.client"; })
       (assign "9" { app-name-regex-substring = "spotify"; })
       (assign "9" { app-name-regex-substring = "Deezer"; })
-      (assign "10" { app-id = "com.hnc.Discord"; })
-      (assign "10" { app-id = "com.tinyspeck.slackmacgap"; })
     ];
 }
